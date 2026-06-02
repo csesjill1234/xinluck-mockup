@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>星運娛樂城 Mockup v7</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red-dark: #7B0000;
+  --red-main: #B50000;
+  --gold: #FFD700;
+  --gold-dark: #C8960C;
+  --cream: #FDF3DC;
+  --cream-dark: #F0DDA0;
+  --green-line: #00B900;
+  --blue-web: #00BFFF;
+  --text-dark: #3A1000;
+  --header-h: 70px;
+  --subnav-h: 46px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); }
+
+/* ══ 標題系統 H+C+D 組合 ══ */
+.sec-heading {
+  position: relative;
+  text-align: center;
+  margin-bottom: 10px;
+  padding-top: 8px;
+}
+.sec-heading-bg {
+  /* D：英文大字墊底 */
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -54%);
+  font-size: 80px; font-weight: 900;
+  letter-spacing: 10px; text-transform: uppercase;
+  white-space: nowrap; pointer-events: none;
+  z-index: 0;
+}
+/* 深色背景用 */
+.sec-heading-bg.dark { color: rgba(255,215,0,0.055); }
+/* 淺色背景用 */
+.sec-heading-bg.light { color: rgba(139,0,0,0.055); }
+
+.sec-heading-main {
+  /* H：漸層金字 */
+  position: relative; z-index: 1;
+  font-size: 34px; font-weight: 900;
+  letter-spacing: 5px; display: inline-block;
+}
+.sec-heading-main.dark {
+  background: linear-gradient(135deg, #FFD700 0%, #FFF3A0 40%, #C8960C 70%, #FFD700 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.sec-heading-main.light {
+  background: linear-gradient(135deg, #8B0000 0%, #C62828 40%, #C8960C 70%, #8B0000 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* C：細線 */
+.sec-heading-line {
+  width: 48px; height: 2px;
+  margin: 10px auto 0;
+  position: relative; z-index: 1;
+}
+.sec-heading-line.dark { background: rgba(255,215,0,0.45); }
+.sec-heading-line.light { background: rgba(139,0,0,0.3); }
+
+.sec-sub {
+  font-size: 14px; font-weight: 400;
+  text-align: center; margin-bottom: 44px; line-height: 1.7;
+  position: relative; z-index: 1;
+}
+.sec-sub.dark { color: rgba(255,220,180,0.55); margin-top: 14px; }
+.sec-sub.light { color: #999; margin-top: 12px; }
+
+/* ══ HEADER ══ */
+.header {
+  background: var(--red-dark); display: flex; align-items: center;
+  padding: 0 32px; height: var(--header-h);
+  border-bottom: 3px solid var(--gold-dark);
+  position: sticky; top: 0; z-index: 300;
+}
+.logo-placeholder {
+  width: 72px; height: 58px; flex-shrink: 0; margin-right: 12px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px dashed rgba(255,215,0,0.35); border-radius: 6px;
+  color: rgba(255,215,0,0.55); font-size: 11px; font-weight: 700; text-align: center; line-height: 1.3;
+}
+.nav-links { display: flex; flex: 1; height: var(--header-h); }
+.nav-item { position: relative; display: flex; align-items: center; }
+.nav-link {
+  color: #fff; font-size: 14px; font-weight: 500;
+  padding: 0 18px; height: var(--header-h);
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+  white-space: nowrap; cursor: pointer; user-select: none;
+  border-bottom: 3px solid transparent; transition: background 0.15s, color 0.15s;
+}
+.nav-link:hover, .nav-item:hover > .nav-link {
+  background: rgba(255,215,0,0.12); color: var(--gold); border-bottom-color: var(--gold);
+}
+.arrow { font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
+.nav-item:hover > .nav-link .arrow { transform: rotate(180deg); }
+.dropdown {
+  display: none; position: absolute; top: var(--header-h); left: 0;
+  background: #5A0000; z-index: 400; box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+.nav-item:hover .dropdown { display: block; }
+.dropdown a {
+  display: block; color: #FFE8E8; text-decoration: none;
+  font-size: 13px; font-weight: 500; padding: 11px 20px; text-align: center;
+  border-bottom: 1px solid rgba(255,215,0,0.1); transition: background 0.12s, color 0.12s; white-space: nowrap;
+}
+.dropdown a:last-child { border-bottom: none; }
+.dropdown a:hover { background: rgba(255,215,0,0.15); color: var(--gold); }
+.header-btns { display: flex; gap: 10px; align-items: center; margin-left: auto; }
+.btn-line-h {
+  background: var(--green-line); color: #fff; border: none; border-radius: 6px;
+  padding: 9px 20px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;
+}
+.btn-line-h:hover { opacity: 0.85; }
+.btn-web-h {
+  background: transparent; color: var(--blue-web); border: 2px solid var(--blue-web);
+  border-radius: 6px; padding: 7px 20px; font-size: 14px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+}
+.btn-web-h:hover { background: rgba(0,191,255,0.1); }
+
+/* SUB-NAV */
+.subnav {
+  display: none; position: sticky; top: var(--header-h); z-index: 200;
+  background: #5A0000; border-bottom: 2px solid var(--gold-dark);
+  height: var(--subnav-h); align-items: center; justify-content: center;
+}
+.subnav.visible { display: flex; }
+.subnav-link {
+  color: rgba(255,230,200,0.85); font-size: 13px; font-weight: 500;
+  padding: 0 24px; height: var(--subnav-h); display: flex; align-items: center;
+  border-bottom: 3px solid transparent; transition: color 0.15s, border-color 0.15s; cursor: pointer;
+}
+.subnav-link:hover, .subnav-link.active { color: var(--gold); border-bottom-color: var(--gold); }
+.subnav-sep { color: rgba(255,215,0,0.25); font-size: 13px; pointer-events: none; }
+
+/* LINE QR MODAL */
+.modal-bd {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.72); z-index: 1000; align-items: center; justify-content: center;
+}
+.modal-bd.open { display: flex; }
+.modal-box {
+  background: linear-gradient(160deg, #4A0000, #8B0000 60%, #4A0000);
+  border: 3px solid var(--gold); border-radius: 20px;
+  padding: 36px 40px; text-align: center; position: relative; width: 340px;
+  animation: popIn 0.22s ease-out;
+}
+@keyframes popIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.modal-close {
+  position: absolute; top: 12px; right: 16px; background: none; border: none;
+  color: var(--gold); font-size: 24px; cursor: pointer; transition: transform 0.15s;
+}
+.modal-close:hover { transform: rotate(90deg); }
+.modal-title { font-size: 20px; font-weight: 900; color: var(--gold); margin-bottom: 20px; }
+.modal-qr {
+  width: 160px; height: 160px; background: #fff; border-radius: 10px;
+  margin: 0 auto 16px; overflow: hidden; display: flex; align-items: center; justify-content: center;
+}
+.modal-qr img { width: 100%; height: 100%; object-fit: contain; }
+.modal-hint { color: #FFE0C0; font-size: 13px; line-height: 1.7; }
+.modal-hint strong { color: var(--gold); display: block; margin-bottom: 4px; }
+
+/* PAGES */
+.page { display: none; }
+.page.active { display: block; }
+
+/* HERO */
+.hero {
+  position: relative; width: 100%; min-height: 560px;
+  overflow: hidden; display: flex; flex-direction: column;
+  background: linear-gradient(180deg, #8B0000 0%, #CC2200 40%, #FF6600 70%, #FFD700 100%);
+}
+.hero-banner-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9;
+}
+.hero-banner-ph {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;
+}
+.hero-banner-ph-box {
+  border: 2px dashed rgba(255,215,0,0.3); border-radius: 12px;
+  padding: 20px 40px; color: rgba(255,215,0,0.4);
+  font-size: 15px; font-weight: 700; text-align: center; line-height: 1.8;
+}
+.hero-bottom {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(80,0,0,0.92) 0%, rgba(80,0,0,0.6) 55%, transparent 100%);
+  padding: 44px 60px 40px; display: flex; flex-direction: column; align-items: center; gap: 28px; z-index: 2;
+}
+.hero-slogan {
+  font-size: 48px; font-weight: 900; color: var(--gold);
+  text-shadow: 3px 3px 0 #5A0000, 0 0 24px rgba(255,160,0,0.6);
+  letter-spacing: 5px; text-align: center; line-height: 1.2;
+}
+.hero-cta-row { display: flex; align-items: center; gap: 48px; justify-content: center; }
+.hero-qr-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.hero-qr-box {
+  width: 104px; height: 104px; background: #fff; border-radius: 8px;
+  overflow: hidden; border: 2px solid var(--gold-dark);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-qr-box img { width: 100%; height: 100%; object-fit: contain; }
+.hero-qr-label { color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 700; }
+.hero-cta-divider { color: rgba(255,215,0,0.3); font-size: 28px; }
+.hero-web-block { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.hero-btn-web {
+  background: var(--blue-web); color: #fff; border: 3px solid #0099CC; border-radius: 50px;
+  padding: 14px 52px; font-size: 19px; font-weight: 700; cursor: pointer; font-family: inherit;
+  box-shadow: 0 0 0 3px var(--gold); transition: transform 0.15s;
+}
+.hero-btn-web:hover { transform: scale(1.04); }
+.hero-web-label { color: rgba(255,255,255,0.55); font-size: 12px; }
+
+/* QR 懸浮 */
+.qr-float {
+  position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
+  background: linear-gradient(160deg, #5A0000, #9A0000);
+  border: 2.5px solid var(--gold); border-radius: 14px;
+  padding: 14px 12px; text-align: center; z-index: 250; width: 118px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.qr-float-label { color: var(--gold); font-size: 12px; font-weight: 900; margin-bottom: 10px; line-height: 1.5; }
+.qr-float-img {
+  width: 86px; height: 86px; background: #fff; border-radius: 6px;
+  margin: 0 auto 8px; overflow: hidden; display: flex; align-items: center; justify-content: center;
+}
+.qr-float-img img { width: 100%; height: 100%; object-fit: contain; }
+.qr-float-sub { color: rgba(255,255,255,0.7); font-size: 11px; }
+
+/* SECTION */
+.section { padding: 72px 60px; position: relative; overflow: hidden; }
+.section-alt { background: #fff8ee; }
+
+/* 品牌介紹 */
+.brand-section { background: var(--red-dark); padding: 72px 60px; position: relative; overflow: hidden; }
+.youtube-wrapper {
+  max-width: 820px; margin: 0 auto 52px; position: relative;
+  padding-bottom: 56.25%; height: 0; border-radius: 14px; overflow: hidden;
+  border: 3px solid var(--gold-dark);
+}
+.youtube-placeholder {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.55);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+}
+.yt-play {
+  width: 72px; height: 72px; background: rgba(255,0,0,0.88);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: transform 0.2s;
+}
+.yt-play:hover { transform: scale(1.1); }
+.yt-play::after {
+  content: ''; display: block; width: 0; height: 0; border-style: solid;
+  border-width: 14px 0 14px 26px; border-color: transparent transparent transparent #fff; margin-left: 6px;
+}
+.yt-label { color: rgba(255,255,255,0.5); font-size: 14px; }
+.brand-features {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  max-width: 900px; margin: 0 auto;
+  border: 1px solid rgba(255,215,0,0.15);
+}
+.brand-feat {
+  padding: 36px 28px; border-right: 1px solid rgba(255,215,0,0.15);
+  border-bottom: 1px solid rgba(255,215,0,0.15); transition: background 0.2s;
+}
+.brand-feat:nth-child(3n) { border-right: none; }
+.brand-feat:nth-child(n+4) { border-bottom: none; }
+.brand-feat:hover { background: rgba(255,215,0,0.05); }
+.brand-feat-icon { font-size: 28px; margin-bottom: 14px; }
+.brand-feat-title { font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+.brand-feat-desc { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.45); line-height: 1.8; }
+
+/* 跑馬燈 */
+.ticker-section {
+  background: var(--red-dark); border-top: 2px solid var(--gold-dark);
+  border-bottom: 2px solid var(--gold-dark); overflow: hidden;
+}
+.ticker-inner { display: flex; align-items: stretch; height: 48px; }
+.ticker-label {
+  background: var(--gold-dark); color: #3A0000; font-size: 12px; font-weight: 900;
+  padding: 0 20px; display: flex; align-items: center; white-space: nowrap;
+  flex-shrink: 0; letter-spacing: 1px;
+}
+.ticker-track-wrap { flex: 1; overflow: hidden; }
+.ticker-track {
+  display: flex; align-items: center; height: 48px;
+  animation: ticker-scroll 32s linear infinite; white-space: nowrap;
+}
+.ticker-track:hover { animation-play-state: paused; }
+@keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.ticker-item {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 0 36px; cursor: pointer; color: #FFE0C0;
+  font-size: 13px; transition: color 0.15s; white-space: nowrap;
+}
+.ticker-item:hover { color: var(--gold); }
+.ticker-item-tag { font-size: 10px; font-weight: 700; padding: 1px 8px; border-radius: 10px; flex-shrink: 0; }
+.tag-ev { background: rgba(255,160,0,0.2); color: var(--gold); border: 1px solid rgba(255,160,0,0.35); }
+.tag-no { background: rgba(100,160,255,0.15); color: #90CAF9; border: 1px solid rgba(100,160,255,0.25); }
+.ticker-more {
+  background: none; border: none; border-left: 1px solid rgba(255,215,0,0.15);
+  color: rgba(255,215,0,0.65); font-size: 12px; font-weight: 700;
+  padding: 0 20px; cursor: pointer; font-family: inherit;
+  white-space: nowrap; flex-shrink: 0; display: flex; align-items: center; transition: color 0.15s;
+}
+.ticker-more:hover { color: var(--gold); }
+
+/* 精選遊戲 */
+.games-section { background: var(--cream); }
+.carousel-outer {
+  max-width: 960px; margin: 0 auto;
+  display: flex; align-items: center; gap: 12px;
+}
+.c-arrow {
+  flex-shrink: 0; width: 44px; height: 44px;
+  background: rgba(123,0,0,0.85); border: 2px solid var(--gold-dark);
+  border-radius: 50%; color: var(--gold); font-size: 22px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s; user-select: none;
+}
+.c-arrow:hover { background: var(--red-main); }
+.carousel-wrapper { flex: 1; overflow: hidden; }
+.carousel-track { display: flex; gap: 14px; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+.c-item {
+  flex-shrink: 0; width: calc((100% - 56px) / 5);
+  aspect-ratio: 1; border-radius: 14px; border: 3px solid var(--gold-dark);
+  overflow: hidden; cursor: pointer; position: relative; background: #111;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.c-item:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 10px 28px rgba(180,100,0,0.5), 0 0 0 2px var(--gold); }
+.c-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.c-mult {
+  position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,0.78); color: var(--gold);
+  font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 5px; border: 1px solid var(--gold-dark);
+}
+.c-hover { position: absolute; inset: 0; background: rgba(139,0,0,0); transition: background 0.2s; display: flex; align-items: center; justify-content: center; }
+.c-item:hover .c-hover { background: rgba(139,0,0,0.3); }
+.c-play { color: #fff; font-size: 34px; opacity: 0; transition: opacity 0.2s; }
+.c-item:hover .c-play { opacity: 1; }
+.c-dots { display: flex; justify-content: center; gap: 8px; margin-top: 22px; }
+.c-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cream-dark); cursor: pointer; transition: background 0.2s; }
+.c-dot.active { background: var(--red-main); }
+
+/* 攻略專區 */
+.articles-layout {
+  display: grid; grid-template-columns: 1.15fr 1fr;
+  gap: 20px; max-width: 960px; margin: 0 auto 32px;
+}
+.article-hero {
+  background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark);
+  overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
+}
+.article-hero:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(180,80,0,0.15); }
+.article-hero-img {
+  width: 100%; height: 240px;
+  background: linear-gradient(135deg, #8B0000 0%, #CC6600 50%, #FFD700 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: rgba(255,255,255,0.5);
+}
+.article-hero-body { padding: 20px 24px; }
+.article-tag {
+  display: inline-block; background: #FFF0E0; color: var(--red-main);
+  font-size: 11px; font-weight: 700; padding: 2px 12px;
+  border-radius: 20px; margin-bottom: 12px; border: 1px solid #F5C08080;
+}
+.article-hero-title { font-size: 18px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px; }
+.article-hero-excerpt {
+  font-size: 13px; color: #777; line-height: 1.75; margin-bottom: 14px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.article-hero-date { font-size: 12px; color: #bbb; }
+.articles-small { display: grid; grid-template-rows: repeat(4, 1fr); gap: 16px; }
+.article-small {
+  background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark);
+  overflow: hidden; cursor: pointer; display: flex; transition: transform 0.15s, box-shadow 0.15s;
+}
+.article-small:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(180,80,0,0.13); }
+.article-small-img {
+  width: 96px; flex-shrink: 0;
+  background: linear-gradient(135deg, #4A0000, #CC4400 60%, #FFD700);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: rgba(255,255,255,0.4);
+}
+.article-small-body { padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; }
+.article-small-title {
+  font-size: 13px; font-weight: 700; color: var(--text-dark); line-height: 1.5; margin-bottom: 6px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.article-small-date { font-size: 11px; color: #bbb; }
+.articles-more { text-align: center; }
+.btn-more {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--red-main); border: 2px solid var(--red-main);
+  border-radius: 50px; padding: 10px 40px; font-size: 14px; font-weight: 700;
+  cursor: pointer; font-family: inherit; text-decoration: none; transition: background 0.15s, color 0.15s;
+}
+.btn-more:hover { background: var(--red-main); color: #fff; }
+
+/* 合作夥伴 */
+.partners-section {
+  background: var(--cream-dark); padding: 60px 60px; position: relative; overflow: hidden;
+  border-top: 2px solid var(--gold-dark); border-bottom: 2px solid var(--gold-dark);
+}
+.partners-grid {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: center; gap: 20px 36px; max-width: 900px; margin: 0 auto;
+}
+.partner-logo { height: 34px; object-fit: contain; opacity: 0.8; transition: opacity 0.2s; }
+.partner-logo:hover { opacity: 1; }
+.partner-ph {
+  height: 34px; min-width: 80px; padding: 0 16px;
+  background: rgba(255,255,255,0.6); border: 1.5px dashed rgba(180,130,0,0.3);
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: rgba(100,60,0,0.4); white-space: nowrap;
+}
+
+/* FOOTER */
+footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-top: 3px solid var(--gold-dark); }
+.footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 24px; }
+.footer-col-title { color: var(--gold); font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+.footer-info { font-size: 13px; line-height: 2.2; color: #FFE8E8; }
+.footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.18); margin-bottom: 18px; }
+.footer-bottom { display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+.footer-legal { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.8; flex: 1; }
+.footer-links { display: flex; gap: 20px; flex-shrink: 0; }
+.footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-links span { color: rgba(255,255,255,0.2); }
+
+/* 子頁面 */
+.sub-page-content { max-width: 860px; margin: 0 auto; padding: 60px 40px; }
+.sub-section { margin-bottom: 64px; }
+.sub-section-title {
+  font-size: 22px; font-weight: 900; color: var(--red-main);
+  margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--cream-dark);
+}
+.sub-section p { font-size: 15px; line-height: 1.9; color: #555; margin-bottom: 12px; }
+.sub-placeholder {
+  background: #fff8ee; border: 1.5px dashed var(--cream-dark);
+  border-radius: 12px; padding: 40px; text-align: center; color: #ccc; font-size: 14px;
+}
+
+/* 遊戲 Overlay */
+.gov-bd { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 500; align-items: center; justify-content: center; }
+.gov-bd.open { display: flex; }
+.gov-modal {
+  background: linear-gradient(160deg, #4A0000, #8B0000 55%, #4A0000);
+  border: 3px solid var(--gold); border-radius: 20px;
+  width: 500px; max-width: 92vw; padding: 30px; position: relative; animation: popIn 0.22s ease-out;
+}
+.gov-close { position: absolute; top: 12px; right: 16px; background: none; border: none; color: var(--gold); font-size: 26px; cursor: pointer; transition: transform 0.15s; }
+.gov-close:hover { transform: rotate(90deg); }
+.gov-img { width: 100%; border-radius: 12px; border: 2px solid var(--gold-dark); aspect-ratio: 1; object-fit: cover; margin-bottom: 16px; }
+.gov-title { font-size: 22px; font-weight: 900; color: var(--gold); text-align: center; margin-bottom: 6px; }
+.gov-mult { display: table; margin: 0 auto 12px; background: rgba(255,215,0,0.12); border: 1px solid var(--gold-dark); color: var(--gold); font-size: 12px; font-weight: 700; padding: 3px 16px; border-radius: 20px; }
+.gov-desc { color: #FFE0C0; font-size: 13px; line-height: 1.75; text-align: center; margin-bottom: 20px; }
+.gov-qr-row { display: flex; gap: 16px; align-items: center; background: rgba(0,0,0,0.3); border-radius: 12px; padding: 14px; border: 1px solid rgba(255,215,0,0.25); margin-bottom: 14px; }
+.gov-qr-box { width: 84px; height: 84px; background: #fff; border-radius: 8px; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.gov-qr-box img { width: 100%; height: 100%; object-fit: contain; }
+.gov-qr-text { color: #FFE0C0; font-size: 13px; line-height: 1.6; }
+.gov-qr-text strong { color: var(--gold); font-size: 14px; font-weight: 700; display: block; margin-bottom: 3px; }
+.gov-play-btn { display: block; width: 100%; background: var(--green-line); color: #fff; border: 2px solid #009600; border-radius: 50px; padding: 13px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; transition: transform 0.15s; }
+.gov-play-btn:hover { transform: scale(1.02); }
+</style>
+</head>
+<body>
+
+<!-- QR 懸浮 -->
+<div class="qr-float">
+  <div class="qr-float-label">掃描 QR 碼<br>立即玩！</div>
+  <div class="qr-float-img">
+    <img src="https://www.xinluck.com/images/common/fix_qrcode.webp" alt="QR" onerror="this.parentNode.innerHTML='<div style=&quot;color:#999;font-size:11px&quot;>QR Code</div>'">
+  </div>
+  <div class="qr-float-sub">LINE 官方帳號</div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo-placeholder">LOGO</div>
+  <nav class="nav-links">
+    <div class="nav-item" id="nav-game">
+      <span class="nav-link" onclick="showPage('home')">遊戲介紹 <span class="arrow">▼</span></span>
+      <div class="dropdown" id="dd-game">
+        <a href="#" onclick="showPage('home');return false;">所有遊戲</a>
+        <a href="#" onclick="showPage('home');scrollToId('ticker-section');return false;">活動公告</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <span class="nav-link" onclick="showPage('home');scrollToId('articles-section')">攻略專區</span>
+    </div>
+    <div class="nav-item" id="nav-novice">
+      <span class="nav-link">新手專區 <span class="arrow">▼</span></span>
+      <div class="dropdown" id="dd-novice">
+        <a href="#" onclick="showSubPage('novice','介面說明');return false;">介面說明</a>
+        <a href="#" onclick="showSubPage('novice','捷徑教學');return false;">捷徑教學</a>
+        <a href="#" onclick="showSubPage('novice','VIP 說明');return false;">VIP 說明</a>
+        <a href="#" onclick="showSubPage('novice','公會說明');return false;">公會說明</a>
+        <a href="#" onclick="showSubPage('novice','儲值教學');return false;">儲值教學</a>
+      </div>
+    </div>
+    <div class="nav-item" id="nav-cs">
+      <span class="nav-link">客服中心 <span class="arrow">▼</span></span>
+      <div class="dropdown" id="dd-cs">
+        <a href="#" onclick="showSubPage('cs','服務條款');return false;">服務條款</a>
+        <a href="#" onclick="showSubPage('cs','隱私權政策');return false;">隱私權政策</a>
+        <a href="#" onclick="showSubPage('cs','遊戲規章');return false;">遊戲規章</a>
+        <a href="#" onclick="showSubPage('cs','停權列表');return false;">停權列表</a>
+      </div>
+    </div>
+  </nav>
+  <div class="header-btns">
+    <button class="btn-line-h" onclick="document.getElementById('line-modal').classList.add('open')">LINE 登入</button>
+    <button class="btn-web-h">網頁登入</button>
+  </div>
+</header>
+
+<!-- SUB-NAV -->
+<nav class="subnav" id="subnav-novice">
+  <a class="subnav-link" onclick="scrollToSubSection('novice','介面說明')">介面說明</a><span class="subnav-sep">｜</span>
+  <a class="subnav-link" onclick="scrollToSubSection('novice','捷徑教學')">捷徑教學</a><span class="subnav-sep">｜</span>
+  <a class="subnav-link" onclick="scrollToSubSection('novice','VIP 說明')">VIP 說明</a><span class="subnav-sep">｜</span>
+  <a class="subnav-link" onclick="scrollToSubSection('novice','公會說明')">公會說明</a><span class="subnav-sep">｜</span>
+  <a class="subnav-link" onclick="scrollToSubSection('novice','儲值教學')">儲值教學</a>
+</nav>
+<nav class="subnav" id="subnav-cs">
+  <a class="subnav-link" onclick="scrollToSubSection('cs','服務條款')">服務條款</a><span class="subnav-sep">｜</span>
+  <a class="subnav-link" onclick="scrollToSubSection('cs','隱私權政策')">隱私權政策</a><span class="subnav-sep">｜</span>
+  <a class="subnav-link" onclick="scrollToSubSection('cs','遊戲規章')">遊戲規章</a><span class="subnav-sep">｜</span>
+  <a class="subnav-link" onclick="scrollToSubSection('cs','停權列表')">停權列表</a>
+</nav>
+
+<!-- LINE QR MODAL -->
+<div class="modal-bd" id="line-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('line-modal').classList.remove('open')">✕</button>
+    <div class="modal-title">掃描 QR Code 立即登入</div>
+    <div class="modal-qr">
+      <img src="https://www.xinluck.com/images/common/fix_qrcode.webp" alt="LINE QR" onerror="this.parentNode.innerHTML='<div style=&quot;color:#999;font-size:12px&quot;>QR Code</div>'">
+    </div>
+    <div class="modal-hint">
+      <strong>手機開啟 LINE 掃描</strong>
+      掃描後自動加入官方帳號<br>免下載，立即開始遊戲
+    </div>
+  </div>
+</div>
+
+<!-- 首頁 -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-banner-img" src="https://www.xinluck.com/images/mobile/banner_950x535.webp" alt="" onerror="this.style.display='none'">
+    <div class="hero-banner-ph">
+      <div class="hero-banner-ph-box">主視覺 Banner 圖片<br>（建議尺寸 1920×560px）</div>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-slogan">天天玩星運　分分走大運</div>
+      <div class="hero-cta-row">
+        <div class="hero-qr-block">
+          <div class="hero-qr-box">
+            <img src="https://www.xinluck.com/images/common/fix_qrcode.webp" alt="QR" onerror="this.parentNode.innerHTML='QR'">
+          </div>
+          <div class="hero-qr-label">手機掃描　免費玩</div>
+        </div>
+        <div class="hero-cta-divider">｜</div>
+        <div class="hero-web-block">
+          <button class="hero-btn-web">網頁立即玩</button>
+          <div class="hero-web-label">免下載　直接開始</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌介紹 -->
+  <section class="brand-section">
+    <div class="sec-heading">
+      <div class="sec-heading-bg dark">ABOUT</div>
+      <div class="sec-heading-main dark">品牌介紹</div>
+      <div class="sec-heading-line dark"></div>
+    </div>
+    <div class="sec-sub dark">星運娛樂城，全台首選免下載社群娛樂平台</div>
+    <div class="youtube-wrapper">
+      <div class="youtube-placeholder">
+        <div class="yt-play"></div>
+        <div class="yt-label">品牌介紹影片（滾動至此自動播放）</div>
+      </div>
+    </div>
+    <div class="brand-features">
+      <div class="brand-feat">
+        <div class="brand-feat-icon">⚡</div>
+        <div class="brand-feat-title">零秒開台</div>
+        <div class="brand-feat-desc">免下載、免安裝，打開 LINE 立即玩，真正的零門檻娛樂體驗。</div>
+      </div>
+      <div class="brand-feat">
+        <div class="brand-feat-icon">🔒</div>
+        <div class="brand-feat-title">LINE 帳號直接登入</div>
+        <div class="brand-feat-desc">以 LINE 帳號登入，安全驗證、不需額外註冊，保護您的帳號安全。</div>
+      </div>
+      <div class="brand-feat">
+        <div class="brand-feat-icon">🏆</div>
+        <div class="brand-feat-title">公會社群系統</div>
+        <div class="brand-feat-desc">加入公會一起衝榜，公會戰、排名賽，與好友共享勝利的喜悅。</div>
+      </div>
+      <div class="brand-feat">
+        <div class="brand-feat-icon">🎰</div>
+        <div class="brand-feat-title">百款精選機台</div>
+        <div class="brand-feat-desc">最高倍率 25,000 倍，機台天天開獎，體感超好，隨時都有大獎等你抱回家。</div>
+      </div>
+      <div class="brand-feat">
+        <div class="brand-feat-icon">💰</div>
+        <div class="brand-feat-title">多元儲值管道</div>
+        <div class="brand-feat-desc">支援 LINE Pay、Apple Pay、Google Pay 等，儲值即時到帳。</div>
+      </div>
+      <div class="brand-feat">
+        <div class="brand-feat-icon">📱</div>
+        <div class="brand-feat-title">手機直接玩，隨開隨玩</div>
+        <div class="brand-feat-desc">不用下載 App，打開瀏覽器或 LINE 就能玩，想玩就玩、想停就停，超方便。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 活動公告 -->
+  <div class="ticker-section" id="ticker-section">
+    <div class="ticker-inner">
+      <div class="ticker-label">📢　活動公告</div>
+      <div class="ticker-track-wrap">
+        <div class="ticker-track" id="ticker-track"></div>
+      </div>
+      <button class="ticker-more">查看更多 →</button>
+    </div>
+  </div>
+
+  <!-- 精選遊戲 -->
+  <section class="section games-section">
+    <div class="sec-heading">
+      <div class="sec-heading-bg light">GAMES</div>
+      <div class="sec-heading-main light">精選遊戲</div>
+      <div class="sec-heading-line light"></div>
+    </div>
+    <div class="sec-sub light">點擊遊戲卡片，掃碼立即開台</div>
+    <div class="carousel-outer">
+      <button class="c-arrow" onclick="moveCarousel(-1)">&#8249;</button>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-track"></div>
+      </div>
+      <button class="c-arrow" onclick="moveCarousel(1)">&#8250;</button>
+    </div>
+    <div class="c-dots" id="c-dots"></div>
+  </section>
+
+  <!-- 攻略專區 -->
+  <section class="section section-alt" id="articles-section">
+    <div class="sec-heading">
+      <div class="sec-heading-bg light">STRATEGY</div>
+      <div class="sec-heading-main light">攻略專區</div>
+      <div class="sec-heading-line light"></div>
+    </div>
+    <div class="sec-sub light">遊戲玩法、活動攻略、平台教學，一次掌握</div>
+    <div class="articles-layout">
+      <div class="article-hero">
+        <div class="article-hero-img">封面圖片</div>
+        <div class="article-hero-body">
+          <span class="article-tag">遊戲攻略</span>
+          <div class="article-hero-title">自摸無雙３完全攻略：新手必看的胡牌技巧與倍率說明</div>
+          <div class="article-hero-excerpt">自摸無雙３是星運娛樂城人氣最高的麻將老虎機，最高倍率高達 15,000 倍。整理新手最常問的玩法問題……</div>
+          <div class="article-hero-date">2026－06－01</div>
+        </div>
+      </div>
+      <div class="articles-small" id="articles-small"></div>
+    </div>
+    <div class="articles-more"><a href="#" class="btn-more">所有文章 →</a></div>
+  </section>
+
+  <!-- 合作夥伴 -->
+  <section class="partners-section">
+    <div class="sec-heading" style="margin-bottom:28px;">
+      <div class="sec-heading-bg light" style="font-size:60px;">PARTNERS</div>
+      <div class="sec-heading-main light">合作夥伴</div>
+      <div class="sec-heading-line light"></div>
+    </div>
+    <div class="partners-grid">
+      <img class="partner-logo" src="https://www.xinluck.com/images/partners/line-pay.webp" alt="LINE Pay" onerror="this.outerHTML='<div class=&quot;partner-ph&quot;>LINE Pay</div>'">
+      <img class="partner-logo" src="https://www.xinluck.com/images/partners/apple-pay.webp" alt="Apple Pay" onerror="this.outerHTML='<div class=&quot;partner-ph&quot;>Apple Pay</div>'">
+      <img class="partner-logo" src="https://www.xinluck.com/images/partners/google-pay.webp" alt="Google Pay" onerror="this.outerHTML='<div class=&quot;partner-ph&quot;>Google Pay</div>'">
+      <img class="partner-logo" src="https://www.xinluck.com/images/partners/gash.webp" alt="Gash" onerror="this.outerHTML='<div class=&quot;partner-ph&quot;>Gash</div>'">
+      <img class="partner-logo" src="https://www.xinluck.com/images/partners/888-gaming.webp" alt="888 Gaming" onerror="this.outerHTML='<div class=&quot;partner-ph&quot;>888 Gaming</div>'">
+      <img class="partner-logo" src="https://www.xinluck.com/images/partners/va-victory.webp" alt="VA Victory" onerror="this.outerHTML='<div class=&quot;partner-ph&quot;>VA Victory</div>'">
+      <div class="partner-ph">廠商 Logo</div>
+      <div class="partner-ph">廠商 Logo</div>
+      <div class="partner-ph">廠商 Logo</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-col-title">平台資訊</div>
+        <div class="footer-info">
+          維護時間：每週四　10：00～11：00<br>
+          客服信箱：support@xinluck.com<br>
+          客服時間：09：00～18：00
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">官方社交</div>
+        <div class="footer-info">
+          LINE　官方帳號：@xinluck<br>
+          FB　粉絲團：星運娛樂城
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>
+        遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。
+      </div>
+      <div class="footer-links">
+        <a href="#">服務條款</a><span>｜</span>
+        <a href="#">隱私權政策</a><span>｜</span>
+        <a href="#">遊戲規章</a><span>｜</span>
+        <a href="#">停權列表</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- 新手專區 -->
+<div class="page" id="page-novice">
+  <div class="sub-page-content">
+    <div class="sub-section" id="novice-介面說明"><div class="sub-section-title">介面說明</div><p>這裡說明遊戲介面的各個區塊功能，包含主選單、遊戲大廳、個人中心等操作介紹。</p><div class="sub-placeholder">介面截圖示意圖（待補）</div></div>
+    <div class="sub-section" id="novice-捷徑教學"><div class="sub-section-title">捷徑教學</div><p>教學如何將星運娛樂城加入手機主畫面，一鍵快速進入。</p><div class="sub-placeholder">捷徑設定步驟截圖（待補）</div></div>
+    <div class="sub-section" id="novice-VIP 說明"><div class="sub-section-title">VIP 說明</div><p>星運 VIP 等級制度說明，各等級所享有的專屬權益與升級條件。</p><div class="sub-placeholder">VIP 等級表（待補）</div></div>
+    <div class="sub-section" id="novice-公會說明"><div class="sub-section-title">公會說明</div><p>加入公會享有更多社群福利，公會戰活動說明、積分制度與獎勵辦法。</p><div class="sub-placeholder">公會制度圖示（待補）</div></div>
+    <div class="sub-section" id="novice-儲值教學"><div class="sub-section-title">儲值教學</div><p>支援 LINE Pay、Apple Pay、Google Pay 等多元支付，儲值即時到帳。</p><div class="sub-placeholder">儲值步驟截圖（待補）</div></div>
+  </div>
+</div>
+
+<!-- 客服中心 -->
+<div class="page" id="page-cs">
+  <div class="sub-page-content">
+    <div class="sub-section" id="cs-服務條款"><div class="sub-section-title">服務條款</div><p>本服務條款規範您使用星運娛樂城平台之各項服務，請於使用前詳細閱讀。</p><p>（完整條款內容待補）</p></div>
+    <div class="sub-section" id="cs-隱私權政策"><div class="sub-section-title">隱私權政策</div><p>星運娛樂城重視您的個人資料安全，說明我們如何收集、使用及保護您的個人資訊。</p><p>（完整內容待補）</p></div>
+    <div class="sub-section" id="cs-遊戲規章"><div class="sub-section-title">遊戲規章</div><p>為維護公平遊戲環境，請遵守以下遊戲規範。違反規章者，平台有權暫停或終止帳號。</p><p>（完整內容待補）</p></div>
+    <div class="sub-section" id="cs-停權列表"><div class="sub-section-title">停權列表</div><p>以下列出因違反遊戲規章而遭停權之帳號，本列表定期更新。</p><div class="sub-placeholder">停權帳號列表（待補）</div></div>
+  </div>
+</div>
+
+<!-- 遊戲 Overlay -->
+<div class="gov-bd" id="gov-bd" onclick="if(event.target===this)closeGov()">
+  <div class="gov-modal">
+    <button class="gov-close" onclick="closeGov()">✕</button>
+    <img class="gov-img" id="gov-img" src="" alt="">
+    <div class="gov-title" id="gov-title"></div>
+    <div class="gov-mult" id="gov-mult"></div>
+    <div class="gov-desc" id="gov-desc"></div>
+    <div class="gov-qr-row">
+      <div class="gov-qr-box"><img src="https://www.xinluck.com/images/common/fix_qrcode.webp" alt="QR" onerror="this.parentNode.innerHTML='QR'"></div>
+      <div class="gov-qr-text"><strong>掃碼立即玩</strong>手機掃描 QR Code<br>免下載直接開始<br>支援 LINE ／ 網頁登入</div>
+    </div>
+    <button class="gov-play-btn" onclick="window.open('https://play.xinluck.com','_blank')">▶　立即進入遊戲</button>
+  </div>
+</div>
+
+<script>
+const GAMES = [
+  {name:'阿茲特克神話',mult:'5,000x',img:'https://www.xinluck.com/images/games/472_500x500.webp',desc:'神秘阿茲特克文明風格，高達 5,000 倍爆炸倍率，豐富的免費遊戲與野性符號，帶你踏上尋寶之旅！'},
+  {name:'埃及三秘寶',mult:'10,000x',img:'https://www.xinluck.com/images/games/475_500x500.webp',desc:'古埃及法老的祕密寶藏等你解鎖！最高 10,000 倍等你拿。'},
+  {name:'印加女神',mult:'25,000x',img:'https://www.xinluck.com/images/games/482_500x500.webp',desc:'本館最高爆率！印加女神賜福，25,000 倍超級大獎讓你笑開懷！'},
+  {name:'財富金幣',mult:'10,000x',img:'https://www.xinluck.com/images/games/483_500x500.webp',desc:'金幣滿天飛！財運旺旺來，最高可達 10,000 倍爆率。'},
+  {name:'木乃伊寶藏',mult:'10,000x',img:'https://www.xinluck.com/images/games/484_500x500_tw.webp',desc:'沉睡千年的法老寶藏甦醒了！神秘符號組合觸發隱藏獎池。'},
+  {name:'印加祖瑪豪華版',mult:'10,000x',img:'https://www.xinluck.com/images/games/485_500x500_tw.webp',desc:'豪華升級版祖瑪體驗！全新動態場景，讓每次旋轉都充滿驚喜。'},
+  {name:'法老祕寶',mult:'10,000x',img:'https://www.xinluck.com/images/games/487_500x500.webp',desc:'法老的禁忌祕寶現身！最高 10,000 倍獎勵。'},
+  {name:'自摸無雙３',mult:'15,000x',img:'https://www.xinluck.com/images/games/492_500x500.webp',desc:'台灣麻將主題旗艦版！15,000 倍等你胡！'},
+  {name:'自摸無雙２',mult:'3,000x',img:'https://www.xinluck.com/images/games/493_500x500.webp',desc:'麻將老虎機升級版，發財符號連線觸發免費輪轉，胡牌即中獎！'},
+  {name:'祖瑪探險',mult:'1,000倍',img:'https://www.xinluck.com/images/games/888000001_480x480.webp',desc:'叢林探險風格，祖瑪神廟藏有無數寶藏。'},
+  {name:'自摸財神',mult:'5,000倍',img:'https://www.xinluck.com/images/games/888000002_480x480.webp',desc:'財神爺親臨坐鎮！最高 5,000 倍讓財運滾滾來。'},
+  {name:'鳳凰來胡',mult:'16,000x',img:'https://www.xinluck.com/images/games/888000009_480x480.webp',desc:'鳳凰涅槃再起！最高 16,000 倍超級大獎！'},
+  {name:'龍族傳說６',mult:'11,250x',img:'https://www.xinluck.com/images/games/888000015_480x480.webp',desc:'龍族六代王者降臨，11,250 倍傳說大獎！'},
+  {name:'龍族傳說７',mult:'1,800倍',img:'https://www.xinluck.com/images/games/888000016_480x480.webp',desc:'七龍珠集齊，終極爆率爆發！龍族傳說最終章。'},
+  {name:'聚寶福祿壽',mult:'1,000倍',img:'https://www.xinluck.com/images/games/888000003_480x480.webp',desc:'福祿壽三星集齊，福氣大爆發！'},
+];
+const ALL_NEWS = [
+  {type:'event',tag:'活動',title:'六月新會員加入送體驗金，最高 888 元！',date:'2026－06－01'},
+  {type:'notice',tag:'公告',title:'六月系統維護公告：每週四 10：00～11：00 短暫停機',date:'2026－06－01'},
+  {type:'event',tag:'活動',title:'週末好友邀請活動：邀一位好友，兩人同享雙倍獎勵',date:'2026－05－28'},
+  {type:'notice',tag:'公告',title:'防詐騙提醒：官方絕不要求玩家提供帳號密碼',date:'2026－05－25'},
+  {type:'event',tag:'活動',title:'龍族傳說系列特別週：每天登入抽免費旋轉次數',date:'2026－05－20'},
+  {type:'notice',tag:'公告',title:'新遊戲上線：龍族傳說７正式加入精選館！',date:'2026－05－18'},
+];
+const SMALL_ARTICLES = [
+  {title:'LINE 登入完全教學：30 秒完成註冊開始遊戲',date:'2026－05－28'},
+  {title:'印加女神攻略：觸發 25,000 倍的三個關鍵技巧',date:'2026－05－20'},
+  {title:'六月限定活動：每日登入送體驗金，上限不設限！',date:'2026－06－01'},
+  {title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',date:'2026－05－15'},
+];
+
+function syncDD() {
+  [['nav-game','dd-game'],['nav-novice','dd-novice'],['nav-cs','dd-cs']].forEach(([ni,di]) => {
+    const n = document.getElementById(ni), d = document.getElementById(di);
+    if (n && d) d.style.minWidth = n.offsetWidth + 'px';
+  });
+}
+window.addEventListener('load', syncDD);
+window.addEventListener('resize', syncDD);
+
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  ['novice','cs'].forEach(t => document.getElementById('subnav-' + t).classList.remove('visible'));
+  window.scrollTo(0, 0);
+}
+function showSubPage(type, section) {
+  showPage(type);
+  document.getElementById('subnav-' + type).classList.add('visible');
+  setTimeout(() => scrollToSubSection(type, section), 80);
+}
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) setTimeout(() => el.scrollIntoView({behavior:'smooth', block:'start'}), 80);
+}
+function scrollToSubSection(type, label) {
+  const el = document.getElementById(type + '-' + label);
+  if (!el) return;
+  window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 70 - 46 - 16, behavior:'smooth'});
+  document.querySelectorAll('#subnav-' + type + ' .subnav-link').forEach(l =>
+    l.classList.toggle('active', l.textContent.trim() === label));
+}
+
+(function() {
+  const html = ALL_NEWS.map(n =>
+    `<div class="ticker-item">
+      <span class="ticker-item-tag ${n.type==='event'?'tag-ev':'tag-no'}">${n.tag}</span>
+      ${n.title}
+      <span style="color:rgba(255,215,0,0.25);margin-left:10px;font-size:11px;">${n.date}</span>
+    </div><span style="color:rgba(255,215,0,0.18);padding:0 8px;font-size:16px;">·</span>`
+  ).join('');
+  document.getElementById('ticker-track').innerHTML = html + html;
+})();
+
+const VISIBLE = 5;
+let cIdx = 0;
+const track = document.getElementById('carousel-track');
+const dotsEl = document.getElementById('c-dots');
+const totalPages = Math.ceil(GAMES.length / VISIBLE);
+track.innerHTML = GAMES.map(g =>
+  `<div class="c-item" onclick='openGov(${JSON.stringify(g)})'>
+    <img src="${g.img}" alt="${g.name}" loading="lazy" onerror="this.style.background='#331100'">
+    <div class="c-mult">${g.mult}</div>
+    <div class="c-hover"><span class="c-play">▶</span></div>
+  </div>`).join('');
+dotsEl.innerHTML = Array.from({length:totalPages},(_,i) =>
+  `<div class="c-dot${i===0?' active':''}" onclick="goPage(${i})"></div>`).join('');
+function updateCarousel() {
+  const w = track.children[0] ? track.children[0].offsetWidth + 14 : 0;
+  track.style.transform = `translateX(-${cIdx * VISIBLE * w}px)`;
+  dotsEl.querySelectorAll('.c-dot').forEach((d,i) => d.classList.toggle('active', i===cIdx));
+}
+function moveCarousel(d) { cIdx = Math.max(0, Math.min(totalPages-1, cIdx+d)); updateCarousel(); }
+function goPage(i) { cIdx = i; updateCarousel(); }
+
+document.getElementById('articles-small').innerHTML = SMALL_ARTICLES.map(a =>
+  `<div class="article-small">
+    <div class="article-small-img">圖片</div>
+    <div class="article-small-body">
+      <div class="article-small-title">${a.title}</div>
+      <div class="article-small-date">${a.date}</div>
+    </div>
+  </div>`).join('');
+
+function openGov(g) {
+  document.getElementById('gov-img').src = g.img;
+  document.getElementById('gov-title').textContent = g.name;
+  document.getElementById('gov-mult').textContent = '最高倍率　' + g.mult;
+  document.getElementById('gov-desc').textContent = g.desc;
+  document.getElementById('gov-bd').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeGov() {
+  document.getElementById('gov-bd').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+window.addEventListener('scroll', () => {
+  ['novice','cs'].forEach(type => {
+    const sn = document.getElementById('subnav-' + type);
+    if (!sn.classList.contains('visible')) return;
+    sn.querySelectorAll('.subnav-link').forEach(l => {
+      const el = document.getElementById(type + '-' + l.textContent.trim());
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      l.classList.toggle('active', r.top <= 130 && r.bottom > 130);
+    });
+  });
+});
+</script>
+</body>
+</html>
