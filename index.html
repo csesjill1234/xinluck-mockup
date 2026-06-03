@@ -43,7 +43,8 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .sec-heading-bg.dark { color: rgba(255,215,0,0.055); }
 .sec-heading-bg.light { color: rgba(139,0,0,0.055); }
 .sec-heading-main {
-  position: relative; z-index: 1; font-size: 34px; font-weight: 900;
+  position: relative; z-index: 1;
+  font-size: 44px; font-weight: 900;
   letter-spacing: 5px; display: inline-block;
 }
 .sec-heading-main.dark {
@@ -57,9 +58,9 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .sec-heading-line { width: 48px; height: 2px; margin: 10px auto 0; position: relative; z-index: 1; }
 .sec-heading-line.dark { background: rgba(255,215,0,0.45); }
 .sec-heading-line.light { background: rgba(139,0,0,0.3); }
-.sec-sub { font-size: 16px; font-weight: 400; text-align: center; margin-bottom: 44px; line-height: 1.7; position: relative; z-index: 1; }
-.sec-sub.dark { color: rgba(255,220,180,0.55); margin-top: 14px; }
-.sec-sub.light { color: #999; margin-top: 12px; }
+.sec-sub { font-size: 18px; font-weight: 400; text-align: center; margin-bottom: 44px; line-height: 1.7; position: relative; z-index: 1; }
+.sec-sub.dark { color: rgba(255,220,180,0.75); margin-top: 14px; }
+.sec-sub.light { color: #4A2800; margin-top: 12px; }
 
 /* ══ HEADER ══ */
 .header {
@@ -77,7 +78,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .nav-links { display: flex; flex: 1; height: var(--header-h); }
 .nav-item { position: relative; display: flex; align-items: center; }
 .nav-link {
-  color: #fff; font-size: 15px; font-weight: 500;
+  color: #fff; font-size: 17px; font-weight: 500;
   padding: 0 18px; height: var(--header-h);
   display: flex; align-items: center; justify-content: center; gap: 5px;
   white-space: nowrap; cursor: pointer; user-select: none;
@@ -95,8 +96,8 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .nav-item:hover .dropdown { display: block; }
 .dropdown a {
-  display: block; color: #FFE8E8; text-decoration: none;
-  font-size: 13px; font-weight: 500; padding: 11px 20px; text-align: center;
+  display: block; color: #FFFFFF; text-decoration: none;
+  font-size: 16px; font-weight: 500; padding: 11px 20px; text-align: center;
   border-bottom: 1px solid rgba(255,215,0,0.1); transition: background 0.12s, color 0.12s; white-space: nowrap;
 }
 .dropdown a:last-child { border-bottom: none; }
@@ -104,12 +105,12 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .header-btns { display: flex; gap: 10px; align-items: center; margin-left: auto; }
 .btn-line-h {
   background: var(--green-line); color: #fff; border: none; border-radius: 6px;
-  padding: 10px 24px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  padding: 11px 26px; font-size: 17px; font-weight: 700; cursor: pointer; font-family: inherit;
 }
 .btn-line-h:hover { opacity: 0.85; }
 .btn-web-h {
   background: var(--blue-web); color: #fff; border: 2px solid var(--blue-web);
-  border-radius: 6px; padding: 8px 24px; font-size: 15px; font-weight: 700;
+  border-radius: 6px; padding: 9px 26px; font-size: 17px; font-weight: 700;
   cursor: pointer; font-family: inherit;
 }
 .btn-web-h:hover { background: #0099CC; border-color: #0099CC; }
@@ -122,7 +123,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .subnav.visible { display: flex; }
 .subnav-link {
-  color: rgba(255,230,200,0.85); font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.85); font-size: 16px; font-weight: 500;
   padding: 0 24px; height: var(--subnav-h); display: flex; align-items: center;
   border-bottom: 3px solid transparent; transition: color 0.15s, border-color 0.15s; cursor: pointer;
 }
@@ -147,8 +148,8 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   color: var(--gold); font-size: 24px; cursor: pointer; transition: transform 0.15s;
 }
 .modal-close:hover { transform: rotate(90deg); }
-.modal-title { font-size: 20px; font-weight: 900; color: var(--gold); margin-bottom: 20px; }
-.modal-hint { color: #FFE0C0; font-size: 13px; line-height: 1.7; margin-top: 16px; }
+.modal-title { font-size: 24px; font-weight: 900; color: var(--gold); margin-bottom: 20px; }
+.modal-hint { color: #FFE0C0; font-size: 17px; line-height: 1.7; margin-top: 16px; }
 .modal-hint strong { color: var(--gold); display: block; margin-bottom: 4px; }
 
 /* ══ PAGES ══ */
@@ -176,33 +177,33 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   padding: 44px 60px 40px; display: flex; flex-direction: column; align-items: center; gap: 28px; z-index: 2;
 }
 .hero-slogan {
-  font-size: 52px; font-weight: 900; color: var(--gold);
+  font-size: 56px; font-weight: 900; color: var(--gold);
   text-shadow: 3px 3px 0 #5A0000,0 0 24px rgba(255,160,0,0.6);
   letter-spacing: 5px; text-align: center; line-height: 1.2;
 }
 .hero-cta-row { display: flex; align-items: center; gap: 48px; justify-content: center; }
 .hero-qr-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.hero-qr-label { color: rgba(255,255,255,0.85); font-size: 15px; font-weight: 700; letter-spacing: 1px; }
+.hero-qr-label { color: rgba(255,255,255,0.85); font-size: 17px; font-weight: 700; letter-spacing: 1px; }
 .hero-cta-divider { color: rgba(255,215,0,0.3); font-size: 28px; }
 .hero-web-block { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .hero-btn-web {
   background: var(--blue-web); color: #fff; border: 3px solid #0099CC; border-radius: 50px;
-  padding: 14px 52px; font-size: 19px; font-weight: 700; cursor: pointer; font-family: inherit;
+  padding: 16px 56px; font-size: 22px; font-weight: 700; cursor: pointer; font-family: inherit;
   box-shadow: 0 0 0 3px var(--gold); transition: transform 0.15s;
 }
 .hero-btn-web:hover { transform: scale(1.04); }
-.hero-web-label { color: rgba(255,255,255,0.85); font-size: 15px; font-weight: 700; letter-spacing: 1px; }
+.hero-web-label { color: rgba(255,255,255,0.85); font-size: 17px; font-weight: 700; letter-spacing: 1px; }
 
 /* QR 懸浮 */
 .qr-float {
   position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
   background: linear-gradient(160deg,#5A0000,#9A0000);
   border: 2.5px solid var(--gold); border-radius: 14px;
-  padding: 14px 12px; text-align: center; z-index: 250; width: 118px;
+  padding: 16px 14px; text-align: center; z-index: 250; width: 124px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
-.qr-float-label { color: var(--gold); font-size: 12px; font-weight: 900; margin-bottom: 10px; line-height: 1.5; }
-.qr-float-sub { color: rgba(255,255,255,0.7); font-size: 11px; margin-top: 8px; }
+.qr-float-label { color: var(--gold); font-size: 13px; font-weight: 900; margin-bottom: 10px; line-height: 1.5; }
+.qr-float-sub { color: rgba(255,255,255,0.85); font-size: 12px; margin-top: 8px; }
 
 /* ══ SECTION ══ */
 .section { padding: 72px 60px; position: relative; overflow: hidden; }
@@ -229,7 +230,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   content: ''; display: block; width: 0; height: 0; border-style: solid;
   border-width: 14px 0 14px 26px; border-color: transparent transparent transparent #fff; margin-left: 6px;
 }
-.yt-label { color: rgba(255,255,255,0.5); font-size: 14px; }
+.yt-label { color: rgba(255,255,255,0.85); font-size: 17px; }
 .brand-features {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 0;
   max-width: 900px; margin: 0 auto; border: 1px solid rgba(255,215,0,0.15);
@@ -239,8 +240,8 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .brand-feat:nth-child(n+4) { border-bottom: none; }
 .brand-feat:hover { background: rgba(255,215,0,0.05); }
 .brand-feat-icon { font-size: 28px; margin-bottom: 14px; }
-.brand-feat-title { font-size: 17px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
-.brand-feat-desc { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 2; }
+.brand-feat-title { font-size: 20px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+.brand-feat-desc { font-size: 18px; color: rgba(255,255,255,0.85); line-height: 2; }
 
 /* 跑馬燈 */
 .ticker-section {
@@ -249,21 +250,21 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .ticker-inner { display: flex; align-items: stretch; height: 48px; }
 .ticker-label {
-  background: var(--gold-dark); color: #3A0000; font-size: 12px; font-weight: 900;
+  background: var(--gold-dark); color: #3A0000; font-size: 15px; font-weight: 900;
   padding: 0 20px; display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; letter-spacing: 1px;
 }
 .ticker-track-wrap { flex: 1; overflow: hidden; }
 .ticker-track { display: flex; align-items: center; height: 48px; animation: ticker-scroll 32s linear infinite; white-space: nowrap; }
 .ticker-track:hover { animation-play-state: paused; }
 @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 36px; cursor: pointer; color: #FFE0C0; font-size: 15px; transition: color 0.15s; white-space: nowrap; }
+.ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 36px; cursor: pointer; color: #FFE0C0; font-size: 17px; transition: color 0.15s; white-space: nowrap; }
 .ticker-item:hover { color: var(--gold); }
-.ticker-item-tag { font-size: 10px; font-weight: 700; padding: 1px 8px; border-radius: 10px; flex-shrink: 0; }
+.ticker-item-tag { font-size: 13px; font-weight: 700; padding: 1px 8px; border-radius: 10px; flex-shrink: 0; }
 .tag-ev { background: rgba(255,160,0,0.2); color: var(--gold); border: 1px solid rgba(255,160,0,0.35); }
 .tag-no { background: rgba(100,160,255,0.15); color: #90CAF9; border: 1px solid rgba(100,160,255,0.25); }
 .ticker-more {
   background: none; border: none; border-left: 1px solid rgba(255,215,0,0.15);
-  color: rgba(255,215,0,0.65); font-size: 12px; font-weight: 700;
+  color: rgba(255,215,0,0.65); font-size: 15px; font-weight: 700;
   padding: 0 20px; cursor: pointer; font-family: inherit;
   white-space: nowrap; flex-shrink: 0; display: flex; align-items: center; transition: color 0.15s;
 }
@@ -303,40 +304,41 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .articles-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; max-width: 960px; margin: 0 auto 32px; }
 .article-hero { background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
 .article-hero:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(180,80,0,0.15); }
-.article-hero-img { width: 100%; height: 240px; background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+.article-hero-img { width: 100%; height: 240px; background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.85); }
 .article-hero-body { padding: 20px 24px; }
 .article-tag { display: inline-block; background: #FFF0E0; color: var(--red-main); font-size: 11px; font-weight: 700; padding: 2px 12px; border-radius: 20px; margin-bottom: 12px; border: 1px solid #F5C08080; }
-.article-hero-title { font-size: 18px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px; }
-.article-hero-excerpt { font-size: 13px; color: #777; line-height: 1.75; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.article-hero-date { font-size: 12px; color: #bbb; }
+.article-hero-title { font-size: 22px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px; }
+.article-hero-excerpt {
+  font-size: 17px; color: #888; line-height: 1.75; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.article-hero-date { font-size: 15px; color: #bbb; }
 .articles-small { display: grid; grid-template-rows: repeat(4,1fr); gap: 16px; }
 .article-small { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; display: flex; transition: transform 0.15s, box-shadow 0.15s; }
 .article-small:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(180,80,0,0.13); }
 .article-small-img { width: 96px; flex-shrink: 0; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); }
 .article-small-body { padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; }
-.article-small-title { font-size: 15px; font-weight: 700; color: var(--text-dark); line-height: 1.5; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.article-small-date { font-size: 11px; color: #bbb; }
+.article-small-title { font-size: 17px; font-weight: 700; color: var(--text-dark); line-height: 1.5; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.article-small-date { font-size: 14px; color: #bbb; }
 .articles-more { text-align: center; }
-.btn-more { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--red-main); border: 2px solid var(--red-main); border-radius: 50px; padding: 12px 44px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; text-decoration: none; transition: background 0.15s, color 0.15s; }
+.btn-more { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--red-main); border: 2px solid var(--red-main); border-radius: 50px; padding: 14px 48px; font-size: 18px; font-weight: 700; cursor: pointer; font-family: inherit; text-decoration: none; transition: background 0.15s, color 0.15s; }
 .btn-more:hover { background: var(--red-main); color: #fff; }
 
 /* 合作夥伴 */
 .partners-section { background: var(--cream-dark); padding: 60px 60px; position: relative; overflow: hidden; border-top: 2px solid var(--gold-dark); border-bottom: 2px solid var(--gold-dark); }
 .partners-grid { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 36px; max-width: 900px; margin: 0 auto; }
-.partner-logo { height: 34px; object-fit: contain; opacity: 0.8; transition: opacity 0.2s; }
+.partner-logo { height: 40px; object-fit: contain; opacity: 0.8; transition: opacity 0.2s; }
 .partner-logo:hover { opacity: 1; }
-.partner-ph { height: 34px; min-width: 80px; padding: 0 16px; background: rgba(255,255,255,0.6); border: 1.5px dashed rgba(180,130,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: rgba(100,60,0,0.4); white-space: nowrap; }
+.partner-ph { height: 40px; min-width: 80px; padding: 0 16px; background: rgba(255,255,255,0.6); border: 1.5px dashed rgba(180,130,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: rgba(100,60,0,0.4); white-space: nowrap; }
 
 /* ══ FOOTER ══ */
 footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-top: 3px solid var(--gold-dark); }
 .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 24px; }
-.footer-col-title { color: var(--gold); font-size: 14px; font-weight: 700; margin-bottom: 12px; }
-.footer-info { font-size: 15px; line-height: 2.2; color: #FFE8E8; }
+.footer-col-title { color: var(--gold); font-size: 17px; font-weight: 700; margin-bottom: 12px; }
+.footer-info { font-size: 17px; line-height: 2.2; color: #FFE8E8; }
 .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.18); margin-bottom: 18px; }
 .footer-bottom { display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
-.footer-legal { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.9; flex: 1; }
+.footer-legal { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.9; flex: 1; }
 .footer-links { display: flex; gap: 20px; flex-shrink: 0; }
-.footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; transition: color 0.15s; }
+.footer-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 16px; transition: color 0.15s; }
 .footer-links a:hover { color: var(--gold); }
 .footer-links span { color: rgba(255,255,255,0.2); }
 
@@ -365,9 +367,9 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 }
 .news-tab-btn {
   background: none; border: none; font-family: inherit;
-  font-size: 15px; font-weight: 700; color: #aaa;
+  font-size: 18px; font-weight: 700; color: #6A4020;
   padding: 10px 48px; cursor: pointer;
-  border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.15s;
+  border-bottom: 5px solid transparent; margin-bottom: -2px; transition: all 0.15s;
 }
 .news-tab-btn.active { color: var(--red-main); border-bottom-color: var(--red-main); }
 .news-tab-btn:hover:not(.active) { color: var(--red-main); }
@@ -384,12 +386,12 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
   width: 220px; flex-shrink: 0;
   background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%);
   display: flex; align-items: center; justify-content: center;
-  font-size: 12px; color: rgba(255,255,255,0.5);
+  font-size: 12px; color: rgba(255,255,255,0.85);
 }
 .news-event-row-body { padding: 20px 24px; display: flex; flex-direction: column; justify-content: center; flex: 1; }
-.news-event-row-title { font-size: 17px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 8px; }
-.news-event-row-excerpt { font-size: 16px; color: #888; line-height: 1.8; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.news-event-row-date { font-size: 12px; color: #bbb; }
+.news-event-row-title { font-size: 20px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 8px; }
+.news-event-row-excerpt { font-size: 17px; color: #888; line-height: 1.8; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.news-event-row-date { font-size: 15px; color: #bbb; }
 
 /* 公告列表：一列一列，左細線 */
 .news-notice-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 40px; }
@@ -404,8 +406,8 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
   width: 3px; height: 32px; border-radius: 2px;
   background: var(--gold-dark); flex-shrink: 0;
 }
-.news-notice-title { font-size: 17px; font-weight: 700; color: var(--text-dark); flex: 1; line-height: 1.5; }
-.news-notice-date { font-size: 14px; color: #bbb; flex-shrink: 0; white-space: nowrap; }
+.news-notice-title { font-size: 19px; font-weight: 700; color: var(--text-dark); flex: 1; line-height: 1.5; }
+.news-notice-date { font-size: 16px; color: #bbb; flex-shrink: 0; white-space: nowrap; }
 
 /* ══ 攻略專區 tabs — 底線置中 ══ */
 .strategy-tabs-center {
@@ -414,10 +416,10 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 }
 .strategy-tab-btn {
   background: none; border: none; font-family: inherit;
-  font-size: 14px; font-weight: 700;
-  color: #888; -webkit-text-fill-color: #888;
+  font-size: 18px; font-weight: 700;
+  color: #4A2800; -webkit-text-fill-color: #4A2800;
   padding: 10px 32px; cursor: pointer;
-  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  border-bottom: 5px solid transparent; margin-bottom: -2px;
   transition: color 0.15s, border-color 0.15s;
 }
 .strategy-tab-btn.active {
@@ -435,38 +437,41 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
   background: #FFF8E7; border: 1.5px solid var(--gold-dark);
   border-radius: 12px; padding: 20px 24px; margin-bottom: 36px;
 }
-.article-toc-title { font-size: 13px; font-weight: 900; color: var(--text-dark); margin-bottom: 12px; letter-spacing: 1px; }
+.article-toc-title { font-size: 17px; font-weight: 900; color: var(--text-dark); margin-bottom: 12px; letter-spacing: 1px; }
 .article-toc ol { padding-left: 20px; }
 .article-toc ol li { margin-bottom: 6px; }
-.article-toc ol li a { font-size: 15px; color: var(--red-main); text-decoration: none; line-height: 1.8; }
+.article-toc ol li a { font-size: 17px; color: var(--red-main); text-decoration: none; line-height: 1.8; }
 .article-toc ol li a:hover { text-decoration: underline; }
 
 /* ══ FAQ ══ */
 .article-faq { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--cream-dark); }
 .article-faq-title { font-size: 20px; font-weight: 900; color: var(--red-main); margin-bottom: 20px; padding-left: 14px; border-left: 4px solid var(--gold-dark); }
 .faq-item { margin-bottom: 16px; background: #fff; border-radius: 10px; border: 1.5px solid var(--cream-dark); overflow: hidden; }
-.faq-q { font-size: 16px; font-weight: 700; color: var(--text-dark); padding: 16px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-q { font-size: 18px; font-weight: 700; color: var(--text-dark); padding: 16px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
 .faq-q:hover { background: #faf5e8; }
 .faq-q-icon { color: var(--gold-dark); font-size: 16px; flex-shrink: 0; transition: transform 0.2s; }
 .faq-q.open .faq-q-icon { transform: rotate(45deg); }
-.faq-a { font-size: 16px; color: #555; line-height: 1.9; padding: 0 18px 16px; display: none; }
+.faq-a { font-size: 18px; color: #4A2800; line-height: 1.9; padding: 0 18px 16px; display: none; }
 .faq-a.open { display: block; }
 
 /* ══ 相關文章 ══ */
 .related-articles { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--cream-dark); }
-.related-title { font-size: 18px; font-weight: 900; color: var(--text-dark); margin-bottom: 20px; }
+.related-title { font-size: 22px; font-weight: 900; color: var(--text-dark); margin-bottom: 20px; }
 .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .related-card { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
 .related-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(180,80,0,0.13); }
 .related-card-img { width: 100%; height: 100px; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); }
 .related-card-body { padding: 12px 14px; }
-.related-card-cat { font-size: 10px; font-weight: 700; color: var(--red-main); margin-bottom: 6px; }
-.related-card-title { font-size: 12px; font-weight: 700; color: var(--text-dark); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.related-card-cat { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 20px; padding: 2px 10px; margin-bottom: 8px; }
+.related-card-cat.cat-guide { background: #FFF0E0; color: var(--red-main); border: 1px solid #F5C08080; }
+.related-card-cat.cat-platform { background: #F0F4FF; color: #3949AB; border: 1px solid #9FA8DA80; }
+.related-card-cat.cat-activity { background: #F1F8E9; color: #388E3C; border: 1px solid #A5D6A780; }
+.related-card-title { font-size: 15px; font-weight: 700; color: var(--text-dark); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .pagination { display: flex; justify-content: center; align-items: center; gap: 6px; }
 .page-btn {
-  width: 36px; height: 36px; border-radius: 8px;
+  width: 44px; height: 44px; border-radius: 8px;
   background: #fff; border: 1.5px solid var(--cream-dark);
-  color: var(--text-dark); font-size: 13px; font-weight: 700;
+  color: var(--text-dark); font-size: 16px; font-weight: 700;
   cursor: pointer; font-family: inherit; transition: all 0.15s;
   display: flex; align-items: center; justify-content: center;
 }
@@ -479,7 +484,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 .strategy-cats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
 .strategy-cat-btn {
   background: #fff; border: 2px solid var(--cream-dark);
-  color: #888; font-size: 13px; font-weight: 700;
+  color: #4A2800; font-size: 13px; font-weight: 700;
   padding: 8px 24px; border-radius: 50px; cursor: pointer; font-family: inherit; transition: all 0.15s;
 }
 .strategy-cat-btn.active { background: var(--red-main); border-color: var(--red-main); color: #fff; }
@@ -489,36 +494,37 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 .strategy-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 40px; }
 .strategy-card { background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
 .strategy-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(180,80,0,0.15); }
-.strategy-card-img { width: 100%; height: 160px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.5); }
+.strategy-card-img { width: 100%; height: 150px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.85); }
 .strategy-card-body { padding: 16px 18px; }
-.strategy-card-cat { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
+.strategy-card-cat { display: inline-block; font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
 .cat-guide { background: #FFF0E0; color: var(--red-main); border: 1px solid #F5C08080; }
 .cat-platform { background: #F0F4FF; color: #3949AB; border: 1px solid #9FA8DA80; }
 .cat-activity { background: #F1F8E9; color: #388E3C; border: 1px solid #A5D6A780; }
-.strategy-card-title { font-size: 16px; font-weight: 900; color: #3A1000; line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.strategy-card-date { font-size: 11px; color: #bbb; }
+.strategy-card-title { font-size: 18px; font-weight: 900; color: #3A1000; line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.strategy-card-excerpt { font-size: 14px; color: #888; line-height: 1.6; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.strategy-card-date { font-size: 14px; color: #bbb; }
 
 /* ══ 攻略文章頁（單篇） ══ */
 .article-page { max-width: 800px; margin: 0 auto; padding: 52px 40px; }
 .article-page-header { margin-bottom: 32px; }
 .article-page-cat { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 14px; border-radius: 20px; margin-bottom: 14px; }
-.article-page-title { font-size: 34px; font-weight: 900; color: var(--text-dark); line-height: 1.4; margin-bottom: 14px; }
-.article-page-meta { font-size: 15px; color: #aaa; display: flex; gap: 16px; align-items: center; }
-.article-page-cover { width: 100%; height: 360px; border-radius: 16px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 36px; overflow: hidden; }
+.article-page-title { font-size: 36px; font-weight: 900; color: var(--text-dark); line-height: 1.4; margin-bottom: 14px; }
+.article-page-meta { font-size: 17px; color: #bbb; display: flex; gap: 16px; align-items: center; }
+.article-page-cover { width: 100%; height: 360px; border-radius: 16px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 36px; overflow: hidden; }
 .article-page-cover img { width: 100%; height: 100%; object-fit: cover; }
-.article-body h2 { font-size: 24px; font-weight: 900; color: var(--red-main); margin: 36px 0 16px; padding-left: 14px; border-left: 4px solid var(--gold-dark); }
-.article-body h3 { font-size: 20px; font-weight: 700; color: var(--text-dark); margin: 28px 0 12px; }
-.article-body p { font-size: 18px; line-height: 2.1; color: #444; margin-bottom: 22px; }
+.article-body h2 { font-size: 26px; font-weight: 900; color: var(--red-main); margin: 36px 0 16px; padding-left: 14px; border-left: 4px solid var(--gold-dark); }
+.article-body h3 { font-size: 22px; font-weight: 700; color: var(--text-dark); margin: 28px 0 12px; }
+.article-body p { font-size: 19px; line-height: 2.1; color: #4A2800; margin-bottom: 22px; }
 .article-body ul { padding-left: 24px; margin-bottom: 20px; }
-.article-body ul li { font-size: 18px; line-height: 2.1; color: #444; margin-bottom: 10px; }
+.article-body ul li { font-size: 19px; line-height: 2.1; color: #4A2800; margin-bottom: 10px; }
 .article-body .highlight-box {
   background: #FFF8E7; border: 1.5px solid var(--gold-dark); border-radius: 12px;
-  padding: 20px 24px; margin: 24px 0; font-size: 14px; line-height: 1.8; color: var(--text-dark);
+  padding: 22px 26px; margin: 24px 0; font-size: 17px; line-height: 1.8; color: var(--text-dark);
 }
 .article-body .highlight-box strong { color: var(--red-main); }
-.article-inline-img { width: 100%; border-radius: 12px; background: linear-gradient(135deg,#4A0000,#CC6600 60%,#FFD700); height: 220px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.5); margin: 20px 0 28px; }
+.article-inline-img { width: 100%; border-radius: 12px; background: linear-gradient(135deg,#4A0000,#CC6600 60%,#FFD700); height: 220px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.85); margin: 20px 0 28px; }
 .article-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--cream-dark); }
-.article-tag-pill { background: var(--cream); border: 1.5px solid var(--cream-dark); color: #888; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 20px; }
+.article-tag-pill { background: var(--cream); border: 1.5px solid var(--cream-dark); color: #4A2800; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 20px; }
 
 /* ══ 遊戲彈窗 ══ */
 .gov-bd { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 500; align-items: center; justify-content: center; }
@@ -527,24 +533,24 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 .gov-close { position: absolute; top: -16px; right: -16px; width: 36px; height: 36px; background: var(--red-dark); border: 2px solid var(--gold-dark); border-radius: 50%; color: var(--gold); font-size: 18px; cursor: pointer; transition: transform 0.15s; display: flex; align-items: center; justify-content: center; }
 .gov-close:hover { transform: rotate(90deg); }
 .gov-img { width: 100%; border-radius: 12px; border: 2px solid var(--gold-dark); aspect-ratio: 1; object-fit: cover; margin-bottom: 16px; }
-.gov-title { font-size: 24px; font-weight: 900; color: var(--gold); text-align: center; margin-bottom: 6px; }
-.gov-mult { display: table; margin: 0 auto 12px; background: rgba(255,215,0,0.12); border: 1px solid var(--gold-dark); color: var(--gold); font-size: 12px; font-weight: 700; padding: 3px 16px; border-radius: 20px; }
-.gov-desc { color: #FFE0C0; font-size: 13px; line-height: 1.75; text-align: center; margin-bottom: 20px; }
+.gov-title { font-size: 26px; font-weight: 900; color: var(--gold); text-align: center; margin-bottom: 6px; }
+.gov-mult { display: table; margin: 0 auto 12px; background: rgba(255,215,0,0.12); border: 1px solid var(--gold-dark); color: var(--gold); font-size: 15px; font-weight: 700; padding: 3px 16px; border-radius: 20px; }
+.gov-desc { color: #FFFFFF; font-size: 17px; line-height: 1.75; text-align: center; margin-bottom: 20px; }
 .gov-qr-row { display: flex; gap: 16px; align-items: center; background: rgba(0,0,0,0.3); border-radius: 12px; padding: 14px; border: 1px solid rgba(255,215,0,0.25); margin-bottom: 14px; }
-.gov-qr-text { color: #FFE0C0; font-size: 13px; line-height: 1.6; }
-.gov-qr-text strong { color: var(--gold); font-size: 14px; font-weight: 700; display: block; margin-bottom: 3px; }
-.gov-play-btn { display: block; width: 100%; background: var(--green-line); color: #fff; border: 2px solid #009600; border-radius: 50px; padding: 14px; font-size: 18px; font-weight: 700; cursor: pointer; font-family: inherit; transition: transform 0.15s; }
+.gov-qr-text { color: #FFFFFF; font-size: 17px; line-height: 1.6; }
+.gov-qr-text strong { color: var(--gold); font-size: 18px; font-weight: 700; display: block; margin-bottom: 3px; }
+.gov-play-btn { display: block; width: 100%; background: var(--green-line); color: #fff; border: 2px solid #009600; border-radius: 50px; padding: 16px; font-size: 20px; font-weight: 700; cursor: pointer; font-family: inherit; transition: transform 0.15s; }
 .gov-play-btn:hover { transform: scale(1.02); }
 
 /* 子頁面 */
 .sub-page-content { max-width: 860px; margin: 0 auto; padding: 60px 40px; }
 .sub-section { margin-bottom: 64px; }
 .sub-section-title { font-size: 22px; font-weight: 900; color: var(--red-main); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--cream-dark); }
-.sub-section p { font-size: 15px; line-height: 1.9; color: #555; margin-bottom: 12px; }
-.sub-placeholder { background: #fff8ee; border: 1.5px dashed var(--cream-dark); border-radius: 12px; padding: 40px; text-align: center; color: #ccc; font-size: 14px; }
+.sub-section p { font-size: 15px; line-height: 1.9; color: #4A2800; margin-bottom: 12px; }
+.sub-placeholder { background: #fff8ee; border: 1.5px dashed var(--cream-dark); border-radius: 12px; padding: 40px; text-align: center; color: #8A6040; font-size: 14px; }
 
 /* 麵包屑 */
-.breadcrumb { padding: 16px 60px; background: #fff8ee; border-bottom: 1px solid var(--cream-dark); font-size: 13px; color: #aaa; }
+.breadcrumb { padding: 18px 60px; background: #fff8ee; border-bottom: 1px solid var(--cream-dark); font-size: 16px; color: #6A4020; }
 .breadcrumb a { color: var(--red-main); text-decoration: none; }
 .breadcrumb a:hover { text-decoration: underline; }
 .breadcrumb span { margin: 0 8px; }
@@ -666,7 +672,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <div class="hero-banner-ph-box">主視覺 Banner 圖片<br>換圖：將 src 改成你的圖片網址<br>建議尺寸 1920 × 560px</div>
     </div>
     <div class="hero-bottom">
-      <div class="hero-slogan">天天玩星運　分分走大運</div>
+      <div class="hero-slogan">天天玩星運　吼哩大探吉！</div>
       <div class="hero-cta-row">
         <div class="hero-qr-block">
           <div class="qr-wrap" id="qr-hero-wrap" style="width:108px;height:108px;"></div>
@@ -718,7 +724,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <div class="sec-heading-main light">精選遊戲</div>
       <div class="sec-heading-line light"></div>
     </div>
-    <div class="sec-sub light">點擊遊戲卡片，掃碼立即開台</div>
+    <div class="sec-sub light">點擊任一遊戲，掃碼或直接進入，免下載秒開！</div>
     <div class="carousel-outer">
       <button class="c-arrow" onclick="moveCarousel(-1)">&#8249;</button>
       <div class="carousel-wrapper"><div class="carousel-track" id="carousel-track"></div></div>
@@ -741,7 +747,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
           <span class="article-tag">遊戲攻略</span>
           <div class="article-hero-title">自摸無雙３完全攻略：新手必看的胡牌技巧與倍率說明</div>
           <div class="article-hero-excerpt">自摸無雙３是星運娛樂城人氣最高的麻將老虎機，最高倍率高達 15,000 倍。整理新手最常問的玩法問題……</div>
-          <div class="article-hero-date">2026－06－01</div>
+          <div class="article-hero-date">2026.06.01</div>
         </div>
       </div>
       <div class="articles-small" id="articles-small"></div>
@@ -804,9 +810,9 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <div class="sec-heading-line light"></div>
     </div>
     <div style="text-align:center;margin-bottom:8px;">
-      <span style="font-size:15px;font-weight:700;color:var(--red-main);letter-spacing:1px;">星運娛樂城老虎機館｜熱門機台等你體驗</span>
+      <span style="font-size:20px;font-weight:700;color:var(--red-main);letter-spacing:1px;">星運娛樂城老虎機館｜熱門機台等你體驗</span>
     </div>
-    <p style="text-align:center;font-size:13px;color:#999;line-height:1.8;max-width:680px;margin:0 auto 44px;">星運娛樂城精選熱門老虎機，包含自摸無雙、印加女神、龍族傳說等人氣機台。最高倍率高達 25,000 倍，體感刺激、開獎頻繁，全館支援手機免下載直接遊玩。</p>
+    <p style="text-align:center;font-size:18px;color:#4A2800;line-height:1.9;max-width:680px;margin:0 auto 44px;">星運娛樂城精選熱門老虎機，包含自摸無雙、印加女神、龍族傳說等人氣機台。最高倍率高達 25,000 倍，體感刺激、開獎頻繁，全館支援手機免下載直接遊玩。</p>
     <div class="games-grid" id="games-grid"></div>
   </div>
   <footer>
@@ -884,7 +890,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <div class="sec-heading-main light">攻略專區</div>
       <div class="sec-heading-line light"></div>
     </div>
-    <p style="text-align:center;font-size:14px;color:#999;margin-bottom:32px;line-height:1.7;">遊戲玩法解析、平台使用教學、活動情報整理，幫你在星運娛樂城玩得更聰明、贏得更有把握。</p>
+    <p style="text-align:center;font-size:18px;color:#4A2800;margin-bottom:32px;line-height:1.7;">遊戲玩法解析、平台使用教學、活動情報整理，幫你在星運娛樂城玩得更聰明、贏得更有把握。</p>
     <div class="strategy-tabs-center">
       <button class="strategy-tab-btn active" onclick="filterStrategy(this,'all')">全部</button>
       <button class="strategy-tab-btn" onclick="filterStrategy(this,'guide')">遊戲攻略</button>
@@ -932,10 +938,10 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
   </div>
   <div class="article-page">
     <div class="article-page-header">
-      <span class="article-page-cat cat-guide" style="display:inline-block;font-size:11px;font-weight:700;padding:3px 14px;border-radius:20px;margin-bottom:14px;background:#FFF0E0;color:#B50000;border:1px solid #F5C08080;">遊戲攻略</span>
+      <span class="article-page-cat cat-guide" style="display:inline-block;font-size:14px;font-weight:700;padding:4px 16px;border-radius:20px;margin-bottom:14px;background:#FFF0E0;color:#B50000;border:1px solid #F5C08080;">遊戲攻略</span>
       <div class="article-page-title">自摸無雙３完全攻略：新手必看的胡牌技巧、免費遊戲觸發條件與最高 15,000 倍倍率說明</div>
       <div class="article-page-meta">
-        <span>📅 2026－06－01</span>
+        <span>📅 2026.06.01</span>
         <span>👁 1,248 次瀏覽</span>
         <span>🏷 遊戲攻略</span>
       </div>
@@ -1032,21 +1038,21 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
           <div class="related-card" onclick="showPage('article-demo')">
             <div class="related-card-img">圖片</div>
             <div class="related-card-body">
-              <div class="related-card-cat">遊戲攻略</div>
+              <div class="related-card-cat cat-guide">遊戲攻略</div>
               <div class="related-card-title">印加女神攻略：觸發 25,000 倍的三個關鍵技巧</div>
             </div>
           </div>
           <div class="related-card" onclick="showPage('article-demo')">
             <div class="related-card-img">圖片</div>
             <div class="related-card-body">
-              <div class="related-card-cat">遊戲攻略</div>
+              <div class="related-card-cat cat-guide">遊戲攻略</div>
               <div class="related-card-title">龍族傳說６攻略：11,250 倍爆率的觸發條件說明</div>
             </div>
           </div>
           <div class="related-card" onclick="showPage('article-demo')">
             <div class="related-card-img">圖片</div>
             <div class="related-card-body">
-              <div class="related-card-cat">平台介紹</div>
+              <div class="related-card-cat cat-platform">平台介紹</div>
               <div class="related-card-title">LINE 登入完全教學：30 秒完成註冊開始遊戲</div>
             </div>
           </div>
@@ -1087,7 +1093,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <div class="sec-heading-main light">新手專區</div>
       <div class="sec-heading-line light"></div>
     </div>
-    <p style="text-align:center;font-size:14px;color:#999;margin-bottom:32px;line-height:1.7;">第一次來星運娛樂城？這裡有你需要的一切入門教學。</p>
+    <p style="text-align:center;font-size:18px;color:#4A2800;margin-bottom:32px;line-height:1.7;">第一次來星運娛樂城？這裡有你需要的一切入門教學。</p>
     <div class="strategy-tabs-center" id="novice-tabs">
       <button class="strategy-tab-btn active" onclick="switchNoviceTab(this,'介面說明')">介面說明</button>
       <button class="strategy-tab-btn" onclick="switchNoviceTab(this,'捷徑教學')">捷徑教學</button>
@@ -1122,7 +1128,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <div class="sec-heading-main light">客服中心</div>
       <div class="sec-heading-line light"></div>
     </div>
-    <p style="text-align:center;font-size:14px;color:#999;margin-bottom:32px;line-height:1.7;">服務條款、隱私權政策、遊戲規章與停權相關說明。</p>
+    <p style="text-align:center;font-size:18px;color:#4A2800;margin-bottom:32px;line-height:1.7;">服務條款、隱私權政策、遊戲規章與停權相關說明。</p>
     <div class="strategy-tabs-center" id="cs-tabs">
       <button class="strategy-tab-btn active" onclick="switchCsTab(this,'服務條款')">服務條款</button>
       <button class="strategy-tab-btn" onclick="switchCsTab(this,'隱私權政策')">隱私權政策</button>
@@ -1234,31 +1240,31 @@ const GAMES = [
 ];
 
 const ALL_NEWS = [
-  {type:'event',tag:'活動',title:'六月新會員加入送體驗金，最高 888 元！',excerpt:'新會員加入星運娛樂城，完成 LINE 登入即可領取體驗金，最高 888 元，活動限時舉辦。',date:'2026－06－01'},
-  {type:'notice',tag:'公告',title:'六月系統維護公告：每週四 10：00～11：00 短暫停機',excerpt:'為提升遊戲穩定性，每週四 10：00～11：00 進行例行維護，期間暫停服務，造成不便敬請見諒。',date:'2026－06－01'},
-  {type:'event',tag:'活動',title:'週末好友邀請活動：邀一位好友，兩人同享雙倍獎勵',excerpt:'限定週末舉辦的邀友活動，邀請好友加入成功後，邀請人與受邀人同時獲得雙倍遊戲幣獎勵。',date:'2026－05－28'},
-  {type:'notice',tag:'公告',title:'防詐騙提醒：官方絕不要求玩家提供帳號密碼',excerpt:'近期有不法人士假冒星運客服詐騙玩家，請注意官方絕對不會要求提供任何帳號密碼資訊。',date:'2026－05－25'},
-  {type:'event',tag:'活動',title:'龍族傳說系列特別週：每天登入抽免費旋轉次數',excerpt:'龍族傳說系列特別活動，每天登入即可參加抽獎，有機會獲得免費旋轉次數，天天抽天天爽。',date:'2026－05－20'},
-  {type:'notice',tag:'公告',title:'新遊戲上線：龍族傳說７正式加入精選館！',excerpt:'全新機台龍族傳說７正式上線，最高倍率 1,800 倍，全新劇情延續龍族傳說系列精彩體驗。',date:'2026－05－18'},
+  {type:'event',tag:'活動',title:'六月新會員加入送體驗金，最高 888 元！',excerpt:'新會員加入星運娛樂城，完成 LINE 登入即可領取體驗金，最高 888 元，活動限時舉辦。',date:'2026.06.01'},
+  {type:'notice',tag:'公告',title:'六月系統維護公告：每週四 10：00～11：00 短暫停機',excerpt:'為提升遊戲穩定性，每週四 10：00～11：00 進行例行維護，期間暫停服務，造成不便敬請見諒。',date:'2026.06.01'},
+  {type:'event',tag:'活動',title:'週末好友邀請活動：邀一位好友，兩人同享雙倍獎勵',excerpt:'限定週末舉辦的邀友活動，邀請好友加入成功後，邀請人與受邀人同時獲得雙倍遊戲幣獎勵。',date:'2026.05.28'},
+  {type:'notice',tag:'公告',title:'防詐騙提醒：官方絕不要求玩家提供帳號密碼',excerpt:'近期有不法人士假冒星運客服詐騙玩家，請注意官方絕對不會要求提供任何帳號密碼資訊。',date:'2026.05.25'},
+  {type:'event',tag:'活動',title:'龍族傳說系列特別週：每天登入抽免費旋轉次數',excerpt:'龍族傳說系列特別活動，每天登入即可參加抽獎，有機會獲得免費旋轉次數，天天抽天天爽。',date:'2026.05.20'},
+  {type:'notice',tag:'公告',title:'新遊戲上線：龍族傳說７正式加入精選館！',excerpt:'全新機台龍族傳說７正式上線，最高倍率 1,800 倍，全新劇情延續龍族傳說系列精彩體驗。',date:'2026.05.18'},
 ];
 
 const STRATEGY_ARTICLES = [
-  {cat:'guide',catLabel:'遊戲攻略',title:'自摸無雙３完全攻略：新手必看的胡牌技巧與倍率說明',date:'2026－06－01'},
-  {cat:'platform',catLabel:'平台介紹',title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',date:'2026－05－28'},
-  {cat:'activity',catLabel:'活動情報',title:'六月活動總整理：體驗金、邀友活動、龍族特別週一次看',date:'2026－05－25'},
-  {cat:'guide',catLabel:'遊戲攻略',title:'印加女神攻略：觸發 25,000 倍的三個關鍵技巧',date:'2026－05－20'},
-  {cat:'platform',catLabel:'平台介紹',title:'LINE 登入完全教學：30 秒完成註冊、免下載開始遊戲',date:'2026－05－18'},
-  {cat:'guide',catLabel:'遊戲攻略',title:'龍族傳說６攻略：11,250 倍爆率的觸發條件與免費遊戲說明',date:'2026－05－15'},
-  {cat:'activity',catLabel:'活動情報',title:'邀友活動攻略：如何最大化好友邀請獎勵',date:'2026－05－10'},
-  {cat:'platform',catLabel:'平台介紹',title:'星運娛樂城 VIP 制度完整說明：各等級權益一次看懂',date:'2026－05－05'},
-  {cat:'guide',catLabel:'遊戲攻略',title:'鳳凰來胡攻略：16,000 倍超級大獎，新手怎麼玩？',date:'2026－04－28'},
+  {cat:'guide',catLabel:'遊戲攻略',title:'自摸無雙３完全攻略：新手必看的胡牌技巧與倍率說明',excerpt:'麻將老虎機玩法解析，從免費遊戲觸發到 15,000 倍爆率，一次看懂。',date:'2026.06.01'},
+  {cat:'platform',catLabel:'平台介紹',title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',excerpt:'LINE 登入、免下載、公會系統⋯⋯星運到底差在哪？這篇告訴你。',date:'2026.05.28'},
+  {cat:'activity',catLabel:'活動情報',title:'六月活動總整理：體驗金、邀友活動、龍族特別週一次看',excerpt:'六月三大活動整理，教你如何最大化每一分獎勵。',date:'2026.05.25'},
+  {cat:'guide',catLabel:'遊戲攻略',title:'印加女神攻略：觸發 25,000 倍的三個關鍵技巧',excerpt:'全館最高爆率機台，這三個時機抓對了，大獎就在眼前。',date:'2026.05.20'},
+  {cat:'platform',catLabel:'平台介紹',title:'LINE 登入完全教學：30 秒完成註冊、免下載開始遊戲',excerpt:'第一次玩星運？跟著步驟走，30 秒就能開台。',date:'2026.05.18'},
+  {cat:'guide',catLabel:'遊戲攻略',title:'龍族傳說６攻略：11,250 倍爆率的觸發條件與免費遊戲說明',excerpt:'龍族系列人氣旗艦版，免費遊戲怎麼觸發？這篇詳解。',date:'2026.05.15'},
+  {cat:'activity',catLabel:'活動情報',title:'邀友活動攻略：如何最大化好友邀請獎勵',excerpt:'邀一個朋友能拿多少？邀越多越划算，算法一次說清楚。',date:'2026.05.10'},
+  {cat:'platform',catLabel:'平台介紹',title:'星運娛樂城 VIP 制度完整說明：各等級權益一次看懂',excerpt:'VIP 等級怎麼升、升了能拿什麼？完整對照表在這裡。',date:'2026.05.05'},
+  {cat:'guide',catLabel:'遊戲攻略',title:'鳳凰來胡攻略：16,000 倍超級大獎，新手怎麼玩？',excerpt:'16,000 倍不是夢，鳳凰涅槃機制是關鍵，新手看這篇。',date:'2026.04.28'},
 ];
 
 const SMALL_ARTICLES = [
-  {title:'LINE 登入完全教學：30 秒完成註冊開始遊戲',date:'2026－05－28'},
-  {title:'印加女神攻略：觸發 25,000 倍的三個關鍵技巧',date:'2026－05－20'},
-  {title:'六月限定活動：每日登入送體驗金，上限不設限！',date:'2026－06－01'},
-  {title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',date:'2026－05－15'},
+  {title:'LINE 登入完全教學：30 秒完成註冊開始遊戲',date:'2026.05.28'},
+  {title:'印加女神攻略：觸發 25,000 倍的三個關鍵技巧',date:'2026.05.20'},
+  {title:'六月限定活動：每日登入送體驗金，上限不設限！',date:'2026.06.01'},
+  {title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',date:'2026.05.15'},
 ];
 
 /* 跑馬燈 */
@@ -1363,6 +1369,7 @@ function renderStrategy(filter) {
       <div class="strategy-card-body">
         <span class="strategy-card-cat ${catClass[a.cat]}">${a.catLabel}</span>
         <div class="strategy-card-title">${a.title}</div>
+        <div class="strategy-card-excerpt">${a.excerpt || ''}</div>
         <div class="strategy-card-date">${a.date}</div>
       </div>
     </div>`).join('');
@@ -1404,8 +1411,8 @@ function renderNoviceContent(key) {
   document.getElementById('novice-content').innerHTML = `
     <div style="padding:36px 0;">
       <div style="font-size:20px;font-weight:900;color:var(--red-main);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--cream-dark);">${d.title}</div>
-      <p style="font-size:15px;line-height:1.9;color:#555;margin-bottom:20px;">${d.body}</p>
-      <div style="background:#fff8ee;border:1.5px dashed var(--cream-dark);border-radius:12px;padding:40px;text-align:center;color:#ccc;font-size:14px;">${d.ph}</div>
+      <p style="font-size:17px;line-height:1.9;color:#4A2800;margin-bottom:20px;">${d.body}</p>
+      <div style="background:#fff8ee;border:1.5px dashed var(--cream-dark);border-radius:12px;padding:40px;text-align:center;color:#8A6040;font-size:14px;">${d.ph}</div>
     </div>`;
 }
 function switchNoviceTab(el, key) {
@@ -1427,8 +1434,8 @@ function renderCsContent(key) {
   document.getElementById('cs-content').innerHTML = `
     <div style="padding:36px 0;">
       <div style="font-size:20px;font-weight:900;color:var(--red-main);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--cream-dark);">${d.title}</div>
-      <p style="font-size:15px;line-height:1.9;color:#555;margin-bottom:20px;">${d.body}</p>
-      <div style="background:#fff8ee;border:1.5px dashed var(--cream-dark);border-radius:12px;padding:40px;text-align:center;color:#ccc;font-size:14px;">${d.ph}</div>
+      <p style="font-size:17px;line-height:1.9;color:#4A2800;margin-bottom:20px;">${d.body}</p>
+      <div style="background:#fff8ee;border:1.5px dashed var(--cream-dark);border-radius:12px;padding:40px;text-align:center;color:#8A6040;font-size:14px;">${d.ph}</div>
     </div>`;
 }
 function switchCsTab(el, key) {
