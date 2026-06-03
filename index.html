@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>星運娛樂城 Mockup v7</title>
+<title>星運娛樂城 Mockup v9</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -23,57 +24,40 @@
 html { scroll-behavior: smooth; }
 body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); }
 
-/* ══ 標題系統 H+C+D 組合 ══ */
-.sec-heading {
-  position: relative;
-  text-align: center;
-  margin-bottom: 10px;
-  padding-top: 8px;
+/* ══ QR CODE ══ */
+.qr-wrap { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.qr-wrap canvas, .qr-wrap img { display: block; border-radius: 6px; }
+.qr-logo-overlay {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  background: #fff; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center; pointer-events: none;
 }
-.sec-heading-bg {
-  /* D：英文大字墊底 */
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -54%);
-  font-size: 80px; font-weight: 900;
-  letter-spacing: 10px; text-transform: uppercase;
-  white-space: nowrap; pointer-events: none;
-  z-index: 0;
-}
-/* 深色背景用 */
-.sec-heading-bg.dark { color: rgba(255,215,0,0.055); }
-/* 淺色背景用 */
-.sec-heading-bg.light { color: rgba(139,0,0,0.055); }
 
+/* ══ 標題系統 ══ */
+.sec-heading { position: relative; text-align: center; margin-bottom: 10px; padding-top: 8px; }
+.sec-heading-bg {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-54%);
+  font-size: 80px; font-weight: 900; letter-spacing: 10px; text-transform: uppercase;
+  white-space: nowrap; pointer-events: none; z-index: 0;
+}
+.sec-heading-bg.dark { color: rgba(255,215,0,0.055); }
+.sec-heading-bg.light { color: rgba(139,0,0,0.055); }
 .sec-heading-main {
-  /* H：漸層金字 */
-  position: relative; z-index: 1;
-  font-size: 34px; font-weight: 900;
+  position: relative; z-index: 1; font-size: 34px; font-weight: 900;
   letter-spacing: 5px; display: inline-block;
 }
 .sec-heading-main.dark {
-  background: linear-gradient(135deg, #FFD700 0%, #FFF3A0 40%, #C8960C 70%, #FFD700 100%);
+  background: linear-gradient(135deg,#FFD700 0%,#FFF3A0 40%,#C8960C 70%,#FFD700 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .sec-heading-main.light {
-  background: linear-gradient(135deg, #8B0000 0%, #C62828 40%, #C8960C 70%, #8B0000 100%);
+  background: linear-gradient(135deg,#8B0000 0%,#C62828 40%,#C8960C 70%,#8B0000 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-
-/* C：細線 */
-.sec-heading-line {
-  width: 48px; height: 2px;
-  margin: 10px auto 0;
-  position: relative; z-index: 1;
-}
+.sec-heading-line { width: 48px; height: 2px; margin: 10px auto 0; position: relative; z-index: 1; }
 .sec-heading-line.dark { background: rgba(255,215,0,0.45); }
 .sec-heading-line.light { background: rgba(139,0,0,0.3); }
-
-.sec-sub {
-  font-size: 14px; font-weight: 400;
-  text-align: center; margin-bottom: 44px; line-height: 1.7;
-  position: relative; z-index: 1;
-}
+.sec-sub { font-size: 14px; font-weight: 400; text-align: center; margin-bottom: 44px; line-height: 1.7; position: relative; z-index: 1; }
 .sec-sub.dark { color: rgba(255,220,180,0.55); margin-top: 14px; }
 .sec-sub.light { color: #999; margin-top: 12px; }
 
@@ -102,6 +86,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .nav-link:hover, .nav-item:hover > .nav-link {
   background: rgba(255,215,0,0.12); color: var(--gold); border-bottom-color: var(--gold);
 }
+.nav-link.active-page { color: var(--gold); border-bottom-color: var(--gold); background: rgba(255,215,0,0.1); }
 .arrow { font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
 .nav-item:hover > .nav-link .arrow { transform: rotate(180deg); }
 .dropdown {
@@ -123,13 +108,13 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .btn-line-h:hover { opacity: 0.85; }
 .btn-web-h {
-  background: transparent; color: var(--blue-web); border: 2px solid var(--blue-web);
+  background: var(--blue-web); color: #fff; border: 2px solid var(--blue-web);
   border-radius: 6px; padding: 7px 20px; font-size: 14px; font-weight: 700;
   cursor: pointer; font-family: inherit;
 }
-.btn-web-h:hover { background: rgba(0,191,255,0.1); }
+.btn-web-h:hover { background: #0099CC; border-color: #0099CC; }
 
-/* SUB-NAV */
+/* ══ SUB-NAV ══ */
 .subnav {
   display: none; position: sticky; top: var(--header-h); z-index: 200;
   background: #5A0000; border-bottom: 2px solid var(--gold-dark);
@@ -144,14 +129,14 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .subnav-link:hover, .subnav-link.active { color: var(--gold); border-bottom-color: var(--gold); }
 .subnav-sep { color: rgba(255,215,0,0.25); font-size: 13px; pointer-events: none; }
 
-/* LINE QR MODAL */
+/* ══ LINE QR MODAL ══ */
 .modal-bd {
   display: none; position: fixed; inset: 0;
   background: rgba(0,0,0,0.72); z-index: 1000; align-items: center; justify-content: center;
 }
 .modal-bd.open { display: flex; }
 .modal-box {
-  background: linear-gradient(160deg, #4A0000, #8B0000 60%, #4A0000);
+  background: linear-gradient(160deg,#4A0000,#8B0000 60%,#4A0000);
   border: 3px solid var(--gold); border-radius: 20px;
   padding: 36px 40px; text-align: center; position: relative; width: 340px;
   animation: popIn 0.22s ease-out;
@@ -163,27 +148,20 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .modal-close:hover { transform: rotate(90deg); }
 .modal-title { font-size: 20px; font-weight: 900; color: var(--gold); margin-bottom: 20px; }
-.modal-qr {
-  width: 160px; height: 160px; background: #fff; border-radius: 10px;
-  margin: 0 auto 16px; overflow: hidden; display: flex; align-items: center; justify-content: center;
-}
-.modal-qr img { width: 100%; height: 100%; object-fit: contain; }
-.modal-hint { color: #FFE0C0; font-size: 13px; line-height: 1.7; }
+.modal-hint { color: #FFE0C0; font-size: 13px; line-height: 1.7; margin-top: 16px; }
 .modal-hint strong { color: var(--gold); display: block; margin-bottom: 4px; }
 
-/* PAGES */
+/* ══ PAGES ══ */
 .page { display: none; }
 .page.active { display: block; }
 
-/* HERO */
+/* ══ HERO ══ */
 .hero {
   position: relative; width: 100%; min-height: 560px;
   overflow: hidden; display: flex; flex-direction: column;
-  background: linear-gradient(180deg, #8B0000 0%, #CC2200 40%, #FF6600 70%, #FFD700 100%);
+  background: linear-gradient(180deg,#8B0000 0%,#CC2200 40%,#FF6600 70%,#FFD700 100%);
 }
-.hero-banner-img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9;
-}
+.hero-banner-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 .hero-banner-ph {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;
 }
@@ -194,22 +172,16 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .hero-bottom {
   position: absolute; bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(80,0,0,0.92) 0%, rgba(80,0,0,0.6) 55%, transparent 100%);
+  background: linear-gradient(to top,rgba(80,0,0,0.92) 0%,rgba(80,0,0,0.6) 55%,transparent 100%);
   padding: 44px 60px 40px; display: flex; flex-direction: column; align-items: center; gap: 28px; z-index: 2;
 }
 .hero-slogan {
   font-size: 48px; font-weight: 900; color: var(--gold);
-  text-shadow: 3px 3px 0 #5A0000, 0 0 24px rgba(255,160,0,0.6);
+  text-shadow: 3px 3px 0 #5A0000,0 0 24px rgba(255,160,0,0.6);
   letter-spacing: 5px; text-align: center; line-height: 1.2;
 }
 .hero-cta-row { display: flex; align-items: center; gap: 48px; justify-content: center; }
 .hero-qr-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.hero-qr-box {
-  width: 104px; height: 104px; background: #fff; border-radius: 8px;
-  overflow: hidden; border: 2px solid var(--gold-dark);
-  display: flex; align-items: center; justify-content: center;
-}
-.hero-qr-box img { width: 100%; height: 100%; object-fit: contain; }
 .hero-qr-label { color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 700; }
 .hero-cta-divider { color: rgba(255,215,0,0.3); font-size: 28px; }
 .hero-web-block { display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -224,20 +196,15 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 /* QR 懸浮 */
 .qr-float {
   position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
-  background: linear-gradient(160deg, #5A0000, #9A0000);
+  background: linear-gradient(160deg,#5A0000,#9A0000);
   border: 2.5px solid var(--gold); border-radius: 14px;
   padding: 14px 12px; text-align: center; z-index: 250; width: 118px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 .qr-float-label { color: var(--gold); font-size: 12px; font-weight: 900; margin-bottom: 10px; line-height: 1.5; }
-.qr-float-img {
-  width: 86px; height: 86px; background: #fff; border-radius: 6px;
-  margin: 0 auto 8px; overflow: hidden; display: flex; align-items: center; justify-content: center;
-}
-.qr-float-img img { width: 100%; height: 100%; object-fit: contain; }
-.qr-float-sub { color: rgba(255,255,255,0.7); font-size: 11px; }
+.qr-float-sub { color: rgba(255,255,255,0.7); font-size: 11px; margin-top: 8px; }
 
-/* SECTION */
+/* ══ SECTION ══ */
 .section { padding: 72px 60px; position: relative; overflow: hidden; }
 .section-alt { background: #fff8ee; }
 
@@ -245,8 +212,8 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .brand-section { background: var(--red-dark); padding: 72px 60px; position: relative; overflow: hidden; }
 .youtube-wrapper {
   max-width: 820px; margin: 0 auto 52px; position: relative;
-  padding-bottom: 56.25%; height: 0; border-radius: 14px; overflow: hidden;
-  border: 3px solid var(--gold-dark);
+  padding-bottom: 46.125%; height: 0;
+  border-radius: 14px; overflow: hidden; border: 3px solid var(--gold-dark);
 }
 .youtube-placeholder {
   position: absolute; inset: 0; background: rgba(0,0,0,0.55);
@@ -254,8 +221,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .yt-play {
   width: 72px; height: 72px; background: rgba(255,0,0,0.88);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  cursor: pointer; transition: transform 0.2s;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;
 }
 .yt-play:hover { transform: scale(1.1); }
 .yt-play::after {
@@ -264,20 +230,16 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .yt-label { color: rgba(255,255,255,0.5); font-size: 14px; }
 .brand-features {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
-  max-width: 900px; margin: 0 auto;
-  border: 1px solid rgba(255,215,0,0.15);
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 0;
+  max-width: 900px; margin: 0 auto; border: 1px solid rgba(255,215,0,0.15);
 }
-.brand-feat {
-  padding: 36px 28px; border-right: 1px solid rgba(255,215,0,0.15);
-  border-bottom: 1px solid rgba(255,215,0,0.15); transition: background 0.2s;
-}
+.brand-feat { padding: 36px 28px; border-right: 1px solid rgba(255,215,0,0.15); border-bottom: 1px solid rgba(255,215,0,0.15); transition: background 0.2s; }
 .brand-feat:nth-child(3n) { border-right: none; }
 .brand-feat:nth-child(n+4) { border-bottom: none; }
 .brand-feat:hover { background: rgba(255,215,0,0.05); }
 .brand-feat-icon { font-size: 28px; margin-bottom: 14px; }
 .brand-feat-title { font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
-.brand-feat-desc { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.45); line-height: 1.8; }
+.brand-feat-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.8; }
 
 /* 跑馬燈 */
 .ticker-section {
@@ -287,21 +249,13 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .ticker-inner { display: flex; align-items: stretch; height: 48px; }
 .ticker-label {
   background: var(--gold-dark); color: #3A0000; font-size: 12px; font-weight: 900;
-  padding: 0 20px; display: flex; align-items: center; white-space: nowrap;
-  flex-shrink: 0; letter-spacing: 1px;
+  padding: 0 20px; display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; letter-spacing: 1px;
 }
 .ticker-track-wrap { flex: 1; overflow: hidden; }
-.ticker-track {
-  display: flex; align-items: center; height: 48px;
-  animation: ticker-scroll 32s linear infinite; white-space: nowrap;
-}
+.ticker-track { display: flex; align-items: center; height: 48px; animation: ticker-scroll 32s linear infinite; white-space: nowrap; }
 .ticker-track:hover { animation-play-state: paused; }
 @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.ticker-item {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 0 36px; cursor: pointer; color: #FFE0C0;
-  font-size: 13px; transition: color 0.15s; white-space: nowrap;
-}
+.ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 36px; cursor: pointer; color: #FFE0C0; font-size: 13px; transition: color 0.15s; white-space: nowrap; }
 .ticker-item:hover { color: var(--gold); }
 .ticker-item-tag { font-size: 10px; font-weight: 700; padding: 1px 8px; border-radius: 10px; flex-shrink: 0; }
 .tag-ev { background: rgba(255,160,0,0.2); color: var(--gold); border: 1px solid rgba(255,160,0,0.35); }
@@ -314,12 +268,9 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .ticker-more:hover { color: var(--gold); }
 
-/* 精選遊戲 */
+/* 首頁精選遊戲輪播（無倍率方框） */
 .games-section { background: var(--cream); }
-.carousel-outer {
-  max-width: 960px; margin: 0 auto;
-  display: flex; align-items: center; gap: 12px;
-}
+.carousel-outer { max-width: 960px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
 .c-arrow {
   flex-shrink: 0; width: 44px; height: 44px;
   background: rgba(123,0,0,0.85); border: 2px solid var(--gold-dark);
@@ -336,12 +287,9 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   overflow: hidden; cursor: pointer; position: relative; background: #111;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.c-item:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 10px 28px rgba(180,100,0,0.5), 0 0 0 2px var(--gold); }
+.c-item:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 10px 28px rgba(180,100,0,0.5),0 0 0 2px var(--gold); }
 .c-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.c-mult {
-  position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,0.78); color: var(--gold);
-  font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 5px; border: 1px solid var(--gold-dark);
-}
+/* 倍率方框拿掉 */
 .c-hover { position: absolute; inset: 0; background: rgba(139,0,0,0); transition: background 0.2s; display: flex; align-items: center; justify-content: center; }
 .c-item:hover .c-hover { background: rgba(139,0,0,0.3); }
 .c-play { color: #fff; font-size: 34px; opacity: 0; transition: opacity 0.2s; }
@@ -350,80 +298,35 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .c-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cream-dark); cursor: pointer; transition: background 0.2s; }
 .c-dot.active { background: var(--red-main); }
 
-/* 攻略專區 */
-.articles-layout {
-  display: grid; grid-template-columns: 1.15fr 1fr;
-  gap: 20px; max-width: 960px; margin: 0 auto 32px;
-}
-.article-hero {
-  background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark);
-  overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
-}
+/* 攻略首頁區塊 */
+.articles-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; max-width: 960px; margin: 0 auto 32px; }
+.article-hero { background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
 .article-hero:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(180,80,0,0.15); }
-.article-hero-img {
-  width: 100%; height: 240px;
-  background: linear-gradient(135deg, #8B0000 0%, #CC6600 50%, #FFD700 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; color: rgba(255,255,255,0.5);
-}
+.article-hero-img { width: 100%; height: 240px; background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.5); }
 .article-hero-body { padding: 20px 24px; }
-.article-tag {
-  display: inline-block; background: #FFF0E0; color: var(--red-main);
-  font-size: 11px; font-weight: 700; padding: 2px 12px;
-  border-radius: 20px; margin-bottom: 12px; border: 1px solid #F5C08080;
-}
+.article-tag { display: inline-block; background: #FFF0E0; color: var(--red-main); font-size: 11px; font-weight: 700; padding: 2px 12px; border-radius: 20px; margin-bottom: 12px; border: 1px solid #F5C08080; }
 .article-hero-title { font-size: 18px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px; }
-.article-hero-excerpt {
-  font-size: 13px; color: #777; line-height: 1.75; margin-bottom: 14px;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
+.article-hero-excerpt { font-size: 13px; color: #777; line-height: 1.75; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .article-hero-date { font-size: 12px; color: #bbb; }
-.articles-small { display: grid; grid-template-rows: repeat(4, 1fr); gap: 16px; }
-.article-small {
-  background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark);
-  overflow: hidden; cursor: pointer; display: flex; transition: transform 0.15s, box-shadow 0.15s;
-}
+.articles-small { display: grid; grid-template-rows: repeat(4,1fr); gap: 16px; }
+.article-small { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; display: flex; transition: transform 0.15s, box-shadow 0.15s; }
 .article-small:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(180,80,0,0.13); }
-.article-small-img {
-  width: 96px; flex-shrink: 0;
-  background: linear-gradient(135deg, #4A0000, #CC4400 60%, #FFD700);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; color: rgba(255,255,255,0.4);
-}
+.article-small-img { width: 96px; flex-shrink: 0; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); }
 .article-small-body { padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; }
-.article-small-title {
-  font-size: 13px; font-weight: 700; color: var(--text-dark); line-height: 1.5; margin-bottom: 6px;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
+.article-small-title { font-size: 13px; font-weight: 700; color: var(--text-dark); line-height: 1.5; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .article-small-date { font-size: 11px; color: #bbb; }
 .articles-more { text-align: center; }
-.btn-more {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: transparent; color: var(--red-main); border: 2px solid var(--red-main);
-  border-radius: 50px; padding: 10px 40px; font-size: 14px; font-weight: 700;
-  cursor: pointer; font-family: inherit; text-decoration: none; transition: background 0.15s, color 0.15s;
-}
+.btn-more { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--red-main); border: 2px solid var(--red-main); border-radius: 50px; padding: 10px 40px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; text-decoration: none; transition: background 0.15s, color 0.15s; }
 .btn-more:hover { background: var(--red-main); color: #fff; }
 
 /* 合作夥伴 */
-.partners-section {
-  background: var(--cream-dark); padding: 60px 60px; position: relative; overflow: hidden;
-  border-top: 2px solid var(--gold-dark); border-bottom: 2px solid var(--gold-dark);
-}
-.partners-grid {
-  display: flex; flex-wrap: wrap; align-items: center;
-  justify-content: center; gap: 20px 36px; max-width: 900px; margin: 0 auto;
-}
+.partners-section { background: var(--cream-dark); padding: 60px 60px; position: relative; overflow: hidden; border-top: 2px solid var(--gold-dark); border-bottom: 2px solid var(--gold-dark); }
+.partners-grid { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 36px; max-width: 900px; margin: 0 auto; }
 .partner-logo { height: 34px; object-fit: contain; opacity: 0.8; transition: opacity 0.2s; }
 .partner-logo:hover { opacity: 1; }
-.partner-ph {
-  height: 34px; min-width: 80px; padding: 0 16px;
-  background: rgba(255,255,255,0.6); border: 1.5px dashed rgba(180,130,0,0.3);
-  border-radius: 6px; display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 700; color: rgba(100,60,0,0.4); white-space: nowrap;
-}
+.partner-ph { height: 34px; min-width: 80px; padding: 0 16px; background: rgba(255,255,255,0.6); border: 1.5px dashed rgba(180,130,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: rgba(100,60,0,0.4); white-space: nowrap; }
 
-/* FOOTER */
+/* ══ FOOTER ══ */
 footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-top: 3px solid var(--gold-dark); }
 .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 24px; }
 .footer-col-title { color: var(--gold); font-size: 14px; font-weight: 700; margin-bottom: 12px; }
@@ -436,27 +339,190 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 .footer-links a:hover { color: var(--gold); }
 .footer-links span { color: rgba(255,255,255,0.2); }
 
-/* 子頁面 */
-.sub-page-content { max-width: 860px; margin: 0 auto; padding: 60px 40px; }
-.sub-section { margin-bottom: 64px; }
-.sub-section-title {
-  font-size: 22px; font-weight: 900; color: var(--red-main);
-  margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--cream-dark);
+
+.games-grid {
+  display: grid; grid-template-columns: repeat(5,1fr);
+  gap: 16px; max-width: 960px; margin: 0 auto;
 }
-.sub-section p { font-size: 15px; line-height: 1.9; color: #555; margin-bottom: 12px; }
-.sub-placeholder {
-  background: #fff8ee; border: 1.5px dashed var(--cream-dark);
-  border-radius: 12px; padding: 40px; text-align: center; color: #ccc; font-size: 14px;
+.game-card {
+  aspect-ratio: 1; border-radius: 14px; border: 3px solid var(--gold-dark);
+  overflow: hidden; cursor: pointer; position: relative; background: #111;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.game-card:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 10px 28px rgba(180,100,0,0.5),0 0 0 2px var(--gold); }
+.game-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.game-card-hover { position: absolute; inset: 0; background: rgba(139,0,0,0); transition: background 0.2s; display: flex; align-items: center; justify-content: center; }
+.game-card:hover .game-card-hover { background: rgba(139,0,0,0.3); }
+.game-card-play { color: #fff; font-size: 34px; opacity: 0; transition: opacity 0.2s; }
+.game-card:hover .game-card-play { opacity: 1; }
+
+/* ══ 活動公告頁 ══ */
+.news-page-content { max-width: 960px; margin: 0 auto; padding: 52px 60px; }
+.news-tabs-center {
+  display: flex; justify-content: center; gap: 0;
+  margin-bottom: 36px; border-bottom: 2px solid var(--cream-dark);
+}
+.news-tab-btn {
+  background: none; border: none; font-family: inherit;
+  font-size: 15px; font-weight: 700; color: #aaa;
+  padding: 10px 48px; cursor: pointer;
+  border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.15s;
+}
+.news-tab-btn.active { color: var(--red-main); border-bottom-color: var(--red-main); }
+.news-tab-btn:hover:not(.active) { color: var(--red-main); }
+
+/* 活動卡片：橫列一條一條 */
+.news-event-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.news-event-row {
+  background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark);
+  overflow: hidden; cursor: pointer; display: flex; align-items: stretch;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.news-event-row:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(180,80,0,0.15); }
+.news-event-row-img {
+  width: 220px; flex-shrink: 0;
+  background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: rgba(255,255,255,0.5);
+}
+.news-event-row-body { padding: 20px 24px; display: flex; flex-direction: column; justify-content: center; flex: 1; }
+.news-event-row-title { font-size: 15px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 8px; }
+.news-event-row-excerpt { font-size: 13px; color: #888; line-height: 1.65; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.news-event-row-date { font-size: 12px; color: #bbb; }
+
+/* 公告列表：一列一列，左細線 */
+.news-notice-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 40px; }
+.news-notice-item {
+  display: flex; align-items: center; gap: 20px;
+  padding: 16px 0; border-bottom: 1px solid #f0e8d0;
+  cursor: pointer; transition: background 0.12s;
+}
+.news-notice-item:first-child { border-top: 1px solid #f0e8d0; }
+.news-notice-item:hover { background: rgba(180,80,0,0.03); }
+.news-notice-line {
+  width: 3px; height: 32px; border-radius: 2px;
+  background: var(--gold-dark); flex-shrink: 0;
+}
+.news-notice-title { font-size: 14px; font-weight: 700; color: var(--text-dark); flex: 1; line-height: 1.5; }
+.news-notice-date { font-size: 12px; color: #bbb; flex-shrink: 0; white-space: nowrap; }
+
+/* ══ 攻略專區 tabs — 底線置中 ══ */
+.strategy-tabs-center {
+  display: flex; justify-content: center; gap: 0;
+  margin-bottom: 36px; border-bottom: 2px solid var(--cream-dark);
+}
+.strategy-tab-btn {
+  background: none; border: none; font-family: inherit;
+  font-size: 14px; font-weight: 700;
+  color: #888; -webkit-text-fill-color: #888;
+  padding: 10px 32px; cursor: pointer;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.strategy-tab-btn.active {
+  color: var(--red-main) !important;
+  -webkit-text-fill-color: var(--red-main) !important;
+  border-bottom-color: var(--red-main);
+}
+.strategy-tab-btn:hover:not(.active) {
+  color: var(--red-main);
+  -webkit-text-fill-color: var(--red-main);
 }
 
-/* 遊戲 Overlay */
+/* ══ 文章目錄 TOC ══ */
+.article-toc {
+  background: #FFF8E7; border: 1.5px solid var(--gold-dark);
+  border-radius: 12px; padding: 20px 24px; margin-bottom: 36px;
+}
+.article-toc-title { font-size: 13px; font-weight: 900; color: var(--text-dark); margin-bottom: 12px; letter-spacing: 1px; }
+.article-toc ol { padding-left: 20px; }
+.article-toc ol li { margin-bottom: 6px; }
+.article-toc ol li a { font-size: 13px; color: var(--red-main); text-decoration: none; line-height: 1.6; }
+.article-toc ol li a:hover { text-decoration: underline; }
+
+/* ══ FAQ ══ */
+.article-faq { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--cream-dark); }
+.article-faq-title { font-size: 20px; font-weight: 900; color: var(--red-main); margin-bottom: 20px; padding-left: 14px; border-left: 4px solid var(--gold-dark); }
+.faq-item { margin-bottom: 16px; background: #fff; border-radius: 10px; border: 1.5px solid var(--cream-dark); overflow: hidden; }
+.faq-q { font-size: 14px; font-weight: 700; color: var(--text-dark); padding: 14px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-q:hover { background: #faf5e8; }
+.faq-q-icon { color: var(--gold-dark); font-size: 16px; flex-shrink: 0; transition: transform 0.2s; }
+.faq-q.open .faq-q-icon { transform: rotate(45deg); }
+.faq-a { font-size: 13px; color: #555; line-height: 1.8; padding: 0 18px 14px; display: none; }
+.faq-a.open { display: block; }
+
+/* ══ 相關文章 ══ */
+.related-articles { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--cream-dark); }
+.related-title { font-size: 18px; font-weight: 900; color: var(--text-dark); margin-bottom: 20px; }
+.related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.related-card { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+.related-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(180,80,0,0.13); }
+.related-card-img { width: 100%; height: 100px; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); }
+.related-card-body { padding: 12px 14px; }
+.related-card-cat { font-size: 10px; font-weight: 700; color: var(--red-main); margin-bottom: 6px; }
+.related-card-title { font-size: 12px; font-weight: 700; color: var(--text-dark); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pagination { display: flex; justify-content: center; align-items: center; gap: 6px; }
+.page-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: #fff; border: 1.5px solid var(--cream-dark);
+  color: var(--text-dark); font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.page-btn:hover { border-color: var(--red-main); color: var(--red-main); }
+.page-btn.active { background: var(--red-main); border-color: var(--red-main); color: #fff; }
+.page-btn.arrow { font-size: 16px; }
+
+/* ══ 攻略專區頁 ══ */
+.strategy-page-content { max-width: 960px; margin: 0 auto; padding: 52px 60px; }
+.strategy-cats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
+.strategy-cat-btn {
+  background: #fff; border: 2px solid var(--cream-dark);
+  color: #888; font-size: 13px; font-weight: 700;
+  padding: 8px 24px; border-radius: 50px; cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.strategy-cat-btn.active { background: var(--red-main); border-color: var(--red-main); color: #fff; }
+.strategy-cat-btn:hover:not(.active) { border-color: var(--red-main); color: var(--red-main); }
+
+/* 文章列表 grid */
+.strategy-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 40px; }
+.strategy-card { background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+.strategy-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(180,80,0,0.15); }
+.strategy-card-img { width: 100%; height: 160px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.5); }
+.strategy-card-body { padding: 16px 18px; }
+.strategy-card-cat { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
+.cat-guide { background: #FFF0E0; color: var(--red-main); border: 1px solid #F5C08080; }
+.cat-platform { background: #F0F4FF; color: #3949AB; border: 1px solid #9FA8DA80; }
+.cat-activity { background: #F1F8E9; color: #388E3C; border: 1px solid #A5D6A780; }
+.strategy-card-title { font-size: 14px; font-weight: 900; color: #3A1000; line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.strategy-card-date { font-size: 11px; color: #bbb; }
+
+/* ══ 攻略文章頁（單篇） ══ */
+.article-page { max-width: 800px; margin: 0 auto; padding: 52px 40px; }
+.article-page-header { margin-bottom: 32px; }
+.article-page-cat { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 14px; border-radius: 20px; margin-bottom: 14px; }
+.article-page-title { font-size: 28px; font-weight: 900; color: var(--text-dark); line-height: 1.4; margin-bottom: 12px; }
+.article-page-meta { font-size: 13px; color: #aaa; display: flex; gap: 16px; align-items: center; }
+.article-page-cover { width: 100%; height: 360px; border-radius: 16px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 36px; overflow: hidden; }
+.article-page-cover img { width: 100%; height: 100%; object-fit: cover; }
+.article-body h2 { font-size: 20px; font-weight: 900; color: var(--red-main); margin: 32px 0 14px; padding-left: 14px; border-left: 4px solid var(--gold-dark); }
+.article-body h3 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin: 24px 0 10px; }
+.article-body p { font-size: 15px; line-height: 1.95; color: #444; margin-bottom: 18px; }
+.article-body ul { padding-left: 24px; margin-bottom: 18px; }
+.article-body ul li { font-size: 15px; line-height: 1.9; color: #444; margin-bottom: 6px; }
+.article-body .highlight-box {
+  background: #FFF8E7; border: 1.5px solid var(--gold-dark); border-radius: 12px;
+  padding: 20px 24px; margin: 24px 0; font-size: 14px; line-height: 1.8; color: var(--text-dark);
+}
+.article-body .highlight-box strong { color: var(--red-main); }
+.article-inline-img { width: 100%; border-radius: 12px; background: linear-gradient(135deg,#4A0000,#CC6600 60%,#FFD700); height: 220px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.5); margin: 20px 0 28px; }
+.article-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--cream-dark); }
+.article-tag-pill { background: var(--cream); border: 1.5px solid var(--cream-dark); color: #888; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 20px; }
+
+/* ══ 遊戲彈窗 ══ */
 .gov-bd { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 500; align-items: center; justify-content: center; }
 .gov-bd.open { display: flex; }
-.gov-modal {
-  background: linear-gradient(160deg, #4A0000, #8B0000 55%, #4A0000);
-  border: 3px solid var(--gold); border-radius: 20px;
-  width: 500px; max-width: 92vw; padding: 30px; position: relative; animation: popIn 0.22s ease-out;
-}
+.gov-modal { background: linear-gradient(160deg,#4A0000,#8B0000 55%,#4A0000); border: 3px solid var(--gold); border-radius: 20px; width: 500px; max-width: 92vw; padding: 30px; position: relative; animation: popIn 0.22s ease-out; }
 .gov-close { position: absolute; top: 12px; right: 16px; background: none; border: none; color: var(--gold); font-size: 26px; cursor: pointer; transition: transform 0.15s; }
 .gov-close:hover { transform: rotate(90deg); }
 .gov-img { width: 100%; border-radius: 12px; border: 2px solid var(--gold-dark); aspect-ratio: 1; object-fit: cover; margin-bottom: 16px; }
@@ -464,12 +530,48 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 .gov-mult { display: table; margin: 0 auto 12px; background: rgba(255,215,0,0.12); border: 1px solid var(--gold-dark); color: var(--gold); font-size: 12px; font-weight: 700; padding: 3px 16px; border-radius: 20px; }
 .gov-desc { color: #FFE0C0; font-size: 13px; line-height: 1.75; text-align: center; margin-bottom: 20px; }
 .gov-qr-row { display: flex; gap: 16px; align-items: center; background: rgba(0,0,0,0.3); border-radius: 12px; padding: 14px; border: 1px solid rgba(255,215,0,0.25); margin-bottom: 14px; }
-.gov-qr-box { width: 84px; height: 84px; background: #fff; border-radius: 8px; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.gov-qr-box img { width: 100%; height: 100%; object-fit: contain; }
 .gov-qr-text { color: #FFE0C0; font-size: 13px; line-height: 1.6; }
 .gov-qr-text strong { color: var(--gold); font-size: 14px; font-weight: 700; display: block; margin-bottom: 3px; }
 .gov-play-btn { display: block; width: 100%; background: var(--green-line); color: #fff; border: 2px solid #009600; border-radius: 50px; padding: 13px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; transition: transform 0.15s; }
 .gov-play-btn:hover { transform: scale(1.02); }
+
+/* 子頁面 */
+.sub-page-content { max-width: 860px; margin: 0 auto; padding: 60px 40px; }
+.sub-section { margin-bottom: 64px; }
+.sub-section-title { font-size: 22px; font-weight: 900; color: var(--red-main); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--cream-dark); }
+.sub-section p { font-size: 15px; line-height: 1.9; color: #555; margin-bottom: 12px; }
+.sub-placeholder { background: #fff8ee; border: 1.5px dashed var(--cream-dark); border-radius: 12px; padding: 40px; text-align: center; color: #ccc; font-size: 14px; }
+
+/* 麵包屑 */
+.breadcrumb { padding: 16px 60px; background: #fff8ee; border-bottom: 1px solid var(--cream-dark); font-size: 13px; color: #aaa; }
+.breadcrumb a { color: var(--red-main); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb span { margin: 0 8px; }
+
+/* ══ 回到頂部按鈕 ══ */
+.back-to-top {
+  position: fixed; bottom: 32px; right: 28px;
+  width: 52px; height: 52px;
+  background: var(--gold);
+  border: 3px solid var(--red-dark);
+  outline: 3px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 400;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+}
+.back-to-top.visible {
+  opacity: 1; pointer-events: auto;
+}
+.back-to-top:hover {
+  animation: breathe 0.6s ease-in-out infinite alternate;
+}
+@keyframes breathe {
+  from { transform: scale(1); }
+  to   { transform: scale(1.18); }
+}
 </style>
 </head>
 <body>
@@ -477,25 +579,23 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 <!-- QR 懸浮 -->
 <div class="qr-float">
   <div class="qr-float-label">掃描 QR 碼<br>立即玩！</div>
-  <div class="qr-float-img">
-    <img src="https://www.xinluck.com/images/common/fix_qrcode.webp" alt="QR" onerror="this.parentNode.innerHTML='<div style=&quot;color:#999;font-size:11px&quot;>QR Code</div>'">
-  </div>
+  <div class="qr-wrap" id="qr-float-wrap" style="width:90px;height:90px;"></div>
   <div class="qr-float-sub">LINE 官方帳號</div>
 </div>
 
 <!-- HEADER -->
 <header class="header">
-  <div class="logo-placeholder">LOGO</div>
+  <div class="logo-placeholder" onclick="showPage('home')" style="cursor:pointer;" title="回首頁">LOGO</div>
   <nav class="nav-links">
     <div class="nav-item" id="nav-game">
-      <span class="nav-link" onclick="showPage('home')">遊戲介紹 <span class="arrow">▼</span></span>
+      <span class="nav-link" id="nav-game-link" onclick="showPage('home')">遊戲介紹 <span class="arrow">▼</span></span>
       <div class="dropdown" id="dd-game">
-        <a href="#" onclick="showPage('home');return false;">所有遊戲</a>
-        <a href="#" onclick="showPage('home');scrollToId('ticker-section');return false;">活動公告</a>
+        <a href="#" onclick="showPage('games-all');return false;">精選遊戲</a>
+        <a href="#" onclick="showPage('news');return false;">活動公告</a>
       </div>
     </div>
     <div class="nav-item">
-      <span class="nav-link" onclick="showPage('home');scrollToId('articles-section')">攻略專區</span>
+      <span class="nav-link" id="nav-strategy-link" onclick="showPage('strategy')">攻略專區</span>
     </div>
     <div class="nav-item" id="nav-novice">
       <span class="nav-link">新手專區 <span class="arrow">▼</span></span>
@@ -524,27 +624,15 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 </header>
 
 <!-- SUB-NAV -->
-<nav class="subnav" id="subnav-novice">
-  <a class="subnav-link" onclick="scrollToSubSection('novice','介面說明')">介面說明</a><span class="subnav-sep">｜</span>
-  <a class="subnav-link" onclick="scrollToSubSection('novice','捷徑教學')">捷徑教學</a><span class="subnav-sep">｜</span>
-  <a class="subnav-link" onclick="scrollToSubSection('novice','VIP 說明')">VIP 說明</a><span class="subnav-sep">｜</span>
-  <a class="subnav-link" onclick="scrollToSubSection('novice','公會說明')">公會說明</a><span class="subnav-sep">｜</span>
-  <a class="subnav-link" onclick="scrollToSubSection('novice','儲值教學')">儲值教學</a>
-</nav>
-<nav class="subnav" id="subnav-cs">
-  <a class="subnav-link" onclick="scrollToSubSection('cs','服務條款')">服務條款</a><span class="subnav-sep">｜</span>
-  <a class="subnav-link" onclick="scrollToSubSection('cs','隱私權政策')">隱私權政策</a><span class="subnav-sep">｜</span>
-  <a class="subnav-link" onclick="scrollToSubSection('cs','遊戲規章')">遊戲規章</a><span class="subnav-sep">｜</span>
-  <a class="subnav-link" onclick="scrollToSubSection('cs','停權列表')">停權列表</a>
-</nav>
+
 
 <!-- LINE QR MODAL -->
 <div class="modal-bd" id="line-modal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal-box">
     <button class="modal-close" onclick="document.getElementById('line-modal').classList.remove('open')">✕</button>
     <div class="modal-title">掃描 QR Code 立即登入</div>
-    <div class="modal-qr">
-      <img src="https://www.xinluck.com/images/common/fix_qrcode.webp" alt="LINE QR" onerror="this.parentNode.innerHTML='<div style=&quot;color:#999;font-size:12px&quot;>QR Code</div>'">
+    <div style="display:flex;justify-content:center;">
+      <div class="qr-wrap" id="qr-modal-wrap" style="width:160px;height:160px;"></div>
     </div>
     <div class="modal-hint">
       <strong>手機開啟 LINE 掃描</strong>
@@ -553,22 +641,34 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
   </div>
 </div>
 
-<!-- 首頁 -->
-<div class="page active" id="page-home">
+<!-- 遊戲彈窗 -->
+<div class="gov-bd" id="gov-bd" onclick="if(event.target===this)closeGov()">
+  <div class="gov-modal">
+    <button class="gov-close" onclick="closeGov()">✕</button>
+    <img class="gov-img" id="gov-img" src="" alt="">
+    <div class="gov-title" id="gov-title"></div>
+    <div class="gov-mult" id="gov-mult"></div>
+    <div class="gov-desc" id="gov-desc"></div>
+    <div class="gov-qr-row">
+      <div class="qr-wrap" id="qr-overlay-wrap" style="width:84px;height:84px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;"></div>
+      <div class="gov-qr-text"><strong>掃碼立即玩</strong>手機掃描進入該款遊戲<br>免下載直接開始<br>支援 LINE ／ 網頁登入</div>
+    </div>
+    <button class="gov-play-btn" id="gov-play-btn">▶　立即進入遊戲</button>
+  </div>
+</div>
 
-  <!-- HERO -->
+<!-- ══════════ 首頁 ══════════ -->
+<div class="page active" id="page-home">
   <section class="hero">
-    <img class="hero-banner-img" src="https://www.xinluck.com/images/mobile/banner_950x535.webp" alt="" onerror="this.style.display='none'">
+    <img class="hero-banner-img" src="BANNER_IMAGE_URL" alt="" onerror="this.style.display='none'">
     <div class="hero-banner-ph">
-      <div class="hero-banner-ph-box">主視覺 Banner 圖片<br>（建議尺寸 1920×560px）</div>
+      <div class="hero-banner-ph-box">主視覺 Banner 圖片<br>換圖：將 src 改成你的圖片網址<br>建議尺寸 1920 × 560px</div>
     </div>
     <div class="hero-bottom">
       <div class="hero-slogan">天天玩星運　分分走大運</div>
       <div class="hero-cta-row">
         <div class="hero-qr-block">
-          <div class="hero-qr-box">
-            <img src="https://www.xinluck.com/images/common/fix_qrcode.webp" alt="QR" onerror="this.parentNode.innerHTML='QR'">
-          </div>
+          <div class="qr-wrap" id="qr-hero-wrap" style="width:108px;height:108px;"></div>
           <div class="hero-qr-label">手機掃描　免費玩</div>
         </div>
         <div class="hero-cta-divider">｜</div>
@@ -580,7 +680,6 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
     </div>
   </section>
 
-  <!-- 品牌介紹 -->
   <section class="brand-section">
     <div class="sec-heading">
       <div class="sec-heading-bg dark">ABOUT</div>
@@ -595,51 +694,23 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       </div>
     </div>
     <div class="brand-features">
-      <div class="brand-feat">
-        <div class="brand-feat-icon">⚡</div>
-        <div class="brand-feat-title">零秒開台</div>
-        <div class="brand-feat-desc">免下載、免安裝，打開 LINE 立即玩，真正的零門檻娛樂體驗。</div>
-      </div>
-      <div class="brand-feat">
-        <div class="brand-feat-icon">🔒</div>
-        <div class="brand-feat-title">LINE 帳號直接登入</div>
-        <div class="brand-feat-desc">以 LINE 帳號登入，安全驗證、不需額外註冊，保護您的帳號安全。</div>
-      </div>
-      <div class="brand-feat">
-        <div class="brand-feat-icon">🏆</div>
-        <div class="brand-feat-title">公會社群系統</div>
-        <div class="brand-feat-desc">加入公會一起衝榜，公會戰、排名賽，與好友共享勝利的喜悅。</div>
-      </div>
-      <div class="brand-feat">
-        <div class="brand-feat-icon">🎰</div>
-        <div class="brand-feat-title">百款精選機台</div>
-        <div class="brand-feat-desc">最高倍率 25,000 倍，機台天天開獎，體感超好，隨時都有大獎等你抱回家。</div>
-      </div>
-      <div class="brand-feat">
-        <div class="brand-feat-icon">💰</div>
-        <div class="brand-feat-title">多元儲值管道</div>
-        <div class="brand-feat-desc">支援 LINE Pay、Apple Pay、Google Pay 等，儲值即時到帳。</div>
-      </div>
-      <div class="brand-feat">
-        <div class="brand-feat-icon">📱</div>
-        <div class="brand-feat-title">手機直接玩，隨開隨玩</div>
-        <div class="brand-feat-desc">不用下載 App，打開瀏覽器或 LINE 就能玩，想玩就玩、想停就停，超方便。</div>
-      </div>
+      <div class="brand-feat"><div class="brand-feat-icon">⚡</div><div class="brand-feat-title">零秒開台</div><div class="brand-feat-desc">免下載、免安裝，打開 LINE 立即玩，真正的零門檻娛樂體驗。</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">🔒</div><div class="brand-feat-title">LINE 帳號直接登入</div><div class="brand-feat-desc">以 LINE 帳號登入，安全驗證、不需額外註冊，保護您的帳號安全。</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">🏆</div><div class="brand-feat-title">公會社群系統</div><div class="brand-feat-desc">加入公會一起衝榜，公會戰、排名賽，與好友共享勝利的喜悅。</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">🎰</div><div class="brand-feat-title">百款精選機台</div><div class="brand-feat-desc">最高倍率 25,000 倍，機台天天開獎，體感超好，隨時都有大獎等你抱回家。</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">💰</div><div class="brand-feat-title">多元儲值管道</div><div class="brand-feat-desc">支援 LINE Pay、Apple Pay、Google Pay 等，儲值即時到帳。</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">📱</div><div class="brand-feat-title">手機直接玩，隨開隨玩</div><div class="brand-feat-desc">不用下載 App，打開瀏覽器或 LINE 就能玩，想玩就玩、想停就停，超方便。</div></div>
     </div>
   </section>
 
-  <!-- 活動公告 -->
   <div class="ticker-section" id="ticker-section">
     <div class="ticker-inner">
       <div class="ticker-label">📢　活動公告</div>
-      <div class="ticker-track-wrap">
-        <div class="ticker-track" id="ticker-track"></div>
-      </div>
-      <button class="ticker-more">查看更多 →</button>
+      <div class="ticker-track-wrap"><div class="ticker-track" id="ticker-track"></div></div>
+      <button class="ticker-more" onclick="showPage('news')">查看更多 →</button>
     </div>
   </div>
 
-  <!-- 精選遊戲 -->
   <section class="section games-section">
     <div class="sec-heading">
       <div class="sec-heading-bg light">GAMES</div>
@@ -649,15 +720,12 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
     <div class="sec-sub light">點擊遊戲卡片，掃碼立即開台</div>
     <div class="carousel-outer">
       <button class="c-arrow" onclick="moveCarousel(-1)">&#8249;</button>
-      <div class="carousel-wrapper">
-        <div class="carousel-track" id="carousel-track"></div>
-      </div>
+      <div class="carousel-wrapper"><div class="carousel-track" id="carousel-track"></div></div>
       <button class="c-arrow" onclick="moveCarousel(1)">&#8250;</button>
     </div>
     <div class="c-dots" id="c-dots"></div>
   </section>
 
-  <!-- 攻略專區 -->
   <section class="section section-alt" id="articles-section">
     <div class="sec-heading">
       <div class="sec-heading-bg light">STRATEGY</div>
@@ -666,7 +734,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
     </div>
     <div class="sec-sub light">遊戲玩法、活動攻略、平台教學，一次掌握</div>
     <div class="articles-layout">
-      <div class="article-hero">
+      <div class="article-hero" onclick="showPage('article-demo')">
         <div class="article-hero-img">封面圖片</div>
         <div class="article-hero-body">
           <span class="article-tag">遊戲攻略</span>
@@ -677,10 +745,9 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       </div>
       <div class="articles-small" id="articles-small"></div>
     </div>
-    <div class="articles-more"><a href="#" class="btn-more">所有文章 →</a></div>
+    <div class="articles-more"><a href="#" class="btn-more" onclick="showPage('strategy');return false;">所有文章 →</a></div>
   </section>
 
-  <!-- 合作夥伴 -->
   <section class="partners-section">
     <div class="sec-heading" style="margin-bottom:28px;">
       <div class="sec-heading-bg light" style="font-size:60px;">PARTNERS</div>
@@ -694,116 +761,426 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <img class="partner-logo" src="https://www.xinluck.com/images/partners/gash.webp" alt="Gash" onerror="this.outerHTML='<div class=&quot;partner-ph&quot;>Gash</div>'">
       <img class="partner-logo" src="https://www.xinluck.com/images/partners/888-gaming.webp" alt="888 Gaming" onerror="this.outerHTML='<div class=&quot;partner-ph&quot;>888 Gaming</div>'">
       <img class="partner-logo" src="https://www.xinluck.com/images/partners/va-victory.webp" alt="VA Victory" onerror="this.outerHTML='<div class=&quot;partner-ph&quot;>VA Victory</div>'">
-      <div class="partner-ph">廠商 Logo</div>
-      <div class="partner-ph">廠商 Logo</div>
-      <div class="partner-ph">廠商 Logo</div>
+      <div class="partner-ph">廠商 Logo</div><div class="partner-ph">廠商 Logo</div><div class="partner-ph">廠商 Logo</div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-top">
+      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
       <div>
-        <div class="footer-col-title">平台資訊</div>
+        <div class="footer-col-title">官方帳號</div>
         <div class="footer-info">
-          維護時間：每週四　10：00～11：00<br>
-          客服信箱：support@xinluck.com<br>
-          客服時間：09：00～18：00
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">官方社交</div>
-        <div class="footer-info">
-          LINE　官方帳號：@xinluck<br>
-          FB　粉絲團：星運娛樂城
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
+            <span>官方帳號：@xinluck</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
+            <span>FB 粉絲團：星運娛樂城</span>
+          </div>
         </div>
       </div>
     </div>
     <hr class="footer-divider">
     <div class="footer-bottom">
-      <div class="footer-legal">
-        本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>
-        遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。
+      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;">
+        <div style="width:48px;height:48px;background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;text-align:center;line-height:1.3;">年齡<br>分級</div>
+        <div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div>
       </div>
-      <div class="footer-links">
-        <a href="#">服務條款</a><span>｜</span>
-        <a href="#">隱私權政策</a><span>｜</span>
-        <a href="#">遊戲規章</a><span>｜</span>
-        <a href="#">停權列表</a>
+      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════ 精選遊戲頁 ══════════ -->
+<div class="page" id="page-games-all">
+  <div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>精選遊戲</div>
+  <div style="max-width:960px;margin:0 auto;padding:52px 60px 60px;">
+    <div class="sec-heading" style="margin-bottom:12px;">
+      <div class="sec-heading-bg light">GAMES</div>
+      <div class="sec-heading-main light">精選遊戲</div>
+      <div class="sec-heading-line light"></div>
+    </div>
+    <div style="text-align:center;margin-bottom:8px;">
+      <span style="font-size:15px;font-weight:700;color:var(--red-main);letter-spacing:1px;">星運娛樂城老虎機館｜熱門機台等你體驗</span>
+    </div>
+    <p style="text-align:center;font-size:13px;color:#999;line-height:1.8;max-width:680px;margin:0 auto 44px;">星運娛樂城精選熱門老虎機，包含自摸無雙、印加女神、龍族傳說等人氣機台。最高倍率高達 25,000 倍，體感刺激、開獎頻繁，全館支援手機免下載直接遊玩。</p>
+    <div class="games-grid" id="games-grid"></div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
+      <div><div class="footer-col-title">官方帳號</div><div class="footer-info">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>官方帳號：@xinluck</span></div>
+        <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>FB 粉絲團：星運娛樂城</span></div>
+      </div></div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;"><div style="width:48px;height:48px;background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;text-align:center;line-height:1.3;">年齡<br>分級</div><div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div></div>
+      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════ 活動公告頁 ══════════ -->
+<div class="page" id="page-news">
+  <div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>活動公告</div>
+  <div class="news-page-content">
+    <div class="sec-heading" style="margin-bottom:24px;">
+      <div class="sec-heading-bg light" style="font-size:70px;">NEWS</div>
+      <div class="sec-heading-main light">活動公告</div>
+      <div class="sec-heading-line light"></div>
+    </div>
+    <div class="news-tabs-center">
+      <button class="news-tab-btn active" onclick="switchNewsTab(this,'event')">活動</button>
+      <button class="news-tab-btn" onclick="switchNewsTab(this,'notice')">公告</button>
+    </div>
+    <div id="news-event-section">
+      <div class="news-event-list" id="news-event-grid"></div>
+    </div>
+    <div id="news-notice-section" style="display:none;">
+      <div class="news-notice-list" id="news-notice-list"></div>
+    </div>
+    <div class="pagination">
+      <button class="page-btn arrow">‹</button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn arrow">›</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
+      <div><div class="footer-col-title">官方帳號</div>
+        <div class="footer-info">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
+            <span>官方帳號：@xinluck</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
+            <span>FB 粉絲團：星運娛樂城</span>
+          </div>
+        </div></div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div>
+      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════ 攻略專區頁 ══════════ -->
+<div class="page" id="page-strategy">
+  <div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>攻略專區</div>
+  <div class="strategy-page-content">
+    <div class="sec-heading" style="margin-bottom:12px;">
+      <div class="sec-heading-bg light" style="font-size:58px;">STRATEGY</div>
+      <div class="sec-heading-main light">攻略專區</div>
+      <div class="sec-heading-line light"></div>
+    </div>
+    <p style="text-align:center;font-size:14px;color:#999;margin-bottom:32px;line-height:1.7;">遊戲玩法解析、平台使用教學、活動情報整理，幫你在星運娛樂城玩得更聰明、贏得更有把握。</p>
+    <div class="strategy-tabs-center">
+      <button class="strategy-tab-btn active" onclick="filterStrategy(this,'all')">全部</button>
+      <button class="strategy-tab-btn" onclick="filterStrategy(this,'guide')">遊戲攻略</button>
+      <button class="strategy-tab-btn" onclick="filterStrategy(this,'platform')">平台介紹</button>
+      <button class="strategy-tab-btn" onclick="filterStrategy(this,'activity')">活動情報</button>
+    </div>
+    <div class="strategy-grid" id="strategy-grid"></div>
+    <div class="pagination">
+      <button class="page-btn arrow">‹</button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn arrow">›</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
+      <div><div class="footer-col-title">官方帳號</div>
+        <div class="footer-info">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
+            <span>官方帳號：@xinluck</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
+            <span>FB 粉絲團：星運娛樂城</span>
+          </div>
+        </div></div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div>
+      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════ 攻略文章（DEMO） ══════════ -->
+<div class="page" id="page-article-demo">
+  <div class="breadcrumb">
+    <a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>
+    <a href="#" onclick="showPage('strategy');return false;">攻略專區</a><span>›</span>
+    自摸無雙３完全攻略
+  </div>
+  <div class="article-page">
+    <div class="article-page-header">
+      <span class="article-page-cat cat-guide" style="display:inline-block;font-size:11px;font-weight:700;padding:3px 14px;border-radius:20px;margin-bottom:14px;background:#FFF0E0;color:#B50000;border:1px solid #F5C08080;">遊戲攻略</span>
+      <div class="article-page-title">自摸無雙３完全攻略：新手必看的胡牌技巧、免費遊戲觸發條件與最高 15,000 倍倍率說明</div>
+      <div class="article-page-meta">
+        <span>📅 2026－06－01</span>
+        <span>👁 1,248 次瀏覽</span>
+        <span>🏷 遊戲攻略</span>
       </div>
+    </div>
+
+    <div class="article-page-cover">封面圖片（待補）</div>
+
+    <!-- 文章目錄 TOC -->
+    <div class="article-toc">
+      <div class="article-toc-title">📋　本文目錄</div>
+      <ol>
+        <li><a href="#" onclick="scrollToArticleSection('section1');return false;">什麼是自摸無雙３？</a></li>
+        <li><a href="#" onclick="scrollToArticleSection('section2');return false;">基本玩法說明</a></li>
+        <li><a href="#" onclick="scrollToArticleSection('section3');return false;">免費遊戲怎麼觸發？</a></li>
+        <li><a href="#" onclick="scrollToArticleSection('section4');return false;">最高 15,000 倍怎麼達成？</a></li>
+        <li><a href="#" onclick="scrollToArticleSection('section5');return false;">新手建議</a></li>
+        <li><a href="#" onclick="scrollToArticleSection('section-faq');return false;">常見問題 FAQ</a></li>
+      </ol>
+    </div>
+
+    <div class="article-body">
+
+      <h2 id="section1">什麼是自摸無雙３？</h2>
+      <p>自摸無雙３是星運娛樂城最受歡迎的麻將主題老虎機，以台灣傳統麻將為設計核心，融合現代老虎機的高倍率機制。最高倍率高達 <strong>15,000 倍</strong>，是全站爆率最高的機台之一。無論你是麻將老手還是老虎機新手，自摸無雙３的操作直覺、節奏刺激，讓人停不下來。</p>
+
+      <div class="highlight-box">
+        💡 <strong>新手重點：</strong>自摸無雙３的「自摸」機制與真實麻將不同，是指特定符號組合出現時觸發的超級大獎機制，不需要懂麻將規則也能輕鬆上手。
+      </div>
+
+      <h2 id="section2">基本玩法說明</h2>
+      <p>自摸無雙３採用 5 轉輪設計，每次旋轉消耗遊戲幣。遊戲畫面中的主要符號包含：</p>
+      <ul>
+        <li><strong>中、發、白（三元牌）</strong>——最高價值符號，集齊三種觸發超級獎池</li>
+        <li><strong>東、南、西、北（風牌）</strong>——中等價值符號，連線即可獲得基本倍率</li>
+        <li><strong>野性符號（WILD）</strong>——可替代任意符號，大幅提升連線機率</li>
+        <li><strong>散財符號（SCATTER）</strong>——觸發免費遊戲的關鍵</li>
+      </ul>
+
+      <div class="article-inline-img">遊戲介面示意圖（待補）</div>
+
+      <h2 id="section3">免費遊戲怎麼觸發？</h2>
+      <p>免費遊戲（Free Spin）是自摸無雙３爆大獎的核心機制。觸發條件如下：</p>
+      <ul>
+        <li>同時出現 <strong>3 個散財符號</strong>，觸發 8 次免費旋轉</li>
+        <li>出現 <strong>4 個散財符號</strong>，觸發 12 次免費旋轉</li>
+        <li>出現 <strong>5 個散財符號</strong>，觸發 20 次免費旋轉，並啟動「自摸模式」</li>
+      </ul>
+      <p>自摸模式期間，所有野性符號會展開佔滿整列，大幅提升連線機率，是最容易觸發高倍率的時機。</p>
+
+      <div class="highlight-box">
+        🎰 <strong>攻略技巧：</strong>免費遊戲期間不消耗遊戲幣，建議在此時專注觀察野性符號的位置，因為自摸模式下展開的野性符號會固定保留到免費遊戲結束，每一轉都是衝高倍率的機會。
+      </div>
+
+      <h2 id="section4">最高 15,000 倍怎麼達成？</h2>
+      <p>15,000 倍是自摸無雙３的最高理論倍率，達成條件為：在自摸模式啟動期間，三元牌（中、發、白）同時連線，並且野性符號展開後形成全版連線。雖然機率極低，但正是這個設計讓每次旋轉都充滿期待。</p>
+      <p>根據玩家回報，觸發自摸模式後的免費遊戲平均倍率約在 <strong>50～300 倍</strong>之間，偶發性的高倍爆率在 <strong>1,000 倍以上</strong>，達到 15,000 倍屬於極罕見大獎。</p>
+
+      <h2 id="section5">新手建議</h2>
+      <p>以下幾點是資深玩家歸納出來的實戰心得，給第一次接觸自摸無雙３的新朋友參考：</p>
+      <ul>
+        <li>先用小注熟悉遊戲節奏，感受旋轉頻率和符號出現規律，不要急著加注</li>
+        <li>免費遊戲觸發後不要手動停止旋轉，讓系統完整跑完所有次數，每一轉都是機會</li>
+        <li>建議在活動期間遊玩，配合星運娛樂城的體驗金或加成活動，效益更高</li>
+        <li>自摸無雙３屬於高波動機台，適合喜歡等待大爆的玩家風格，耐心是關鍵</li>
+        <li>善用 LINE 帳號登入的便利性，隨時在手機上開局，不受時間地點限制</li>
+      </ul>
+      <p>總體來說，自摸無雙３是一款兼具娛樂性與爆發力的老虎機，無論你是老手還是第一次體驗線上老虎機的新玩家，都能在這裡找到屬於自己的樂趣。現在就掃碼加入星運娛樂城，立即體驗自摸無雙３帶來的刺激！</p>
+
+      <!-- FAQ -->
+      <div class="article-faq" id="section-faq">
+        <div class="article-faq-title">常見問題 FAQ</div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">自摸無雙３怎麼觸發免費遊戲？<span class="faq-q-icon">＋</span></div>
+          <div class="faq-a">出現 3 個以上的散財符號（SCATTER）即可觸發免費遊戲。3 個觸發 8 次、4 個觸發 12 次、5 個觸發 20 次並啟動自摸模式。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">自摸無雙３最高倍率是多少？<span class="faq-q-icon">＋</span></div>
+          <div class="faq-a">最高倍率為 15,000 倍，需在自摸模式期間觸發三元牌全版連線。一般玩家在免費遊戲期間平均可獲得 50～300 倍的倍率。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">不懂麻將可以玩自摸無雙３嗎？<span class="faq-q-icon">＋</span></div>
+          <div class="faq-a">完全可以！自摸無雙３雖以麻將為主題，但玩法與一般老虎機相同，不需要懂麻將規則，只要旋轉就能遊玩。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">如何在星運娛樂城玩自摸無雙３？<span class="faq-q-icon">＋</span></div>
+          <div class="faq-a">用手機掃描官方 LINE QR Code，或直接在瀏覽器輸入 play.xinluck.com，以 LINE 帳號登入後即可在遊戲館找到自摸無雙３，免下載直接遊玩。</div>
+        </div>
+      </div>
+
+      <!-- 相關文章 -->
+      <div class="related-articles">
+        <div class="related-title">你可能還會想看</div>
+        <div class="related-grid">
+          <div class="related-card" onclick="showPage('article-demo')">
+            <div class="related-card-img">圖片</div>
+            <div class="related-card-body">
+              <div class="related-card-cat">遊戲攻略</div>
+              <div class="related-card-title">印加女神攻略：觸發 25,000 倍的三個關鍵技巧</div>
+            </div>
+          </div>
+          <div class="related-card" onclick="showPage('article-demo')">
+            <div class="related-card-img">圖片</div>
+            <div class="related-card-body">
+              <div class="related-card-cat">遊戲攻略</div>
+              <div class="related-card-title">龍族傳說６攻略：11,250 倍爆率的觸發條件說明</div>
+            </div>
+          </div>
+          <div class="related-card" onclick="showPage('article-demo')">
+            <div class="related-card-img">圖片</div>
+            <div class="related-card-body">
+              <div class="related-card-cat">平台介紹</div>
+              <div class="related-card-title">LINE 登入完全教學：30 秒完成註冊開始遊戲</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
+      <div><div class="footer-col-title">官方帳號</div>
+        <div class="footer-info">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
+            <span>官方帳號：@xinluck</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
+            <span>FB 粉絲團：星運娛樂城</span>
+          </div>
+        </div></div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div>
+      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
     </div>
   </footer>
 </div>
 
 <!-- 新手專區 -->
 <div class="page" id="page-novice">
-  <div class="sub-page-content">
-    <div class="sub-section" id="novice-介面說明"><div class="sub-section-title">介面說明</div><p>這裡說明遊戲介面的各個區塊功能，包含主選單、遊戲大廳、個人中心等操作介紹。</p><div class="sub-placeholder">介面截圖示意圖（待補）</div></div>
-    <div class="sub-section" id="novice-捷徑教學"><div class="sub-section-title">捷徑教學</div><p>教學如何將星運娛樂城加入手機主畫面，一鍵快速進入。</p><div class="sub-placeholder">捷徑設定步驟截圖（待補）</div></div>
-    <div class="sub-section" id="novice-VIP 說明"><div class="sub-section-title">VIP 說明</div><p>星運 VIP 等級制度說明，各等級所享有的專屬權益與升級條件。</p><div class="sub-placeholder">VIP 等級表（待補）</div></div>
-    <div class="sub-section" id="novice-公會說明"><div class="sub-section-title">公會說明</div><p>加入公會享有更多社群福利，公會戰活動說明、積分制度與獎勵辦法。</p><div class="sub-placeholder">公會制度圖示（待補）</div></div>
-    <div class="sub-section" id="novice-儲值教學"><div class="sub-section-title">儲值教學</div><p>支援 LINE Pay、Apple Pay、Google Pay 等多元支付，儲值即時到帳。</p><div class="sub-placeholder">儲值步驟截圖（待補）</div></div>
+  <div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>新手專區</div>
+  <div style="max-width:860px;margin:0 auto;padding:52px 60px 60px;">
+    <div class="sec-heading" style="margin-bottom:12px;">
+      <div class="sec-heading-bg light" style="font-size:72px;">GUIDE</div>
+      <div class="sec-heading-main light">新手專區</div>
+      <div class="sec-heading-line light"></div>
+    </div>
+    <p style="text-align:center;font-size:14px;color:#999;margin-bottom:32px;line-height:1.7;">第一次來星運娛樂城？這裡有你需要的一切入門教學。</p>
+    <div class="strategy-tabs-center" id="novice-tabs">
+      <button class="strategy-tab-btn active" onclick="switchNoviceTab(this,'介面說明')">介面說明</button>
+      <button class="strategy-tab-btn" onclick="switchNoviceTab(this,'捷徑教學')">捷徑教學</button>
+      <button class="strategy-tab-btn" onclick="switchNoviceTab(this,'VIP 說明')">VIP 說明</button>
+      <button class="strategy-tab-btn" onclick="switchNoviceTab(this,'公會說明')">公會說明</button>
+      <button class="strategy-tab-btn" onclick="switchNoviceTab(this,'儲值教學')">儲值教學</button>
+    </div>
+    <div id="novice-content"></div>
   </div>
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
+      <div><div class="footer-col-title">官方帳號</div><div class="footer-info">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>官方帳號：@xinluck</span></div>
+        <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>FB 粉絲團：星運娛樂城</span></div>
+      </div></div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;"><div style="width:48px;height:48px;background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;text-align:center;line-height:1.3;">年齡<br>分級</div><div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div></div>
+      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
+    </div>
+  </footer>
 </div>
 
 <!-- 客服中心 -->
 <div class="page" id="page-cs">
-  <div class="sub-page-content">
-    <div class="sub-section" id="cs-服務條款"><div class="sub-section-title">服務條款</div><p>本服務條款規範您使用星運娛樂城平台之各項服務，請於使用前詳細閱讀。</p><p>（完整條款內容待補）</p></div>
-    <div class="sub-section" id="cs-隱私權政策"><div class="sub-section-title">隱私權政策</div><p>星運娛樂城重視您的個人資料安全，說明我們如何收集、使用及保護您的個人資訊。</p><p>（完整內容待補）</p></div>
-    <div class="sub-section" id="cs-遊戲規章"><div class="sub-section-title">遊戲規章</div><p>為維護公平遊戲環境，請遵守以下遊戲規範。違反規章者，平台有權暫停或終止帳號。</p><p>（完整內容待補）</p></div>
-    <div class="sub-section" id="cs-停權列表"><div class="sub-section-title">停權列表</div><p>以下列出因違反遊戲規章而遭停權之帳號，本列表定期更新。</p><div class="sub-placeholder">停權帳號列表（待補）</div></div>
-  </div>
-</div>
-
-<!-- 遊戲 Overlay -->
-<div class="gov-bd" id="gov-bd" onclick="if(event.target===this)closeGov()">
-  <div class="gov-modal">
-    <button class="gov-close" onclick="closeGov()">✕</button>
-    <img class="gov-img" id="gov-img" src="" alt="">
-    <div class="gov-title" id="gov-title"></div>
-    <div class="gov-mult" id="gov-mult"></div>
-    <div class="gov-desc" id="gov-desc"></div>
-    <div class="gov-qr-row">
-      <div class="gov-qr-box"><img src="https://www.xinluck.com/images/common/fix_qrcode.webp" alt="QR" onerror="this.parentNode.innerHTML='QR'"></div>
-      <div class="gov-qr-text"><strong>掃碼立即玩</strong>手機掃描 QR Code<br>免下載直接開始<br>支援 LINE ／ 網頁登入</div>
+  <div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>客服中心</div>
+  <div style="max-width:860px;margin:0 auto;padding:52px 60px 60px;">
+    <div class="sec-heading" style="margin-bottom:12px;">
+      <div class="sec-heading-bg light" style="font-size:60px;">SUPPORT</div>
+      <div class="sec-heading-main light">客服中心</div>
+      <div class="sec-heading-line light"></div>
     </div>
-    <button class="gov-play-btn" onclick="window.open('https://play.xinluck.com','_blank')">▶　立即進入遊戲</button>
+    <p style="text-align:center;font-size:14px;color:#999;margin-bottom:32px;line-height:1.7;">服務條款、隱私權政策、遊戲規章與停權相關說明。</p>
+    <div class="strategy-tabs-center" id="cs-tabs">
+      <button class="strategy-tab-btn active" onclick="switchCsTab(this,'服務條款')">服務條款</button>
+      <button class="strategy-tab-btn" onclick="switchCsTab(this,'隱私權政策')">隱私權政策</button>
+      <button class="strategy-tab-btn" onclick="switchCsTab(this,'遊戲規章')">遊戲規章</button>
+      <button class="strategy-tab-btn" onclick="switchCsTab(this,'停權列表')">停權列表</button>
+    </div>
+    <div id="cs-content"></div>
   </div>
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
+      <div><div class="footer-col-title">官方帳號</div><div class="footer-info">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>官方帳號：@xinluck</span></div>
+        <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>FB 粉絲團：星運娛樂城</span></div>
+      </div></div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;"><div style="width:48px;height:48px;background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;text-align:center;line-height:1.3;">年齡<br>分級</div><div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div></div>
+      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
+    </div>
+  </footer>
 </div>
 
 <script>
-const GAMES = [
-  {name:'阿茲特克神話',mult:'5,000x',img:'https://www.xinluck.com/images/games/472_500x500.webp',desc:'神秘阿茲特克文明風格，高達 5,000 倍爆炸倍率，豐富的免費遊戲與野性符號，帶你踏上尋寶之旅！'},
-  {name:'埃及三秘寶',mult:'10,000x',img:'https://www.xinluck.com/images/games/475_500x500.webp',desc:'古埃及法老的祕密寶藏等你解鎖！最高 10,000 倍等你拿。'},
-  {name:'印加女神',mult:'25,000x',img:'https://www.xinluck.com/images/games/482_500x500.webp',desc:'本館最高爆率！印加女神賜福，25,000 倍超級大獎讓你笑開懷！'},
-  {name:'財富金幣',mult:'10,000x',img:'https://www.xinluck.com/images/games/483_500x500.webp',desc:'金幣滿天飛！財運旺旺來，最高可達 10,000 倍爆率。'},
-  {name:'木乃伊寶藏',mult:'10,000x',img:'https://www.xinluck.com/images/games/484_500x500_tw.webp',desc:'沉睡千年的法老寶藏甦醒了！神秘符號組合觸發隱藏獎池。'},
-  {name:'印加祖瑪豪華版',mult:'10,000x',img:'https://www.xinluck.com/images/games/485_500x500_tw.webp',desc:'豪華升級版祖瑪體驗！全新動態場景，讓每次旋轉都充滿驚喜。'},
-  {name:'法老祕寶',mult:'10,000x',img:'https://www.xinluck.com/images/games/487_500x500.webp',desc:'法老的禁忌祕寶現身！最高 10,000 倍獎勵。'},
-  {name:'自摸無雙３',mult:'15,000x',img:'https://www.xinluck.com/images/games/492_500x500.webp',desc:'台灣麻將主題旗艦版！15,000 倍等你胡！'},
-  {name:'自摸無雙２',mult:'3,000x',img:'https://www.xinluck.com/images/games/493_500x500.webp',desc:'麻將老虎機升級版，發財符號連線觸發免費輪轉，胡牌即中獎！'},
-  {name:'祖瑪探險',mult:'1,000倍',img:'https://www.xinluck.com/images/games/888000001_480x480.webp',desc:'叢林探險風格，祖瑪神廟藏有無數寶藏。'},
-  {name:'自摸財神',mult:'5,000倍',img:'https://www.xinluck.com/images/games/888000002_480x480.webp',desc:'財神爺親臨坐鎮！最高 5,000 倍讓財運滾滾來。'},
-  {name:'鳳凰來胡',mult:'16,000x',img:'https://www.xinluck.com/images/games/888000009_480x480.webp',desc:'鳳凰涅槃再起！最高 16,000 倍超級大獎！'},
-  {name:'龍族傳說６',mult:'11,250x',img:'https://www.xinluck.com/images/games/888000015_480x480.webp',desc:'龍族六代王者降臨，11,250 倍傳說大獎！'},
-  {name:'龍族傳說７',mult:'1,800倍',img:'https://www.xinluck.com/images/games/888000016_480x480.webp',desc:'七龍珠集齊，終極爆率爆發！龍族傳說最終章。'},
-  {name:'聚寶福祿壽',mult:'1,000倍',img:'https://www.xinluck.com/images/games/888000003_480x480.webp',desc:'福祿壽三星集齊，福氣大爆發！'},
-];
-const ALL_NEWS = [
-  {type:'event',tag:'活動',title:'六月新會員加入送體驗金，最高 888 元！',date:'2026－06－01'},
-  {type:'notice',tag:'公告',title:'六月系統維護公告：每週四 10：00～11：00 短暫停機',date:'2026－06－01'},
-  {type:'event',tag:'活動',title:'週末好友邀請活動：邀一位好友，兩人同享雙倍獎勵',date:'2026－05－28'},
-  {type:'notice',tag:'公告',title:'防詐騙提醒：官方絕不要求玩家提供帳號密碼',date:'2026－05－25'},
-  {type:'event',tag:'活動',title:'龍族傳說系列特別週：每天登入抽免費旋轉次數',date:'2026－05－20'},
-  {type:'notice',tag:'公告',title:'新遊戲上線：龍族傳說７正式加入精選館！',date:'2026－05－18'},
-];
-const SMALL_ARTICLES = [
-  {title:'LINE 登入完全教學：30 秒完成註冊開始遊戲',date:'2026－05－28'},
-  {title:'印加女神攻略：觸發 25,000 倍的三個關鍵技巧',date:'2026－05－20'},
-  {title:'六月限定活動：每日登入送體驗金，上限不設限！',date:'2026－06－01'},
-  {title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',date:'2026－05－15'},
-];
+const CLOVER_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="18" fill="#00B900" opacity="0.9"/><circle cx="70" cy="50" r="18" fill="#00B900" opacity="0.9"/><circle cx="50" cy="70" r="18" fill="#00B900" opacity="0.9"/><circle cx="30" cy="50" r="18" fill="#00B900" opacity="0.9"/><ellipse cx="50" cy="50" rx="8" ry="8" fill="#00B900"/><rect x="47" y="68" width="6" height="18" rx="3" fill="#5D4037"/></svg>`;
+
+function makeQR(containerId, size) {
+  const wrap = document.getElementById(containerId);
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  const qrDiv = document.createElement('div');
+  wrap.appendChild(qrDiv);
+  const _warn = console.warn;
+  const _error = console.error;
+  const _log = console.log;
+  console.warn = console.error = console.log = () => {};
+  new QRCode(qrDiv, { text:'https://lin.ee/y8rvuUu', width:size, height:size, colorDark:'#000', colorLight:'#fff', correctLevel:QRCode.CorrectLevel.H });
+  console.warn = _warn;
+  console.error = _error;
+  console.log = _log;
+  setTimeout(() => {
+    const logoSize = Math.round(size * 0.22);
+    const overlay = document.createElement('div');
+    overlay.className = 'qr-logo-overlay';
+    overlay.style.cssText = `width:${logoSize}px;height:${logoSize}px;padding:2px;`;
+    overlay.innerHTML = CLOVER_SVG;
+    wrap.appendChild(overlay);
+  }, 200);
+}
+
+window.addEventListener('load', () => {
+  makeQR('qr-hero-wrap', 108);
+  makeQR('qr-modal-wrap', 160);
+  makeQR('qr-float-wrap', 90);
+  makeQR('qr-overlay-wrap', 84);
+  syncDD();
+});
+window.addEventListener('resize', syncDD);
 
 function syncDD() {
   [['nav-game','dd-game'],['nav-novice','dd-novice'],['nav-cs','dd-cs']].forEach(([ni,di]) => {
@@ -811,9 +1188,8 @@ function syncDD() {
     if (n && d) d.style.minWidth = n.offsetWidth + 'px';
   });
 }
-window.addEventListener('load', syncDD);
-window.addEventListener('resize', syncDD);
 
+/* 頁面切換 */
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
@@ -837,17 +1213,62 @@ function scrollToSubSection(type, label) {
     l.classList.toggle('active', l.textContent.trim() === label));
 }
 
+/* 資料 */
+const GAMES = [
+  {name:'阿茲特克神話',mult:'5,000x',img:'https://www.xinluck.com/images/games/472_500x500.webp',desc:'神秘阿茲特克文明風格，高達 5,000 倍爆炸倍率，帶你踏上尋寶之旅！',deeplink:'https://play.xinluck.com/game/472'},
+  {name:'埃及三秘寶',mult:'10,000x',img:'https://www.xinluck.com/images/games/475_500x500.webp',desc:'古埃及法老的祕密寶藏等你解鎖！最高 10,000 倍等你拿。',deeplink:'https://play.xinluck.com/game/475'},
+  {name:'印加女神',mult:'25,000x',img:'https://www.xinluck.com/images/games/482_500x500.webp',desc:'本館最高爆率！印加女神賜福，25,000 倍超級大獎讓你笑開懷！',deeplink:'https://play.xinluck.com/game/482'},
+  {name:'財富金幣',mult:'10,000x',img:'https://www.xinluck.com/images/games/483_500x500.webp',desc:'金幣滿天飛！財運旺旺來，最高可達 10,000 倍爆率。',deeplink:'https://play.xinluck.com/game/483'},
+  {name:'木乃伊寶藏',mult:'10,000x',img:'https://www.xinluck.com/images/games/484_500x500_tw.webp',desc:'沉睡千年的法老寶藏甦醒了！神秘符號組合觸發隱藏獎池。',deeplink:'https://play.xinluck.com/game/484'},
+  {name:'印加祖瑪豪華版',mult:'10,000x',img:'https://www.xinluck.com/images/games/485_500x500_tw.webp',desc:'豪華升級版祖瑪體驗！全新動態場景，讓每次旋轉都充滿驚喜。',deeplink:'https://play.xinluck.com/game/485'},
+  {name:'法老祕寶',mult:'10,000x',img:'https://www.xinluck.com/images/games/487_500x500.webp',desc:'法老的禁忌祕寶現身！最高 10,000 倍獎勵。',deeplink:'https://play.xinluck.com/game/487'},
+  {name:'自摸無雙３',mult:'15,000x',img:'https://www.xinluck.com/images/games/492_500x500.webp',desc:'台灣麻將主題旗艦版！15,000 倍等你胡！',deeplink:'https://play.xinluck.com/game/492'},
+  {name:'自摸無雙２',mult:'3,000x',img:'https://www.xinluck.com/images/games/493_500x500.webp',desc:'麻將老虎機升級版，發財符號連線觸發免費輪轉，胡牌即中獎！',deeplink:'https://play.xinluck.com/game/493'},
+  {name:'祖瑪探險',mult:'1,000倍',img:'https://www.xinluck.com/images/games/888000001_480x480.webp',desc:'叢林探險風格，祖瑪神廟藏有無數寶藏。',deeplink:'https://play.xinluck.com/game/888000001'},
+  {name:'自摸財神',mult:'5,000倍',img:'https://www.xinluck.com/images/games/888000002_480x480.webp',desc:'財神爺親臨坐鎮！最高 5,000 倍讓財運滾滾來。',deeplink:'https://play.xinluck.com/game/888000002'},
+  {name:'鳳凰來胡',mult:'16,000x',img:'https://www.xinluck.com/images/games/888000009_480x480.webp',desc:'鳳凰涅槃再起！最高 16,000 倍超級大獎！',deeplink:'https://play.xinluck.com/game/888000009'},
+  {name:'龍族傳說６',mult:'11,250x',img:'https://www.xinluck.com/images/games/888000015_480x480.webp',desc:'龍族六代王者降臨，11,250 倍傳說大獎！',deeplink:'https://play.xinluck.com/game/888000015'},
+  {name:'龍族傳說７',mult:'1,800倍',img:'https://www.xinluck.com/images/games/888000016_480x480.webp',desc:'七龍珠集齊，終極爆率爆發！龍族傳說最終章。',deeplink:'https://play.xinluck.com/game/888000016'},
+  {name:'聚寶福祿壽',mult:'1,000倍',img:'https://www.xinluck.com/images/games/888000003_480x480.webp',desc:'福祿壽三星集齊，福氣大爆發！',deeplink:'https://play.xinluck.com/game/888000003'},
+];
+
+const ALL_NEWS = [
+  {type:'event',tag:'活動',title:'六月新會員加入送體驗金，最高 888 元！',excerpt:'新會員加入星運娛樂城，完成 LINE 登入即可領取體驗金，最高 888 元，活動限時舉辦。',date:'2026－06－01'},
+  {type:'notice',tag:'公告',title:'六月系統維護公告：每週四 10：00～11：00 短暫停機',excerpt:'為提升遊戲穩定性，每週四 10：00～11：00 進行例行維護，期間暫停服務，造成不便敬請見諒。',date:'2026－06－01'},
+  {type:'event',tag:'活動',title:'週末好友邀請活動：邀一位好友，兩人同享雙倍獎勵',excerpt:'限定週末舉辦的邀友活動，邀請好友加入成功後，邀請人與受邀人同時獲得雙倍遊戲幣獎勵。',date:'2026－05－28'},
+  {type:'notice',tag:'公告',title:'防詐騙提醒：官方絕不要求玩家提供帳號密碼',excerpt:'近期有不法人士假冒星運客服詐騙玩家，請注意官方絕對不會要求提供任何帳號密碼資訊。',date:'2026－05－25'},
+  {type:'event',tag:'活動',title:'龍族傳說系列特別週：每天登入抽免費旋轉次數',excerpt:'龍族傳說系列特別活動，每天登入即可參加抽獎，有機會獲得免費旋轉次數，天天抽天天爽。',date:'2026－05－20'},
+  {type:'notice',tag:'公告',title:'新遊戲上線：龍族傳說７正式加入精選館！',excerpt:'全新機台龍族傳說７正式上線，最高倍率 1,800 倍，全新劇情延續龍族傳說系列精彩體驗。',date:'2026－05－18'},
+];
+
+const STRATEGY_ARTICLES = [
+  {cat:'guide',catLabel:'遊戲攻略',title:'自摸無雙３完全攻略：新手必看的胡牌技巧與倍率說明',date:'2026－06－01'},
+  {cat:'platform',catLabel:'平台介紹',title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',date:'2026－05－28'},
+  {cat:'activity',catLabel:'活動情報',title:'六月活動總整理：體驗金、邀友活動、龍族特別週一次看',date:'2026－05－25'},
+  {cat:'guide',catLabel:'遊戲攻略',title:'印加女神攻略：觸發 25,000 倍的三個關鍵技巧',date:'2026－05－20'},
+  {cat:'platform',catLabel:'平台介紹',title:'LINE 登入完全教學：30 秒完成註冊、免下載開始遊戲',date:'2026－05－18'},
+  {cat:'guide',catLabel:'遊戲攻略',title:'龍族傳說６攻略：11,250 倍爆率的觸發條件與免費遊戲說明',date:'2026－05－15'},
+  {cat:'activity',catLabel:'活動情報',title:'邀友活動攻略：如何最大化好友邀請獎勵',date:'2026－05－10'},
+  {cat:'platform',catLabel:'平台介紹',title:'星運娛樂城 VIP 制度完整說明：各等級權益一次看懂',date:'2026－05－05'},
+  {cat:'guide',catLabel:'遊戲攻略',title:'鳳凰來胡攻略：16,000 倍超級大獎，新手怎麼玩？',date:'2026－04－28'},
+];
+
+const SMALL_ARTICLES = [
+  {title:'LINE 登入完全教學：30 秒完成註冊開始遊戲',date:'2026－05－28'},
+  {title:'印加女神攻略：觸發 25,000 倍的三個關鍵技巧',date:'2026－05－20'},
+  {title:'六月限定活動：每日登入送體驗金，上限不設限！',date:'2026－06－01'},
+  {title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',date:'2026－05－15'},
+];
+
+/* 跑馬燈 */
 (function() {
   const html = ALL_NEWS.map(n =>
-    `<div class="ticker-item">
-      <span class="ticker-item-tag ${n.type==='event'?'tag-ev':'tag-no'}">${n.tag}</span>
-      ${n.title}
-      <span style="color:rgba(255,215,0,0.25);margin-left:10px;font-size:11px;">${n.date}</span>
-    </div><span style="color:rgba(255,215,0,0.18);padding:0 8px;font-size:16px;">·</span>`
+    `<div class="ticker-item"><span class="ticker-item-tag ${n.type==='event'?'tag-ev':'tag-no'}">${n.tag}</span>${n.title}<span style="color:rgba(255,215,0,0.25);margin-left:10px;font-size:11px;">${n.date}</span></div><span style="color:rgba(255,215,0,0.18);padding:0 8px;font-size:16px;">·</span>`
   ).join('');
   document.getElementById('ticker-track').innerHTML = html + html;
 })();
 
+/* 首頁輪播 */
 const VISIBLE = 5;
 let cIdx = 0;
 const track = document.getElementById('carousel-track');
@@ -856,7 +1277,6 @@ const totalPages = Math.ceil(GAMES.length / VISIBLE);
 track.innerHTML = GAMES.map(g =>
   `<div class="c-item" onclick='openGov(${JSON.stringify(g)})'>
     <img src="${g.img}" alt="${g.name}" loading="lazy" onerror="this.style.background='#331100'">
-    <div class="c-mult">${g.mult}</div>
     <div class="c-hover"><span class="c-play">▶</span></div>
   </div>`).join('');
 dotsEl.innerHTML = Array.from({length:totalPages},(_,i) =>
@@ -869,8 +1289,9 @@ function updateCarousel() {
 function moveCarousel(d) { cIdx = Math.max(0, Math.min(totalPages-1, cIdx+d)); updateCarousel(); }
 function goPage(i) { cIdx = i; updateCarousel(); }
 
+/* 攻略首頁小卡 */
 document.getElementById('articles-small').innerHTML = SMALL_ARTICLES.map(a =>
-  `<div class="article-small">
+  `<div class="article-small" onclick="showPage('article-demo')">
     <div class="article-small-img">圖片</div>
     <div class="article-small-body">
       <div class="article-small-title">${a.title}</div>
@@ -878,11 +1299,88 @@ document.getElementById('articles-small').innerHTML = SMALL_ARTICLES.map(a =>
     </div>
   </div>`).join('');
 
+/* 所有遊戲頁 grid */
+document.getElementById('games-grid').innerHTML = GAMES.map(g =>
+  `<div class="game-card" onclick='openGov(${JSON.stringify(g)})'>
+    <img src="${g.img}" alt="${g.name}" loading="lazy" onerror="this.style.background='#331100'">
+    <div class="game-card-hover"><span class="game-card-play">▶</span></div>
+  </div>`).join('');
+
+/* 活動公告頁 */
+function renderNewsEvent() {
+  const events = ALL_NEWS.filter(n => n.type === 'event');
+  document.getElementById('news-event-grid').innerHTML = events.map(n =>
+    `<div class="news-event-row">
+      <div class="news-event-row-img">活動封面圖片</div>
+      <div class="news-event-row-body">
+        <div class="news-event-row-title">${n.title}</div>
+        <div class="news-event-row-excerpt">${n.excerpt}</div>
+        <div class="news-event-row-date">${n.date}</div>
+      </div>
+    </div>`).join('');
+}
+function renderNewsNotice() {
+  const notices = ALL_NEWS.filter(n => n.type === 'notice');
+  document.getElementById('news-notice-list').innerHTML = notices.map(n =>
+    `<div class="news-notice-item">
+      <div class="news-notice-line"></div>
+      <div class="news-notice-title">${n.title}</div>
+      <div class="news-notice-date">${n.date}</div>
+    </div>`).join('');
+}
+function switchNewsTab(el, type) {
+  document.querySelectorAll('.news-tab-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('news-event-section').style.display = type === 'event' ? '' : 'none';
+  document.getElementById('news-notice-section').style.display = type === 'notice' ? '' : 'none';
+}
+renderNewsEvent();
+renderNewsNotice();
+
+/* FAQ toggle */
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  const ans = el.nextElementSibling;
+  ans.classList.toggle('open');
+}
+
+/* TOC scroll */
+function scrollToArticleSection(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const offset = 70 + 20;
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+}
+
+/* 攻略專區頁 */
+function renderStrategy(filter) {
+  const list = filter === 'all' ? STRATEGY_ARTICLES : STRATEGY_ARTICLES.filter(a => a.cat === filter);
+  const catClass = { guide:'cat-guide', platform:'cat-platform', activity:'cat-activity' };
+  document.getElementById('strategy-grid').innerHTML = list.map(a =>
+    `<div class="strategy-card" onclick="showPage('article-demo')">
+      <div class="strategy-card-img">圖片</div>
+      <div class="strategy-card-body">
+        <span class="strategy-card-cat ${catClass[a.cat]}">${a.catLabel}</span>
+        <div class="strategy-card-title">${a.title}</div>
+        <div class="strategy-card-date">${a.date}</div>
+      </div>
+    </div>`).join('');
+}
+function filterStrategy(el, filter) {
+  document.querySelectorAll('.strategy-tab-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderStrategy(filter);
+}
+renderStrategy('all');
+
+
+/* 遊戲彈窗 */
 function openGov(g) {
   document.getElementById('gov-img').src = g.img;
   document.getElementById('gov-title').textContent = g.name;
   document.getElementById('gov-mult').textContent = '最高倍率　' + g.mult;
   document.getElementById('gov-desc').textContent = g.desc;
+  document.getElementById('gov-play-btn').onclick = () => window.open(g.deeplink || 'https://play.xinluck.com', '_blank');
   document.getElementById('gov-bd').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -891,6 +1389,55 @@ function closeGov() {
   document.body.style.overflow = '';
 }
 
+
+/* ── 新手專區內容 ── */
+const NOVICE_CONTENT = {
+  '介面說明': { title:'介面說明', body:'這裡說明遊戲介面的各個區塊功能，包含主選單、遊戲大廳、個人中心等操作介紹。', ph:'介面截圖示意圖（待補）' },
+  '捷徑教學': { title:'捷徑教學', body:'教學如何將星運娛樂城加入手機主畫面，一鍵快速進入，免每次開瀏覽器搜尋。', ph:'捷徑設定步驟截圖（待補）' },
+  'VIP 說明': { title:'VIP 說明', body:'星運 VIP 等級制度說明，各等級所享有的專屬權益與升級條件，讓忠實玩家享有更多禮遇。', ph:'VIP 等級表（待補）' },
+  '公會說明': { title:'公會說明', body:'加入公會享有更多社群福利，公會戰活動說明、公會積分制度與獎勵辦法一次看懂。', ph:'公會制度圖示（待補）' },
+  '儲值教學': { title:'儲值教學', body:'支援 LINE Pay、Apple Pay、Google Pay 等多元支付方式，儲值即時到帳，操作簡單安全。', ph:'儲值步驟截圖（待補）' },
+};
+function renderNoviceContent(key) {
+  const d = NOVICE_CONTENT[key];
+  document.getElementById('novice-content').innerHTML = `
+    <div style="padding:36px 0;">
+      <div style="font-size:20px;font-weight:900;color:var(--red-main);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--cream-dark);">${d.title}</div>
+      <p style="font-size:15px;line-height:1.9;color:#555;margin-bottom:20px;">${d.body}</p>
+      <div style="background:#fff8ee;border:1.5px dashed var(--cream-dark);border-radius:12px;padding:40px;text-align:center;color:#ccc;font-size:14px;">${d.ph}</div>
+    </div>`;
+}
+function switchNoviceTab(el, key) {
+  document.querySelectorAll('#novice-tabs .strategy-tab-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderNoviceContent(key);
+}
+renderNoviceContent('介面說明');
+
+/* ── 客服中心內容 ── */
+const CS_CONTENT = {
+  '服務條款': { title:'服務條款', body:'本服務條款規範您使用星運娛樂城平台之各項服務。請於使用前詳細閱讀以下內容，使用本平台即表示您同意遵守本條款。', ph:'完整條款內容（待補）' },
+  '隱私權政策': { title:'隱私權政策', body:'星運娛樂城重視您的個人資料安全，本政策說明我們如何收集、使用及保護您的個人資訊，請放心使用。', ph:'完整隱私權政策內容（待補）' },
+  '遊戲規章': { title:'遊戲規章', body:'為維護公平遊戲環境，請遵守以下遊戲規範。違反規章者，平台有權暫停或終止其帳號，情節重大者將列入停權名單。', ph:'完整遊戲規章內容（待補）' },
+  '停權列表': { title:'停權列表', body:'以下列出因違反遊戲規章而遭停權之帳號，本列表定期更新。若有疑問請聯繫客服信箱 support@xinluck.com。', ph:'停權帳號列表（待補）' },
+};
+function renderCsContent(key) {
+  const d = CS_CONTENT[key];
+  document.getElementById('cs-content').innerHTML = `
+    <div style="padding:36px 0;">
+      <div style="font-size:20px;font-weight:900;color:var(--red-main);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--cream-dark);">${d.title}</div>
+      <p style="font-size:15px;line-height:1.9;color:#555;margin-bottom:20px;">${d.body}</p>
+      <div style="background:#fff8ee;border:1.5px dashed var(--cream-dark);border-radius:12px;padding:40px;text-align:center;color:#ccc;font-size:14px;">${d.ph}</div>
+    </div>`;
+}
+function switchCsTab(el, key) {
+  document.querySelectorAll('#cs-tabs .strategy-tab-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderCsContent(key);
+}
+renderCsContent('服務條款');
+
+/* Sub-nav scroll */
 window.addEventListener('scroll', () => {
   ['novice','cs'].forEach(type => {
     const sn = document.getElementById('subnav-' + type);
@@ -902,6 +1449,26 @@ window.addEventListener('scroll', () => {
       l.classList.toggle('active', r.top <= 130 && r.bottom > 130);
     });
   });
+});
+</script>
+
+<!-- 回到頂部 -->
+<div class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+    <path d="M12 19 L12 6" stroke="#7B0000" stroke-width="3" stroke-linecap="round"/>
+    <path d="M6 12 L12 6 L18 12" stroke="#7B0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+<script>
+/* 回到頂部顯示邏輯 */
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('back-to-top');
+  if (window.scrollY > 100) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
 });
 </script>
 </body>
