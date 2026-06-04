@@ -170,10 +170,10 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 /* ══ HERO ══ */
 .hero {
   position: relative; width: 100%; min-height: 560px;
-  overflow: hidden; display: flex; flex-direction: column;
+  overflow: visible; display: flex; flex-direction: column; z-index: 3;
   background: linear-gradient(180deg,#8B0000 0%,#CC2200 40%,#FF6600 70%,#FFD700 100%);
 }
-.hero-banner-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+.hero-banner-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
 .hero-banner-ph {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;
 }
@@ -183,21 +183,30 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   font-size: 15px; font-weight: 700; text-align: center; line-height: 1.8;
 }
 .hero-bottom {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top,rgba(80,0,0,0.92) 0%,rgba(80,0,0,0.6) 55%,transparent 100%);
-  padding: 44px 60px 40px; display: flex; flex-direction: column; align-items: center; gap: 28px; z-index: 2;
+  position: absolute; bottom: -96px; left: 0; right: 0;
+  min-height: 168px; padding: 44px 60px 24px;
+  display: flex; align-items: flex-start; justify-content: center; z-index: 2;
 }
-.hero-slogan {
-  font-size: 56px; font-weight: 900; color: var(--gold);
-  text-shadow: 3px 3px 0 #5A0000,0 0 24px rgba(255,160,0,0.6);
-  letter-spacing: 5px; text-align: center; line-height: 1.2;
+.hero-bottom::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: #8F0000;
+  clip-path: polygon(0 0,8% 8px,18% 20px,32% 42px,50% 64px,68% 42px,82% 20px,92% 8px,100% 0,100% 100%,0 100%);
+  box-shadow: 0 -18px 38px rgba(0,0,0,0.24), inset 0 14px 24px rgba(255,215,0,0.08);
+  pointer-events: none;
 }
-.hero-cta-row { display: flex; align-items: center; gap: 48px; justify-content: center; }
+.hero-bottom::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 76px; z-index: 0;
+  background: linear-gradient(180deg,#FFF7A0 0%,#FFD700 45%,#C8960C 100%);
+  clip-path: polygon(0 0,8% 8px,18% 20px,32% 42px,50% 64px,68% 42px,82% 20px,92% 8px,100% 0,100% 8px,92% 16px,82% 28px,68% 50px,50% 72px,32% 50px,18% 28px,8% 16px,0 8px);
+  filter: drop-shadow(0 8px 10px rgba(60,0,0,0.42));
+  pointer-events: none;
+}
+.hero-cta-row { display: flex; align-items: flex-start; gap: 48px; justify-content: center; position: relative; z-index: 1; margin-top: -18px; }
 .hero-qr-block,
 .hero-web-block { width: 128px; }
 .hero-qr-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.hero-qr-label { color: rgba(255,255,255,0.85); font-size: 17px; font-weight: 700; letter-spacing: 1px; white-space: nowrap; }
-.hero-cta-divider { color: rgba(255,215,0,0.3); font-size: 28px; }
+.hero-qr-label { color: var(--gold); font-size: 17px; font-weight: 900; letter-spacing: 1px; white-space: nowrap; text-shadow: 0 2px 0 #4A0000,0 0 12px rgba(255,160,0,0.45); }
+.hero-cta-divider { color: rgba(255,215,0,0.32); font-size: 28px; }
 .hero-web-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .hero-btn-web {
   width: 108px; height: 108px;
@@ -208,7 +217,31 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .hero-btn-web span { display: block; white-space: nowrap; }
 .hero-btn-web:hover { background: #005fa3; border-color: #005fa3; transform: scale(1.02); }
-.hero-web-label { color: rgba(255,255,255,0.85); font-size: 17px; font-weight: 700; letter-spacing: 1px; white-space: nowrap; }
+.hero-web-label { color: var(--gold); font-size: 17px; font-weight: 900; letter-spacing: 1px; white-space: nowrap; text-shadow: 0 2px 0 #4A0000,0 0 12px rgba(255,160,0,0.45); }
+
+@media (max-width: 640px) {
+  .hero { min-height: 520px; }
+  .hero-bottom {
+    bottom: -76px;
+    min-height: 146px;
+    padding: 34px 18px 20px;
+  }
+  .hero-bottom::before { clip-path: polygon(0 0,10% 6px,24% 18px,38% 34px,50% 46px,62% 34px,76% 18px,90% 6px,100% 0,100% 100%,0 100%); }
+  .hero-bottom::after {
+    height: 56px;
+    clip-path: polygon(0 0,10% 6px,24% 18px,38% 34px,50% 46px,62% 34px,76% 18px,90% 6px,100% 0,100% 6px,90% 12px,76% 24px,62% 40px,50% 52px,38% 40px,24% 24px,10% 12px,0 6px);
+  }
+  .hero-cta-row { gap: 20px; margin-top: -12px; }
+  .hero-qr-block,
+  .hero-web-block { width: 112px; }
+  .hero-cta-divider { font-size: 22px; }
+  .hero-qr-label,
+  .hero-web-label { font-size: 14px; }
+  .hero-btn-web,
+  .qr-size-hero { width: 96px; height: 96px; }
+  .hero-btn-web { font-size: 19px; }
+  .brand-section { padding-top: 130px; }
+}
 
 /* QR 懸浮 */
 .qr-float {
@@ -226,7 +259,10 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .section-alt { background: #fff8ee; }
 
 /* 品牌介紹 */
-.brand-section { background: var(--red-dark); padding: 72px 80px; position: relative; overflow: hidden; }
+.brand-section {
+  background: linear-gradient(180deg,#8F0000 0%,#8F0000 240px,#5A0000 72%,#3A0000 100%);
+  padding: 152px 80px 72px; position: relative; overflow: hidden; z-index: 1;
+}
 .youtube-wrapper {
   max-width: 1000px; margin: 0 auto 52px;
   border-radius: 14px; overflow: hidden; border: 3px solid var(--gold-dark);
@@ -261,30 +297,40 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 
 /* 跑馬燈 */
 .ticker-section {
-  background: var(--red-dark); border-top: 2px solid var(--gold-dark);
-  border-bottom: 2px solid var(--gold-dark); overflow: hidden;
+  background:
+    linear-gradient(180deg,rgba(255,215,0,0.07),transparent 42%),
+    linear-gradient(180deg,#4A0000 0%,#260000 100%);
+  border-top: 1px solid rgba(255,215,0,0.58);
+  border-bottom: 1px solid rgba(255,215,0,0.36);
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 20px rgba(0,0,0,0.18);
 }
-.ticker-inner { display: flex; align-items: stretch; height: 48px; }
+.ticker-inner { display: flex; align-items: stretch; height: 50px; }
 .ticker-label {
-  background: var(--gold-dark); color: #3A0000; font-size: 15px; font-weight: 900;
-  padding: 0 20px; display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; letter-spacing: 1px;
+  background: linear-gradient(135deg,#FFF0A0 0%,#FFD700 38%,#C8960C 100%);
+  color: #3A0000; font-size: 15px; font-weight: 900;
+  padding: 0 24px 0 22px; display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; letter-spacing: 1px;
+  border-right: 1px solid rgba(255,255,255,0.28);
+  border-radius: 0 999px 999px 0;
+  box-shadow: 6px 0 16px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.5);
 }
 .ticker-track-wrap { flex: 1; overflow: hidden; }
-.ticker-track { display: flex; align-items: center; height: 48px; animation: ticker-scroll 32s linear infinite; white-space: nowrap; }
+.ticker-track { display: flex; align-items: center; height: 50px; animation: ticker-scroll 32s linear infinite; white-space: nowrap; }
 .ticker-track:hover { animation-play-state: paused; }
 @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 36px; cursor: pointer; color: #FFE0C0; font-size: 17px; transition: color 0.15s; white-space: nowrap; }
-.ticker-item:hover { color: var(--gold); }
+.ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 36px; cursor: pointer; color: #FFE6B8; font-size: 17px; transition: color 0.15s; white-space: nowrap; text-shadow: 0 1px 0 rgba(0,0,0,0.35); }
+.ticker-item:hover { color: #FFD700; }
 .ticker-item-tag { font-size: 13px; font-weight: 700; padding: 1px 8px; border-radius: 10px; flex-shrink: 0; }
 .tag-ev { background: rgba(255,160,0,0.2); color: var(--gold); border: 1px solid rgba(255,160,0,0.35); }
 .tag-no { background: rgba(100,160,255,0.15); color: #90CAF9; border: 1px solid rgba(100,160,255,0.25); }
 .ticker-more {
-  background: none; border: none; border-left: 1px solid rgba(255,215,0,0.15);
-  color: rgba(255,215,0,0.65); font-size: 15px; font-weight: 700;
+  background: linear-gradient(180deg,rgba(255,215,0,0.08),rgba(255,215,0,0.02));
+  border: none; border-left: 1px solid rgba(255,215,0,0.22);
+  color: rgba(255,226,128,0.82); font-size: 15px; font-weight: 800;
   padding: 0 20px; cursor: pointer; font-family: inherit;
   white-space: nowrap; flex-shrink: 0; display: flex; align-items: center; transition: color 0.15s;
 }
-.ticker-more:hover { color: var(--gold); }
+.ticker-more:hover { color: #FFD700; }
 
 /* 首頁精選遊戲輪播（無倍率方框） */
 .games-section { background: var(--cream); }
@@ -921,16 +967,14 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 <!-- ══════════ 首頁 ══════════ -->
 <div class="page active" id="page-home">
   <section class="hero">
-    <img class="hero-banner-img" src="BANNER_IMAGE_URL" alt="" onerror="this.style.display='none'">
-    <div class="hero-banner-ph">
-      <div class="hero-banner-ph-box">主視覺 Banner 圖片<br>換圖：將 src 改成你的圖片網址<br>建議尺寸 1920 × 560px</div>
-    </div>
+    <video class="hero-banner-img" autoplay muted loop playsinline preload="metadata">
+      <source src="https://www.xinluck.com/images/website/banner.mp4" type="video/mp4">
+    </video>
     <div class="hero-bottom">
-      <div class="hero-slogan">天天玩星運　吼哩大探吉！</div>
       <div class="hero-cta-row">
         <div class="hero-qr-block">
           <div class="qr-wrap qr-size-hero" id="qr-hero-wrap"></div>
-          <div class="hero-qr-label">手機掃碼玩</div>
+          <div class="hero-qr-label">掃碼立即玩</div>
         </div>
         <div class="hero-cta-divider">｜</div>
         <div class="hero-web-block">
@@ -957,8 +1001,8 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
     <div class="brand-features">
       <div class="brand-feat"><div class="brand-feat-icon">⚡</div><div class="brand-feat-title">零秒開台</div><div class="brand-feat-desc">免下載、免安裝，打開 LINE 立即玩，真正的零門檻娛樂體驗。</div></div>
       <div class="brand-feat"><div class="brand-feat-icon">🔒</div><div class="brand-feat-title">LINE 帳號直接登入</div><div class="brand-feat-desc">以 LINE 帳號登入，安全驗證、不需額外註冊，保護您的帳號安全。</div></div>
-      <div class="brand-feat"><div class="brand-feat-icon">🏆</div><div class="brand-feat-title">公會社群系統</div><div class="brand-feat-desc">加入公會一起衝榜，公會戰、排名賽，與好友共享勝利的喜悅。</div></div>
-      <div class="brand-feat"><div class="brand-feat-icon">🎰</div><div class="brand-feat-title">百款精選機台</div><div class="brand-feat-desc">最高倍率 25,000 倍，機台天天開獎，體感超好，隨時都有大獎等你抱回家。</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">🏆</div><div class="brand-feat-title">公會社群系統</div><div class="brand-feat-desc">加入公會與好友互動交流，累積公會金庫，享受更有凝聚力的社群娛樂體驗。</div></div>
+      <div class="brand-feat"><div class="brand-feat-icon">🎰</div><div class="brand-feat-title">百款精選機台</div><div class="brand-feat-desc">全站最高倍率 80,000 倍，機台天天開獎，體感超好，隨時都有大獎等你抱回家。</div></div>
       <div class="brand-feat"><div class="brand-feat-icon">💰</div><div class="brand-feat-title">多元儲值管道</div><div class="brand-feat-desc">支援 LINE Pay、Apple Pay、Google Pay 等，儲值即時到帳。</div></div>
       <div class="brand-feat"><div class="brand-feat-icon">📱</div><div class="brand-feat-title">手機直接玩，隨開隨玩</div><div class="brand-feat-desc">不用下載 App，打開瀏覽器或 LINE 就能玩，想玩就玩、想停就停，超方便。</div></div>
     </div>
@@ -1087,7 +1131,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
     <div style="text-align:center;margin-bottom:8px;">
       <span style="font-size:20px;font-weight:700;color:var(--red-main);letter-spacing:1px;">星運娛樂城老虎機館｜熱門機台等你體驗</span>
     </div>
-    <p style="text-align:center;font-size:18px;color:#4A2800;line-height:1.9;max-width:680px;margin:0 auto 44px;">星運娛樂城精選熱門老虎機，包含自摸無雙、印加女神、龍族傳說等人氣機台。最高倍率高達 25,000 倍，體感刺激、開獎頻繁，全館支援手機免下載直接遊玩。</p>
+    <p style="text-align:center;font-size:18px;color:#4A2800;line-height:1.9;max-width:680px;margin:0 auto 44px;">星運娛樂城精選熱門老虎機，包含自摸無雙、印加女神、龍族傳說等人氣機台。全站最高倍率高達 80,000 倍，體感刺激、開獎頻繁，全館支援手機免下載直接遊玩。</p>
     <div class="games-grid" id="games-grid"></div>
   </div>
   <div class="footer-slot"></div>
@@ -1261,8 +1305,8 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
             <div class="related-card-img">圖片</div>
             <div class="related-card-body">
               <div class="related-card-cat cat-guide">遊戲攻略</div>
-              <div class="related-card-title">印加女神攻略：觸發 25,000 倍的三個關鍵技巧</div>
-              <div class="related-card-excerpt">全館最高爆率機台，三個關鍵時機一次整理。</div>
+              <div class="related-card-title">印加女神攻略：觸發 80,000 倍的三個關鍵技巧</div>
+              <div class="related-card-excerpt">全站最高倍率機台，三個關鍵時機一次整理。</div>
               <div class="related-card-more">閱讀更多 →</div>
             </div>
           </div>
@@ -1500,7 +1544,7 @@ function scrollToSubSection(type, label) {
 const GAMES = [
   {name:'阿茲特克神話',mult:'5,000x',img:'https://www.xinluck.com/images/games/472_500x500.webp',desc:'神秘阿茲特克文明風格，高達 5,000 倍爆炸倍率，帶你踏上尋寶之旅！',deeplink:'https://play.xinluck.com/game/472'},
   {name:'埃及三秘寶',mult:'10,000x',img:'https://www.xinluck.com/images/games/475_500x500.webp',desc:'古埃及法老的祕密寶藏等你解鎖！最高 10,000 倍等你拿。',deeplink:'https://play.xinluck.com/game/475'},
-  {name:'印加女神',mult:'25,000x',img:'https://www.xinluck.com/images/games/482_500x500.webp',desc:'本館最高爆率！印加女神賜福，25,000 倍超級大獎讓你笑開懷！',deeplink:'https://play.xinluck.com/game/482'},
+  {name:'印加女神',mult:'80,000x',img:'https://www.xinluck.com/images/games/482_500x500.webp',desc:'全站最高倍率！印加女神賜福，80,000 倍超級大獎讓你笑開懷！',deeplink:'https://play.xinluck.com/game/482'},
   {name:'財富金幣',mult:'10,000x',img:'https://www.xinluck.com/images/games/483_500x500.webp',desc:'金幣滿天飛！財運旺旺來，最高可達 10,000 倍爆率。',deeplink:'https://play.xinluck.com/game/483'},
   {name:'木乃伊寶藏',mult:'10,000x',img:'https://www.xinluck.com/images/games/484_500x500_tw.webp',desc:'沉睡千年的法老寶藏甦醒了！神秘符號組合觸發隱藏獎池。',deeplink:'https://play.xinluck.com/game/484'},
   {name:'印加祖瑪豪華版',mult:'10,000x',img:'https://www.xinluck.com/images/games/485_500x500_tw.webp',desc:'豪華升級版祖瑪體驗！全新動態場景，讓每次旋轉都充滿驚喜。',deeplink:'https://play.xinluck.com/game/485'},
@@ -1528,7 +1572,7 @@ const STRATEGY_ARTICLES = [
   {cat:'guide',catLabel:'遊戲攻略',title:'自摸無雙３完全攻略：新手必看的胡牌技巧與倍率說明',excerpt:'麻將老虎機玩法解析，從免費遊戲觸發到 15,000 倍爆率，一次看懂。',date:'2026.06.01'},
   {cat:'platform',catLabel:'平台介紹',title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',excerpt:'LINE 登入、免下載、公會系統⋯⋯星運到底差在哪？這篇告訴你。',date:'2026.05.28'},
   {cat:'activity',catLabel:'活動情報',title:'六月活動總整理：體驗金、邀友活動、龍族特別週一次看',excerpt:'六月三大活動整理，教你如何最大化每一分獎勵。',date:'2026.05.25'},
-  {cat:'guide',catLabel:'遊戲攻略',title:'印加女神攻略：觸發 25,000 倍的三個關鍵技巧',excerpt:'全館最高爆率機台，這三個時機抓對了，大獎就在眼前。',date:'2026.05.20'},
+  {cat:'guide',catLabel:'遊戲攻略',title:'印加女神攻略：觸發 80,000 倍的三個關鍵技巧',excerpt:'全站最高倍率機台，這三個時機抓對了，大獎就在眼前。',date:'2026.05.20'},
   {cat:'platform',catLabel:'平台介紹',title:'LINE 登入完全教學：30 秒完成註冊、免下載開始遊戲',excerpt:'第一次玩星運？跟著步驟走，30 秒就能開台。',date:'2026.05.18'},
   {cat:'guide',catLabel:'遊戲攻略',title:'龍族傳說６攻略：11,250 倍爆率的觸發條件與免費遊戲說明',excerpt:'龍族系列人氣旗艦版，免費遊戲怎麼觸發？這篇詳解。',date:'2026.05.15'},
   {cat:'activity',catLabel:'活動情報',title:'邀友活動攻略：如何最大化好友邀請獎勵',excerpt:'邀一個朋友能拿多少？邀越多越划算，算法一次說清楚。',date:'2026.05.10'},
@@ -1538,7 +1582,7 @@ const STRATEGY_ARTICLES = [
 
 const SMALL_ARTICLES = [
   {title:'LINE 登入完全教學：30 秒完成註冊開始遊戲',date:'2026.05.28'},
-  {title:'印加女神攻略：觸發 25,000 倍的三個關鍵技巧',date:'2026.05.20'},
+  {title:'印加女神攻略：觸發 80,000 倍的三個關鍵技巧',date:'2026.05.20'},
   {title:'六月限定活動：每日登入送體驗金，上限不設限！',date:'2026.06.01'},
   {title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',date:'2026.05.15'},
 ];
