@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -18,8 +18,8 @@
   --green-line: #00B900;
   --blue-web: #00BFFF;
   --text-dark: #3A1000;
-  --header-h: 70px;
-  --subnav-h: 46px;
+  --header-h: 92px;
+  --subnav-h: 54px;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); }
@@ -27,6 +27,14 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 /* ══ QR CODE ══ */
 .qr-wrap { position: relative; display: inline-flex; align-items: center; justify-content: center; }
 .qr-wrap canvas, .qr-wrap img { display: block; border-radius: 6px; }
+.qr-size-float { width: 90px; height: 90px; }
+.qr-size-modal { width: 160px; height: 160px; }
+.qr-size-hero { width: 108px; height: 108px; }
+.qr-size-support { width: 96px; height: 96px; }
+.qr-size-overlay {
+  width: 84px; height: 84px; flex-shrink: 0;
+  background: #fff; border-radius: 8px; overflow: hidden;
+}
 .qr-logo-overlay {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
   background: #fff; border-radius: 6px;
@@ -65,30 +73,31 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 /* ══ HEADER ══ */
 .header {
   background: var(--red-dark); display: flex; align-items: center;
-  padding: 0 32px; height: var(--header-h);
-  border-bottom: 3px solid var(--gold-dark);
+  padding: 0 40px; height: var(--header-h);
+  border-bottom: 4px solid var(--gold-dark);
   position: sticky; top: 0; z-index: 300;
 }
 .logo-placeholder {
-  width: 72px; height: 58px; flex-shrink: 0; margin-right: 12px;
+  width: 82px; height: 66px; flex-shrink: 0; margin-right: 16px;
   display: flex; align-items: center; justify-content: center;
   border: 2px dashed rgba(255,215,0,0.35); border-radius: 6px;
   color: rgba(255,215,0,0.55); font-size: 11px; font-weight: 700; text-align: center; line-height: 1.3;
 }
-.nav-links { display: flex; flex: 1; height: var(--header-h); }
+.is-clickable { cursor: pointer; }
+.nav-links { display: flex; flex: 1; height: var(--header-h); justify-content: center; gap: 8px; }
 .nav-item { position: relative; display: flex; align-items: center; }
 .nav-link {
-  color: #fff; font-size: 17px; font-weight: 500;
-  padding: 0 18px; height: var(--header-h);
-  display: flex; align-items: center; justify-content: center; gap: 5px;
+  color: #fff; font-size: 22px; font-weight: 600;
+  padding: 0 24px; height: var(--header-h);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
   white-space: nowrap; cursor: pointer; user-select: none;
-  border-bottom: 3px solid transparent; transition: background 0.15s, color 0.15s;
+  border-bottom: 4px solid transparent; transition: background 0.15s, color 0.15s;
 }
 .nav-link:hover, .nav-item:hover > .nav-link {
   background: rgba(255,215,0,0.12); color: var(--gold); border-bottom-color: var(--gold);
 }
 .nav-link.active-page { color: var(--gold); border-bottom-color: var(--gold); background: rgba(255,215,0,0.1); }
-.arrow { font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
+.arrow { font-size: 12px; opacity: 0.6; transition: transform 0.2s; }
 .nav-item:hover > .nav-link .arrow { transform: rotate(180deg); }
 .dropdown {
   display: none; position: absolute; top: var(--header-h); left: 0;
@@ -97,20 +106,20 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .nav-item:hover .dropdown { display: block; }
 .dropdown a {
   display: block; color: #FFFFFF; text-decoration: none;
-  font-size: 16px; font-weight: 500; padding: 11px 20px; text-align: center;
+  font-size: 22px; font-weight: 500; padding: 11px 20px; text-align: center;
   border-bottom: 1px solid rgba(255,215,0,0.1); transition: background 0.12s, color 0.12s; white-space: nowrap;
 }
 .dropdown a:last-child { border-bottom: none; }
 .dropdown a:hover { background: rgba(255,215,0,0.15); color: var(--gold); }
 .header-btns { display: flex; gap: 10px; align-items: center; margin-left: auto; }
 .btn-line-h {
-  background: var(--green-line); color: #fff; border: none; border-radius: 6px;
-  padding: 11px 26px; font-size: 17px; font-weight: 700; cursor: pointer; font-family: inherit;
+  background: var(--green-line); color: #fff; border: none; border-radius: 8px;
+  padding: 14px 32px; font-size: 22px; font-weight: 700; cursor: pointer; font-family: inherit;
 }
 .btn-line-h:hover { opacity: 0.85; }
 .btn-web-h {
   background: var(--blue-web); color: #fff; border: 2px solid var(--blue-web);
-  border-radius: 6px; padding: 9px 26px; font-size: 17px; font-weight: 700;
+  border-radius: 8px; padding: 12px 32px; font-size: 22px; font-weight: 700;
   cursor: pointer; font-family: inherit;
 }
 .btn-web-h:hover { background: #0099CC; border-color: #0099CC; }
@@ -149,6 +158,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .modal-close:hover { transform: rotate(90deg); }
 .modal-title { font-size: 24px; font-weight: 900; color: var(--gold); margin-bottom: 20px; }
+.modal-qr-center { display: flex; justify-content: center; }
 .modal-hint { color: #FFE0C0; font-size: 17px; line-height: 1.7; margin-top: 16px; }
 .modal-hint strong { color: var(--gold); display: block; margin-bottom: 4px; }
 
@@ -182,37 +192,42 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   letter-spacing: 5px; text-align: center; line-height: 1.2;
 }
 .hero-cta-row { display: flex; align-items: center; gap: 48px; justify-content: center; }
+.hero-qr-block,
+.hero-web-block { width: 128px; }
 .hero-qr-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.hero-qr-label { color: rgba(255,255,255,0.85); font-size: 17px; font-weight: 700; letter-spacing: 1px; }
+.hero-qr-label { color: rgba(255,255,255,0.85); font-size: 17px; font-weight: 700; letter-spacing: 1px; white-space: nowrap; }
 .hero-cta-divider { color: rgba(255,215,0,0.3); font-size: 28px; }
-.hero-web-block { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.hero-web-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .hero-btn-web {
-  background: var(--blue-web); color: #fff; border: 3px solid #0099CC; border-radius: 50px;
-  padding: 16px 56px; font-size: 22px; font-weight: 700; cursor: pointer; font-family: inherit;
+  width: 108px; height: 108px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  background: var(--blue-web); color: #fff; border: 3px solid #0099CC; border-radius: 14px;
+  padding: 0 14px; font-size: 22px; line-height: 1.35; font-weight: 700; cursor: pointer; font-family: inherit;
   box-shadow: 0 0 0 3px var(--gold); transition: transform 0.15s;
 }
-.hero-btn-web:hover { transform: scale(1.04); }
-.hero-web-label { color: rgba(255,255,255,0.85); font-size: 17px; font-weight: 700; letter-spacing: 1px; }
+.hero-btn-web span { display: block; white-space: nowrap; }
+.hero-btn-web:hover { transform: scale(1.02); }
+.hero-web-label { color: rgba(255,255,255,0.85); font-size: 17px; font-weight: 700; letter-spacing: 1px; white-space: nowrap; }
 
 /* QR 懸浮 */
 .qr-float {
-  position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
+  position: fixed; right: 10px; top: 50%; transform: translateY(-50%);
   background: linear-gradient(160deg,#5A0000,#9A0000);
   border: 2.5px solid var(--gold); border-radius: 14px;
-  padding: 16px 14px; text-align: center; z-index: 250; width: 124px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  padding: 14px 12px; text-align: center; z-index: 250; width: 118px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
 }
-.qr-float-label { color: var(--gold); font-size: 13px; font-weight: 900; margin-bottom: 10px; line-height: 1.5; }
-.qr-float-sub { color: rgba(255,255,255,0.85); font-size: 12px; margin-top: 8px; }
+.qr-float-label { color: var(--gold); font-size: 15px; font-weight: 900; margin-bottom: 8px; line-height: 1.35; }
+
 
 /* ══ SECTION ══ */
-.section { padding: 72px 60px; position: relative; overflow: hidden; }
+.section { padding: 72px 80px; position: relative; overflow: hidden; }
 .section-alt { background: #fff8ee; }
 
 /* 品牌介紹 */
-.brand-section { background: var(--red-dark); padding: 72px 60px; position: relative; overflow: hidden; }
+.brand-section { background: var(--red-dark); padding: 72px 80px; position: relative; overflow: hidden; }
 .youtube-wrapper {
-  max-width: 820px; margin: 0 auto 52px;
+  max-width: 1000px; margin: 0 auto 52px;
   border-radius: 14px; overflow: hidden; border: 3px solid var(--gold-dark);
   aspect-ratio: 16 / 9;
   position: relative;
@@ -233,7 +248,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .yt-label { color: rgba(255,255,255,0.85); font-size: 17px; }
 .brand-features {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 0;
-  max-width: 900px; margin: 0 auto; border: 1px solid rgba(255,215,0,0.15);
+  max-width: 1100px; margin: 0 auto; border: 1px solid rgba(255,215,0,0.15);
 }
 .brand-feat { padding: 36px 28px; border-right: 1px solid rgba(255,215,0,0.15); border-bottom: 1px solid rgba(255,215,0,0.15); transition: background 0.2s; }
 .brand-feat:nth-child(3n) { border-right: none; }
@@ -272,7 +287,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 
 /* 首頁精選遊戲輪播（無倍率方框） */
 .games-section { background: var(--cream); }
-.carousel-outer { max-width: 960px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+.carousel-outer { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
 .c-arrow {
   flex-shrink: 0; width: 44px; height: 44px;
   background: rgba(123,0,0,0.85); border: 2px solid var(--gold-dark);
@@ -289,7 +304,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   overflow: hidden; cursor: pointer; position: relative; background: #111;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.c-item:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 10px 28px rgba(180,100,0,0.5),0 0 0 2px var(--gold); }
+.c-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 22px rgba(180,100,0,0.38),0 0 0 2px var(--gold); }
 .c-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 /* 倍率方框拿掉 */
 .c-hover { position: absolute; inset: 0; background: rgba(139,0,0,0); transition: background 0.2s; display: flex; align-items: center; justify-content: center; }
@@ -301,7 +316,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .c-dot.active { background: var(--red-main); }
 
 /* 攻略首頁區塊 */
-.articles-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; max-width: 960px; margin: 0 auto 32px; }
+.articles-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; max-width: 1100px; margin: 0 auto 32px; }
 .article-hero { background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
 .article-hero:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(180,80,0,0.15); }
 .article-hero-img { width: 100%; height: 240px; background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.85); }
@@ -309,43 +324,72 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .article-tag { display: inline-block; background: #FFF0E0; color: var(--red-main); font-size: 11px; font-weight: 700; padding: 2px 12px; border-radius: 20px; margin-bottom: 12px; border: 1px solid #F5C08080; }
 .article-hero-title { font-size: 22px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px; }
 .article-hero-excerpt {
-  font-size: 17px; color: #888; line-height: 1.75; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.article-hero-date { font-size: 15px; color: #bbb; }
+  font-size: 17px; color: #666; line-height: 1.75; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.article-hero-date { font-size: 15px; color: #8A6A58; }
 .articles-small { display: grid; grid-template-rows: repeat(4,1fr); gap: 16px; }
 .article-small { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; display: flex; transition: transform 0.15s, box-shadow 0.15s; }
 .article-small:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(180,80,0,0.13); }
 .article-small-img { width: 96px; flex-shrink: 0; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); }
 .article-small-body { padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; }
 .article-small-title { font-size: 17px; font-weight: 700; color: var(--text-dark); line-height: 1.5; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.article-small-date { font-size: 14px; color: #bbb; }
+.article-small-date { font-size: 15px; color: #8A6A58; }
 .articles-more { text-align: center; }
 .btn-more { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--red-main); border: 2px solid var(--red-main); border-radius: 50px; padding: 14px 48px; font-size: 18px; font-weight: 700; cursor: pointer; font-family: inherit; text-decoration: none; transition: background 0.15s, color 0.15s; }
 .btn-more:hover { background: var(--red-main); color: #fff; }
 
 /* 合作夥伴 */
 .partners-section { background: var(--cream-dark); padding: 60px 60px; position: relative; overflow: hidden; border-top: 2px solid var(--gold-dark); border-bottom: 2px solid var(--gold-dark); }
-.partners-grid { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 36px; max-width: 900px; margin: 0 auto; }
+.partners-grid { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 36px; max-width: 1100px; margin: 0 auto; }
 .partner-logo { height: 40px; object-fit: contain; opacity: 0.8; transition: opacity 0.2s; }
 .partner-logo:hover { opacity: 1; }
 .partner-ph { height: 40px; min-width: 80px; padding: 0 16px; background: rgba(255,255,255,0.6); border: 1.5px dashed rgba(180,130,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: rgba(100,60,0,0.4); white-space: nowrap; }
 
 /* ══ FOOTER ══ */
-footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-top: 3px solid var(--gold-dark); }
-.footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 24px; }
-.footer-col-title { color: var(--gold); font-size: 17px; font-weight: 700; margin-bottom: 12px; }
-.footer-info { font-size: 17px; line-height: 2.2; color: #FFE8E8; }
-.footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.18); margin-bottom: 18px; }
-.footer-bottom { display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
-.footer-legal { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.9; flex: 1; }
-.footer-links { display: flex; gap: 20px; flex-shrink: 0; }
-.footer-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 16px; transition: color 0.15s; }
+footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; border-top: 3px solid var(--gold-dark); }
+.footer-inner {
+  max-width: 860px; margin: 0 auto;
+}
+.footer-top {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-bottom: 28px; gap: 40px;
+}
+.footer-top > *, .footer-middle > * { min-width: 0; }
+.footer-col { display: flex; gap: 20px; align-items: flex-start; }
+.footer-col-title { color: var(--gold); font-size: 17px; font-weight: 700; white-space: nowrap; padding-top: 2px; }
+.footer-info { font-size: 17px; line-height: 2.2; color: #FFF0F0; }
+.footer-account-row { display: flex; align-items: center; gap: 10px; }
+.footer-account-row + .footer-account-row { margin-top: 8px; }
+.footer-icon-ph {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: rgba(255,215,0,0.15);
+  border: 1px dashed rgba(255,215,0,0.3);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; color: rgba(255,215,0,0.4);
+}
+.footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.18); margin-bottom: 20px; }
+.footer-middle {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: flex-start; gap: 40px; margin-bottom: 16px;
+}
+.footer-legal-block { display: flex; align-items: flex-start; gap: 14px; }
+.footer-age-icon {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: rgba(255,255,255,0.1); border: 1px dashed rgba(255,255,255,0.25);
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: rgba(255,255,255,0.35); text-align: center; line-height: 1.3;
+}
+.footer-legal { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.9; }
+.footer-copyright { text-align: center; font-size: 14px; color: rgba(255,255,255,0.45); padding-top: 10px; margin-top: 4px; }
+.footer-links { display: flex; gap: 20px; align-items: center; flex-shrink: 0; }
+.footer-links a { color: rgba(255,255,255,0.76); text-decoration: none; font-size: 17px; transition: color 0.15s; white-space: nowrap; }
 .footer-links a:hover { color: var(--gold); }
 .footer-links span { color: rgba(255,255,255,0.2); }
 
 
 .games-grid {
   display: grid; grid-template-columns: repeat(5,1fr);
-  gap: 16px; max-width: 960px; margin: 0 auto;
+  gap: 16px; max-width: 1100px; margin: 0 auto;
 }
 .game-card {
   aspect-ratio: 1; border-radius: 14px; border: 3px solid var(--gold-dark);
@@ -360,16 +404,20 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 .game-card:hover .game-card-play { opacity: 1; }
 
 /* ══ 活動公告頁 ══ */
-.news-page-content { max-width: 960px; margin: 0 auto; padding: 52px 60px; }
+.news-page-content { max-width: 1100px; margin: 0 auto; padding: 52px 60px; }
 .news-tabs-center {
   display: flex; justify-content: center; gap: 0;
-  margin-bottom: 36px; border-bottom: 2px solid var(--cream-dark);
+  margin-bottom: 36px;
+  border-bottom: 2px solid var(--cream-dark);
+  width: 100%; margin-left: auto; margin-right: auto;
 }
 .news-tab-btn {
   background: none; border: none; font-family: inherit;
-  font-size: 18px; font-weight: 700; color: #6A4020;
-  padding: 10px 48px; cursor: pointer;
-  border-bottom: 5px solid transparent; margin-bottom: -2px; transition: all 0.15s;
+  font-size: 18px; font-weight: 700; color: #aaa;
+  flex: 1; text-align: center; cursor: pointer;
+  padding: 10px 0;
+  border-bottom: 5px solid transparent; margin-bottom: -2px;
+  transition: all 0.15s;
 }
 .news-tab-btn.active { color: var(--red-main); border-bottom-color: var(--red-main); }
 .news-tab-btn:hover:not(.active) { color: var(--red-main); }
@@ -379,19 +427,20 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 .news-event-row {
   background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark);
   overflow: hidden; cursor: pointer; display: flex; align-items: stretch;
+  height: 130px;
   transition: transform 0.15s, box-shadow 0.15s;
 }
-.news-event-row:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(180,80,0,0.15); }
+.news-event-row:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(180,80,0,0.12); }
 .news-event-row-img {
-  width: 220px; flex-shrink: 0;
+  aspect-ratio: 987/493; height: 100%; flex-shrink: 0;
   background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%);
   display: flex; align-items: center; justify-content: center;
   font-size: 12px; color: rgba(255,255,255,0.85);
 }
-.news-event-row-body { padding: 20px 24px; display: flex; flex-direction: column; justify-content: center; flex: 1; }
-.news-event-row-title { font-size: 20px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 8px; }
-.news-event-row-excerpt { font-size: 17px; color: #888; line-height: 1.8; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.news-event-row-date { font-size: 15px; color: #bbb; }
+.news-event-row-body { padding: 16px 24px; display: flex; flex-direction: column; justify-content: center; flex: 1; overflow: hidden; }
+.news-event-row-title { font-size: 18px; font-weight: 900; color: var(--text-dark); line-height: 1.4; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.news-event-row-excerpt { font-size: 15px; color: #666; line-height: 1.65; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.news-event-row-date { font-size: 14px; color: #8A6A58; }
 
 /* 公告列表：一列一列，左細線 */
 .news-notice-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 40px; }
@@ -407,18 +456,21 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
   background: var(--gold-dark); flex-shrink: 0;
 }
 .news-notice-title { font-size: 19px; font-weight: 700; color: var(--text-dark); flex: 1; line-height: 1.5; }
-.news-notice-date { font-size: 16px; color: #bbb; flex-shrink: 0; white-space: nowrap; }
+.news-notice-date { font-size: 16px; color: #8A6A58; flex-shrink: 0; white-space: nowrap; }
 
 /* ══ 攻略專區 tabs — 底線置中 ══ */
 .strategy-tabs-center {
   display: flex; justify-content: center; gap: 0;
-  margin-bottom: 36px; border-bottom: 2px solid var(--cream-dark);
+  margin-bottom: 36px;
+  border-bottom: 2px solid var(--cream-dark);
+  width: 100%; margin-left: auto; margin-right: auto;
 }
 .strategy-tab-btn {
   background: none; border: none; font-family: inherit;
   font-size: 18px; font-weight: 700;
-  color: #4A2800; -webkit-text-fill-color: #4A2800;
-  padding: 10px 32px; cursor: pointer;
+  color: #888; -webkit-text-fill-color: #888;
+  flex: 1; text-align: center; cursor: pointer;
+  padding: 10px 0;
   border-bottom: 5px solid transparent; margin-bottom: -2px;
   transition: color 0.15s, border-color 0.15s;
 }
@@ -458,15 +510,17 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 .related-articles { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--cream-dark); }
 .related-title { font-size: 22px; font-weight: 900; color: var(--text-dark); margin-bottom: 20px; }
 .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-.related-card { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+.related-card { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; display: flex; flex-direction: column; }
 .related-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(180,80,0,0.13); }
-.related-card-img { width: 100%; height: 100px; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); }
-.related-card-body { padding: 12px 14px; }
-.related-card-cat { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 20px; padding: 2px 10px; margin-bottom: 8px; }
+.related-card-img { width: 100%; aspect-ratio: 987/493; min-height: 112px; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); flex-shrink: 0; }
+.related-card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
+.related-card-cat { display: inline-block; align-self: flex-start; font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
 .related-card-cat.cat-guide { background: #FFF0E0; color: var(--red-main); border: 1px solid #F5C08080; }
 .related-card-cat.cat-platform { background: #F0F4FF; color: #3949AB; border: 1px solid #9FA8DA80; }
 .related-card-cat.cat-activity { background: #F1F8E9; color: #388E3C; border: 1px solid #A5D6A780; }
-.related-card-title { font-size: 15px; font-weight: 700; color: var(--text-dark); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.related-card-title { font-size: 16px; font-weight: 700; color: var(--text-dark); line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.related-card-excerpt { font-size: 14px; color: #888; line-height: 1.6; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.related-card-more { margin-top: 12px; color: var(--red-main); font-size: 15px; font-weight: 700; }
 .pagination { display: flex; justify-content: center; align-items: center; gap: 6px; }
 .page-btn {
   width: 44px; height: 44px; border-radius: 8px;
@@ -480,7 +534,23 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 .page-btn.arrow { font-size: 16px; }
 
 /* ══ 攻略專區頁 ══ */
-.strategy-page-content { max-width: 960px; margin: 0 auto; padding: 52px 60px; }
+.strategy-page-content { max-width: 1100px; margin: 0 auto; padding: 52px 60px; }
+.tabbed-page-content { max-width: 1100px; margin: 0 auto; padding: 52px 60px 60px; }
+.novice-info-card {
+  background: #fff; border: 1.5px solid var(--cream-dark);
+  border-radius: 10px; padding: 18px 20px; margin-bottom: 20px;
+}
+.novice-info-title {
+  font-size: 19px; font-weight: 900; color: var(--red-main); margin-bottom: 8px;
+}
+.novice-info-body {
+  font-size: 18px; line-height: 1.85; color: #4A2800;
+}
+.novice-info-placeholder {
+  background: #fff8ee; border: 1.5px dashed var(--cream-dark);
+  border-radius: 10px; padding: 28px 24px;
+  font-size: 17px; line-height: 1.75; color: #8A6040; text-align: left;
+}
 .strategy-cats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
 .strategy-cat-btn {
   background: #fff; border: 2px solid var(--cream-dark);
@@ -493,24 +563,24 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 /* 文章列表 grid */
 .strategy-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 40px; }
 .strategy-card { background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
-.strategy-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(180,80,0,0.15); }
-.strategy-card-img { width: 100%; height: 150px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.85); }
+.strategy-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(180,80,0,0.12); }
+.strategy-card-img { width: 100%; aspect-ratio: 987/493; height: auto; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.85); }
 .strategy-card-body { padding: 16px 18px; }
 .strategy-card-cat { display: inline-block; font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
 .cat-guide { background: #FFF0E0; color: var(--red-main); border: 1px solid #F5C08080; }
 .cat-platform { background: #F0F4FF; color: #3949AB; border: 1px solid #9FA8DA80; }
 .cat-activity { background: #F1F8E9; color: #388E3C; border: 1px solid #A5D6A780; }
 .strategy-card-title { font-size: 18px; font-weight: 900; color: #3A1000; line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.strategy-card-excerpt { font-size: 14px; color: #888; line-height: 1.6; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.strategy-card-date { font-size: 14px; color: #bbb; }
+.strategy-card-excerpt { font-size: 16px; color: #666; line-height: 1.65; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.strategy-card-date { font-size: 15px; color: #8A6A58; }
 
 /* ══ 攻略文章頁（單篇） ══ */
-.article-page { max-width: 800px; margin: 0 auto; padding: 52px 40px; }
+.article-page { max-width: 1100px; margin: 0 auto; padding: 52px 80px; }
 .article-page-header { margin-bottom: 32px; }
 .article-page-cat { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 14px; border-radius: 20px; margin-bottom: 14px; }
 .article-page-title { font-size: 36px; font-weight: 900; color: var(--text-dark); line-height: 1.4; margin-bottom: 14px; }
-.article-page-meta { font-size: 17px; color: #bbb; display: flex; gap: 16px; align-items: center; }
-.article-page-cover { width: 100%; height: 360px; border-radius: 16px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 36px; overflow: hidden; }
+.article-page-meta { font-size: 17px; color: #8A6A58; display: flex; gap: 16px; align-items: center; }
+.article-page-cover { width: 100%; aspect-ratio: 987/493; height: auto; border-radius: 16px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 36px; overflow: hidden; }
 .article-page-cover img { width: 100%; height: 100%; object-fit: cover; }
 .article-body h2 { font-size: 26px; font-weight: 900; color: var(--red-main); margin: 36px 0 16px; padding-left: 14px; border-left: 4px solid var(--gold-dark); }
 .article-body h3 { font-size: 22px; font-weight: 700; color: var(--text-dark); margin: 28px 0 12px; }
@@ -543,17 +613,200 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 .gov-play-btn:hover { transform: scale(1.02); }
 
 /* 子頁面 */
-.sub-page-content { max-width: 860px; margin: 0 auto; padding: 60px 40px; }
+.sub-page-content { max-width: 1100px; margin: 0 auto; padding: 60px 80px; }
 .sub-section { margin-bottom: 64px; }
 .sub-section-title { font-size: 22px; font-weight: 900; color: var(--red-main); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--cream-dark); }
-.sub-section p { font-size: 15px; line-height: 1.9; color: #4A2800; margin-bottom: 12px; }
-.sub-placeholder { background: #fff8ee; border: 1.5px dashed var(--cream-dark); border-radius: 12px; padding: 40px; text-align: center; color: #8A6040; font-size: 14px; }
+.sub-section p { font-size: 18px; line-height: 1.9; color: #4A2800; margin-bottom: 12px; }
+.sub-placeholder { background: #fff8ee; border: 1.5px dashed var(--cream-dark); border-radius: 12px; padding: 40px; text-align: center; color: #8A6040; font-size: 16px; }
+
+/* 客服中心 */
+.support-panel { margin-top: 34px; }
+.support-cards {
+  display: grid; grid-template-columns: 1.45fr 1fr;
+  gap: 18px; margin-bottom: 36px;
+}
+.support-card {
+  background: linear-gradient(160deg,#FFF8E7,#FFE7B8);
+  border: 1.5px solid rgba(200,150,12,0.45);
+  border-radius: 12px; padding: 24px 22px;
+  box-shadow: 0 8px 24px rgba(120,40,0,0.12);
+}
+.support-card.line-card {
+  display: grid; grid-template-columns: 128px 1fr; gap: 22px; align-items: center;
+  background: linear-gradient(145deg,#FFF7DC 0%,#FFE0A3 54%,#F5B544 100%);
+  border-color: rgba(180,118,0,0.5);
+  box-shadow: 0 12px 28px rgba(130,68,0,0.16), inset 0 1px 0 rgba(255,255,255,0.72);
+}
+.support-side-cards { display: grid; grid-template-rows: 1fr 1fr; gap: 18px; }
+.support-side-cards .support-card { display: flex; flex-direction: column; justify-content: center; }
+.support-line-qr {
+  width: 112px; height: 112px; padding: 6px; background: #fff;
+  border: 2px solid rgba(150,96,0,0.45); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 18px rgba(80,42,0,0.16);
+}
+.support-card-title { font-size: 20px; font-weight: 900; color: var(--red-main); margin-bottom: 10px; }
+.support-card-main { font-size: 24px; font-weight: 900; color: var(--text-dark); line-height: 1.45; margin-bottom: 8px; }
+.support-card-desc { font-size: 17px; color: #5C3A22; line-height: 1.75; }
+.line-card .support-card-title {
+  color: var(--red-main);
+  text-shadow: none;
+}
+.line-card .support-card-main { color: var(--text-dark); }
+.line-card .support-card-desc { color: #5C3A22; }
+.support-line-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-top: 12px; min-height: 46px; padding: 0 22px;
+  background: var(--green-line); color: #fff; border-radius: 8px;
+  border: 2px solid rgba(0,95,20,0.18);
+  font-size: 18px; font-weight: 900; text-decoration: none;
+  box-shadow: 0 6px 16px rgba(0,96,20,0.18);
+}
+.support-note {
+  background: #FFF8E7; border: 1.5px solid var(--gold-dark);
+  border-radius: 12px; padding: 20px 24px; margin-bottom: 36px;
+  font-size: 18px; line-height: 1.85; color: #4A2800;
+}
+.support-note-title { font-size: 20px; font-weight: 900; color: var(--red-main); margin-bottom: 8px; }
+.support-faq-title {
+  font-size: 22px; font-weight: 900; color: var(--text-dark);
+  margin-bottom: 14px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--cream-dark);
+}
+.support-faq-item {
+  background: linear-gradient(160deg,#FFF8F0,#FFF3E0);
+  border: 1.5px solid rgba(200,150,12,0.25);
+  border-radius: 10px; padding: 18px 20px; margin-bottom: 10px;
+}
+.support-faq-q { font-size: 18px; font-weight: 900; color: var(--red-main); margin-bottom: 8px; }
+.support-faq-a { font-size: 17px; line-height: 1.85; color: #4A2800; }
+.suspension-list { margin: 40px 0 36px; }
+.suspension-title {
+  font-size: 24px; font-weight: 900; color: var(--text-dark);
+  margin-bottom: 10px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--cream-dark);
+}
+.suspension-desc { font-size: 18px; line-height: 1.75; color: #4A2800; margin-bottom: 16px; }
+.suspension-table {
+  width: 100%; border-collapse: collapse; overflow: hidden;
+  background: #fff; border: 1.5px solid var(--cream-dark);
+  border-radius: 10px; font-size: 17px;
+}
+.suspension-table th,
+.suspension-table td {
+  padding: 14px 16px; text-align: left; border-bottom: 1px solid #f0e8d0;
+}
+.suspension-table th { background: #FFF8E7; color: var(--red-main); font-weight: 900; }
+.suspension-table tr:last-child td { border-bottom: none; }
+.suspension-status {
+  display: inline-block; padding: 3px 12px; border-radius: 20px;
+  background: #FFF0E0; color: var(--red-main); border: 1px solid #F5C08080;
+  font-size: 15px; font-weight: 900;
+}
+.suspension-empty {
+  background: linear-gradient(160deg,#FFF8F0,#FFF3E0);
+  border: 1.5px solid rgba(200,150,12,0.25);
+  border-radius: 10px; padding: 28px 24px; text-align: center;
+  font-size: 20px; font-weight: 900; color: #aaa;
+}
+.suspension-empty span {
+  display: block; margin-top: 8px;
+  font-size: 17px; font-weight: 500; color: #bbb;
+}
 
 /* 麵包屑 */
 .breadcrumb { padding: 18px 60px; background: #fff8ee; border-bottom: 1px solid var(--cream-dark); font-size: 16px; color: #6A4020; }
 .breadcrumb a { color: var(--red-main); text-decoration: none; }
 .breadcrumb a:hover { text-decoration: underline; }
 .breadcrumb span { margin: 0 8px; }
+
+/* ══ 新手專區 — 豐富內容樣式 ══ */
+.novice-feature-list {
+  list-style: none; padding: 0; margin: 0 0 8px;
+}
+.novice-feature-list li {
+  font-size: 17px; color: #4A2800; line-height: 1.85;
+  padding: 10px 16px 10px 14px;
+  border-bottom: 1px solid #f0e8d0;
+  display: flex; gap: 10px; align-items: baseline;
+}
+.novice-feature-list li::before {
+  content: '▸'; color: var(--gold-dark); flex-shrink: 0; font-size: 13px; margin-top: 2px;
+}
+.novice-feature-list li strong { color: var(--text-dark); font-weight: 900; white-space: nowrap; }
+
+/* 步驟 */
+.novice-steps { display: flex; flex-direction: column; gap: 20px; margin-top: 16px; }
+.novice-step {
+  display: flex; gap: 18px; align-items: flex-start;
+  background: #fff; border: 1.5px solid var(--cream-dark);
+  border-radius: 12px; padding: 18px 20px;
+}
+.novice-step-num {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: var(--red-main); color: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900;
+}
+.novice-step-body { flex: 1; }
+.novice-step-title { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+
+/* 新手專區子標題（統一字體大小，不用 inline style） */
+.novice-sub-title {
+  font-size: 19px; font-weight: 900; color: var(--text-dark);
+  margin-bottom: 10px; margin-top: 28px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--cream-dark);
+}
+.novice-sub-title:first-child { margin-top: 0; }
+
+/* 捷徑 OS tab */
+.novice-install-tabs {
+  display: flex; gap: 0; margin-bottom: 24px;
+  border: 2px solid var(--cream-dark); border-radius: 10px; overflow: hidden;
+}
+.novice-install-tab {
+  flex: 1; padding: 12px 0; font-size: 17px; font-weight: 700;
+  border: none; background: #fff; color: #888; cursor: pointer;
+  font-family: inherit; transition: all 0.15s;
+}
+.novice-install-tab.active { background: var(--red-main); color: #fff; }
+
+/* iOS 版本 sub-tab */
+.novice-install-subtabs {
+  display: flex; gap: 0; margin-bottom: 20px;
+  border-bottom: 2px solid var(--cream-dark);
+}
+.novice-install-subtab {
+  padding: 8px 24px; font-size: 16px; font-weight: 700;
+  border: none; background: none; color: #aaa; cursor: pointer;
+  font-family: inherit; border-bottom: 3px solid transparent; margin-bottom: -2px;
+  transition: all 0.15s;
+}
+.novice-install-subtab.active { color: var(--red-main); border-bottom-color: var(--red-main); }
+
+/* 捷徑教學注意事項 */
+.novice-install-note {
+  font-size: 16px; color: #7A5030; background: #FFF8E7;
+  border: 1.5px solid var(--gold-dark); border-radius: 8px;
+  padding: 10px 16px; margin-bottom: 18px;
+}
+
+/* VIP / 公會 表格 */
+.novice-vip-table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border: 1.5px solid var(--cream-dark);
+  border-radius: 10px; font-size: 16px; overflow: hidden;
+}
+.novice-vip-table th,
+.novice-vip-table td {
+  padding: 12px 14px; text-align: center;
+  border-bottom: 1px solid #f0e8d0;
+}
+.novice-vip-table th { background: #FFF8E7; color: var(--red-main); font-weight: 900; }
+.novice-vip-table td:first-child { text-align: center; font-weight: 700; color: var(--text-dark); }
+.novice-vip-table tr:last-child td { border-bottom: none; }
+.vip-row-a td { background: #fff; }
+.vip-row-b td { background: #FFF8F0; }
 
 /* ══ 回到頂部按鈕 ══ */
 .back-to-top {
@@ -586,46 +839,45 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 <!-- QR 懸浮 -->
 <div class="qr-float">
   <div class="qr-float-label">掃描 QR 碼<br>立即玩！</div>
-  <div class="qr-wrap" id="qr-float-wrap" style="width:90px;height:90px;"></div>
-  <div class="qr-float-sub">LINE 官方帳號</div>
+  <div class="qr-wrap qr-size-float" id="qr-float-wrap"></div>
+
 </div>
 
 <!-- HEADER -->
 <header class="header">
-  <div class="logo-placeholder" onclick="showPage('home')" style="cursor:pointer;" title="回首頁">LOGO</div>
+  <div class="logo-placeholder is-clickable" data-page="home" title="回首頁">LOGO</div>
   <nav class="nav-links">
     <div class="nav-item" id="nav-game">
-      <span class="nav-link" id="nav-game-link" onclick="showPage('home')">遊戲介紹 <span class="arrow">▼</span></span>
+      <span class="nav-link" id="nav-game-link" data-page="games-all">遊戲介紹 <span class="arrow">▼</span></span>
       <div class="dropdown" id="dd-game">
-        <a href="#" onclick="showPage('games-all');return false;">精選遊戲</a>
-        <a href="#" onclick="showPage('news');return false;">活動公告</a>
+        <a href="#" data-page="games-all">精選遊戲</a>
+        <a href="#" data-page="news">活動公告</a>
       </div>
     </div>
     <div class="nav-item">
-      <span class="nav-link" id="nav-strategy-link" onclick="showPage('strategy')">攻略專區</span>
+      <span class="nav-link" id="nav-strategy-link" data-page="strategy">攻略專區</span>
     </div>
     <div class="nav-item" id="nav-novice">
       <span class="nav-link">新手專區 <span class="arrow">▼</span></span>
       <div class="dropdown" id="dd-novice">
-        <a href="#" onclick="showSubPage('novice','介面說明');return false;">介面說明</a>
-        <a href="#" onclick="showSubPage('novice','捷徑教學');return false;">捷徑教學</a>
-        <a href="#" onclick="showSubPage('novice','VIP 說明');return false;">VIP 說明</a>
-        <a href="#" onclick="showSubPage('novice','公會說明');return false;">公會說明</a>
-        <a href="#" onclick="showSubPage('novice','儲值教學');return false;">儲值教學</a>
+        <a href="#" data-sub-page="novice" data-sub-key="介面說明">介面說明</a>
+        <a href="#" data-sub-page="novice" data-sub-key="捷徑教學">捷徑教學</a>
+        <a href="#" data-sub-page="novice" data-sub-key="VIP 說明">VIP 說明</a>
+        <a href="#" data-sub-page="novice" data-sub-key="公會說明">公會說明</a>
+        <a href="#" data-sub-page="novice" data-sub-key="儲值教學">儲值教學</a>
       </div>
     </div>
     <div class="nav-item" id="nav-cs">
       <span class="nav-link">客服中心 <span class="arrow">▼</span></span>
       <div class="dropdown" id="dd-cs">
-        <a href="#" onclick="showSubPage('cs','服務條款');return false;">服務條款</a>
-        <a href="#" onclick="showSubPage('cs','隱私權政策');return false;">隱私權政策</a>
-        <a href="#" onclick="showSubPage('cs','遊戲規章');return false;">遊戲規章</a>
-        <a href="#" onclick="showSubPage('cs','停權列表');return false;">停權列表</a>
+        <a href="#" data-sub-page="cs" data-sub-key="聯絡客服">聯絡客服</a>
+        <a href="#" data-sub-page="cs" data-sub-key="常見問題">常見問題</a>
+        <a href="#" data-sub-page="cs" data-sub-key="停權名單">停權名單</a>
       </div>
     </div>
   </nav>
   <div class="header-btns">
-    <button class="btn-line-h" onclick="document.getElementById('line-modal').classList.add('open')">LINE 登入</button>
+    <button class="btn-line-h" data-open-line-modal>LINE 登入</button>
     <button class="btn-web-h">網頁登入</button>
   </div>
 </header>
@@ -634,12 +886,12 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 
 
 <!-- LINE QR MODAL -->
-<div class="modal-bd" id="line-modal" onclick="if(event.target===this)this.classList.remove('open')">
+<div class="modal-bd" id="line-modal" data-close-on-backdrop>
   <div class="modal-box">
-    <button class="modal-close" onclick="document.getElementById('line-modal').classList.remove('open')">✕</button>
+    <button class="modal-close" data-close-line-modal>✕</button>
     <div class="modal-title">掃描 QR Code 立即登入</div>
-    <div style="display:flex;justify-content:center;">
-      <div class="qr-wrap" id="qr-modal-wrap" style="width:160px;height:160px;"></div>
+    <div class="modal-qr-center">
+      <div class="qr-wrap qr-size-modal" id="qr-modal-wrap"></div>
     </div>
     <div class="modal-hint">
       <strong>手機開啟 LINE 掃描</strong>
@@ -649,15 +901,15 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 </div>
 
 <!-- 遊戲彈窗 -->
-<div class="gov-bd" id="gov-bd" onclick="if(event.target===this)closeGov()">
+<div class="gov-bd" id="gov-bd" data-close-gov-backdrop>
   <div class="gov-modal">
-    <button class="gov-close" onclick="closeGov()">✕</button>
+    <button class="gov-close" data-close-gov>✕</button>
     <img class="gov-img" id="gov-img" src="" alt="">
     <div class="gov-title" id="gov-title"></div>
     <div class="gov-mult" id="gov-mult"></div>
     <div class="gov-desc" id="gov-desc"></div>
     <div class="gov-qr-row">
-      <div class="qr-wrap" id="qr-overlay-wrap" style="width:84px;height:84px;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden;"></div>
+      <div class="qr-wrap qr-size-overlay" id="qr-overlay-wrap"></div>
       <div class="gov-qr-text"><strong>掃碼立即玩</strong>手機掃描進入該款遊戲<br>免下載直接開始<br>支援 LINE ／ 網頁登入</div>
     </div>
     <button class="gov-play-btn" id="gov-play-btn">▶　立即進入遊戲</button>
@@ -675,13 +927,13 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <div class="hero-slogan">天天玩星運　吼哩大探吉！</div>
       <div class="hero-cta-row">
         <div class="hero-qr-block">
-          <div class="qr-wrap" id="qr-hero-wrap" style="width:108px;height:108px;"></div>
-          <div class="hero-qr-label">手機掃描　免費玩</div>
+          <div class="qr-wrap qr-size-hero" id="qr-hero-wrap"></div>
+          <div class="hero-qr-label">手機掃碼玩</div>
         </div>
         <div class="hero-cta-divider">｜</div>
         <div class="hero-web-block">
-          <button class="hero-btn-web">網頁立即玩</button>
-          <div class="hero-web-label">免下載　直接開始</div>
+          <button class="hero-btn-web"><span>網頁</span><span>立即玩</span></button>
+          <div class="hero-web-label">電腦網頁玩</div>
         </div>
       </div>
     </div>
@@ -714,7 +966,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
     <div class="ticker-inner">
       <div class="ticker-label">📢　活動公告</div>
       <div class="ticker-track-wrap"><div class="ticker-track" id="ticker-track"></div></div>
-      <button class="ticker-more" onclick="showPage('news')">查看更多 →</button>
+      <button class="ticker-more" data-page="news">查看更多 →</button>
     </div>
   </div>
 
@@ -726,9 +978,9 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
     </div>
     <div class="sec-sub light">點擊任一遊戲，掃碼或直接進入，免下載秒開！</div>
     <div class="carousel-outer">
-      <button class="c-arrow" onclick="moveCarousel(-1)">&#8249;</button>
+      <button class="c-arrow" data-carousel-move="-1">&#8249;</button>
       <div class="carousel-wrapper"><div class="carousel-track" id="carousel-track"></div></div>
-      <button class="c-arrow" onclick="moveCarousel(1)">&#8250;</button>
+      <button class="c-arrow" data-carousel-move="1">&#8250;</button>
     </div>
     <div class="c-dots" id="c-dots"></div>
   </section>
@@ -741,7 +993,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
     </div>
     <div class="sec-sub light">遊戲玩法、活動攻略、平台教學，一次掌握</div>
     <div class="articles-layout">
-      <div class="article-hero" onclick="showPage('article-demo')">
+      <div class="article-hero" data-page="article-demo">
         <div class="article-hero-img">封面圖片</div>
         <div class="article-hero-body">
           <span class="article-tag">遊戲攻略</span>
@@ -752,12 +1004,12 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       </div>
       <div class="articles-small" id="articles-small"></div>
     </div>
-    <div class="articles-more"><a href="#" class="btn-more" onclick="showPage('strategy');return false;">所有文章 →</a></div>
+    <div class="articles-more"><a href="#" class="btn-more" data-page="strategy">所有文章 →</a></div>
   </section>
 
   <section class="partners-section">
     <div class="sec-heading" style="margin-bottom:28px;">
-      <div class="sec-heading-bg light" style="font-size:60px;">PARTNERS</div>
+      <div class="sec-heading-bg light">PARTNERS</div>
       <div class="sec-heading-main light">合作夥伴</div>
       <div class="sec-heading-line light"></div>
     </div>
@@ -772,37 +1024,59 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
     </div>
   </section>
 
-  <footer>
+  <template id="site-footer-template">
+<footer>
+    <div class="footer-inner">
     <div class="footer-top">
-      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
-      <div>
+      <div class="footer-col">
+        <div class="footer-col-title">平台資訊</div>
+        <div class="footer-info">
+          維護時間：每週四　10：00～11：00<br>
+          客服信箱：support@xinluck.com<br>
+          客服時間：09：00～18：00
+        </div>
+      </div>
+      <div class="footer-col">
         <div class="footer-col-title">官方帳號</div>
         <div class="footer-info">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
-            <span>官方帳號：@xinluck</span>
+          <div class="footer-account-row">
+            <div class="footer-icon-ph">圖</div>
+            <span>官方LINE：@xinluck</span>
           </div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
+          <div class="footer-account-row">
+            <div class="footer-icon-ph">圖</div>
             <span>FB 粉絲團：星運娛樂城</span>
           </div>
         </div>
       </div>
     </div>
     <hr class="footer-divider">
-    <div class="footer-bottom">
-      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;">
-        <div style="width:48px;height:48px;background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;text-align:center;line-height:1.3;">年齡<br>分級</div>
-        <div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div>
+    <div class="footer-middle">
+      <div class="footer-legal-block">
+        <div class="footer-age-icon">年齡<br>分級</div>
+        <div class="footer-legal">
+          本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>
+          遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。
+        </div>
       </div>
-      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
+      <div class="footer-links">
+        <a href="#">服務條款</a><span>｜</span>
+        <a href="#">隱私條款</a><span>｜</span>
+        <a href="#">遊戲規章</a><span>｜</span>
+        <a href="#">停權列表</a>
+      </div>
     </div>
+    </div><!-- /footer-inner -->
+    <div class="footer-copyright">Copyright © 2026 All Rights Reserved 星運娛樂城 版權所有</div>
   </footer>
+</template>
+
+<div class="footer-slot"></div>
 </div>
 
 <!-- ══════════ 精選遊戲頁 ══════════ -->
 <div class="page" id="page-games-all">
-  <div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>精選遊戲</div>
+  <div class="breadcrumb"><a href="#" data-page="home">首頁</a><span>›</span>精選遊戲</div>
   <div style="max-width:960px;margin:0 auto;padding:52px 60px 60px;">
     <div class="sec-heading" style="margin-bottom:12px;">
       <div class="sec-heading-bg light">GAMES</div>
@@ -815,34 +1089,21 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
     <p style="text-align:center;font-size:18px;color:#4A2800;line-height:1.9;max-width:680px;margin:0 auto 44px;">星運娛樂城精選熱門老虎機，包含自摸無雙、印加女神、龍族傳說等人氣機台。最高倍率高達 25,000 倍，體感刺激、開獎頻繁，全館支援手機免下載直接遊玩。</p>
     <div class="games-grid" id="games-grid"></div>
   </div>
-  <footer>
-    <div class="footer-top">
-      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
-      <div><div class="footer-col-title">官方帳號</div><div class="footer-info">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>官方帳號：@xinluck</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>FB 粉絲團：星運娛樂城</span></div>
-      </div></div>
-    </div>
-    <hr class="footer-divider">
-    <div class="footer-bottom">
-      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;"><div style="width:48px;height:48px;background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;text-align:center;line-height:1.3;">年齡<br>分級</div><div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div></div>
-      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
-    </div>
-  </footer>
+  <div class="footer-slot"></div>
 </div>
 
 <!-- ══════════ 活動公告頁 ══════════ -->
 <div class="page" id="page-news">
-  <div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>活動公告</div>
+  <div class="breadcrumb"><a href="#" data-page="home">首頁</a><span>›</span>活動公告</div>
   <div class="news-page-content">
     <div class="sec-heading" style="margin-bottom:24px;">
-      <div class="sec-heading-bg light" style="font-size:70px;">NEWS</div>
+      <div class="sec-heading-bg light">NEWS</div>
       <div class="sec-heading-main light">活動公告</div>
       <div class="sec-heading-line light"></div>
     </div>
     <div class="news-tabs-center">
-      <button class="news-tab-btn active" onclick="switchNewsTab(this,'event')">活動</button>
-      <button class="news-tab-btn" onclick="switchNewsTab(this,'notice')">公告</button>
+      <button class="news-tab-btn active" data-news-tab="event">活動</button>
+      <button class="news-tab-btn" data-news-tab="notice">公告</button>
     </div>
     <div id="news-event-section">
       <div class="news-event-list" id="news-event-grid"></div>
@@ -858,44 +1119,24 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <button class="page-btn arrow">›</button>
     </div>
   </div>
-  <footer>
-    <div class="footer-top">
-      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
-      <div><div class="footer-col-title">官方帳號</div>
-        <div class="footer-info">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
-            <span>官方帳號：@xinluck</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
-            <span>FB 粉絲團：星運娛樂城</span>
-          </div>
-        </div></div>
-    </div>
-    <hr class="footer-divider">
-    <div class="footer-bottom">
-      <div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div>
-      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
-    </div>
-  </footer>
+  <div class="footer-slot"></div>
 </div>
 
 <!-- ══════════ 攻略專區頁 ══════════ -->
 <div class="page" id="page-strategy">
-  <div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>攻略專區</div>
+  <div class="breadcrumb"><a href="#" data-page="home">首頁</a><span>›</span>攻略專區</div>
   <div class="strategy-page-content">
     <div class="sec-heading" style="margin-bottom:12px;">
-      <div class="sec-heading-bg light" style="font-size:58px;">STRATEGY</div>
+      <div class="sec-heading-bg light">STRATEGY</div>
       <div class="sec-heading-main light">攻略專區</div>
       <div class="sec-heading-line light"></div>
     </div>
     <p style="text-align:center;font-size:18px;color:#4A2800;margin-bottom:32px;line-height:1.7;">遊戲玩法解析、平台使用教學、活動情報整理，幫你在星運娛樂城玩得更聰明、贏得更有把握。</p>
     <div class="strategy-tabs-center">
-      <button class="strategy-tab-btn active" onclick="filterStrategy(this,'all')">全部</button>
-      <button class="strategy-tab-btn" onclick="filterStrategy(this,'guide')">遊戲攻略</button>
-      <button class="strategy-tab-btn" onclick="filterStrategy(this,'platform')">平台介紹</button>
-      <button class="strategy-tab-btn" onclick="filterStrategy(this,'activity')">活動情報</button>
+      <button class="strategy-tab-btn active" data-strategy-filter="all">全部</button>
+      <button class="strategy-tab-btn" data-strategy-filter="guide">遊戲攻略</button>
+      <button class="strategy-tab-btn" data-strategy-filter="platform">平台介紹</button>
+      <button class="strategy-tab-btn" data-strategy-filter="activity">活動情報</button>
     </div>
     <div class="strategy-grid" id="strategy-grid"></div>
     <div class="pagination">
@@ -906,34 +1147,14 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <button class="page-btn arrow">›</button>
     </div>
   </div>
-  <footer>
-    <div class="footer-top">
-      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
-      <div><div class="footer-col-title">官方帳號</div>
-        <div class="footer-info">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
-            <span>官方帳號：@xinluck</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
-            <span>FB 粉絲團：星運娛樂城</span>
-          </div>
-        </div></div>
-    </div>
-    <hr class="footer-divider">
-    <div class="footer-bottom">
-      <div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div>
-      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
-    </div>
-  </footer>
+  <div class="footer-slot"></div>
 </div>
 
 <!-- ══════════ 攻略文章（DEMO） ══════════ -->
 <div class="page" id="page-article-demo">
   <div class="breadcrumb">
-    <a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>
-    <a href="#" onclick="showPage('strategy');return false;">攻略專區</a><span>›</span>
+    <a href="#" data-page="home">首頁</a><span>›</span>
+    <a href="#" data-page="strategy">攻略專區</a><span>›</span>
     自摸無雙３完全攻略
   </div>
   <div class="article-page">
@@ -953,25 +1174,25 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
     <div class="article-toc">
       <div class="article-toc-title">📋　本文目錄</div>
       <ol>
-        <li><a href="#" onclick="scrollToArticleSection('section1');return false;">什麼是自摸無雙３？</a></li>
-        <li><a href="#" onclick="scrollToArticleSection('section2');return false;">基本玩法說明</a></li>
-        <li><a href="#" onclick="scrollToArticleSection('section3');return false;">免費遊戲怎麼觸發？</a></li>
-        <li><a href="#" onclick="scrollToArticleSection('section4');return false;">最高 15,000 倍怎麼達成？</a></li>
-        <li><a href="#" onclick="scrollToArticleSection('section5');return false;">新手建議</a></li>
-        <li><a href="#" onclick="scrollToArticleSection('section-faq');return false;">常見問題 FAQ</a></li>
+        <li><a href="#" data-scroll-target="art-s1">什麼是自摸無雙３？</a></li>
+        <li><a href="#" data-scroll-target="art-s2">基本玩法說明</a></li>
+        <li><a href="#" data-scroll-target="art-s3">免費遊戲怎麼觸發？</a></li>
+        <li><a href="#" data-scroll-target="art-s4">最高 15,000 倍怎麼達成？</a></li>
+        <li><a href="#" data-scroll-target="art-s5">新手建議</a></li>
+        <li><a href="#" data-scroll-target="art-faq">常見問題 FAQ</a></li>
       </ol>
     </div>
 
     <div class="article-body">
 
-      <h2 id="section1">什麼是自摸無雙３？</h2>
+      <h2 id="art-s1">什麼是自摸無雙３？</h2>
       <p>自摸無雙３是星運娛樂城最受歡迎的麻將主題老虎機，以台灣傳統麻將為設計核心，融合現代老虎機的高倍率機制。最高倍率高達 <strong>15,000 倍</strong>，是全站爆率最高的機台之一。無論你是麻將老手還是老虎機新手，自摸無雙３的操作直覺、節奏刺激，讓人停不下來。</p>
 
       <div class="highlight-box">
         💡 <strong>新手重點：</strong>自摸無雙３的「自摸」機制與真實麻將不同，是指特定符號組合出現時觸發的超級大獎機制，不需要懂麻將規則也能輕鬆上手。
       </div>
 
-      <h2 id="section2">基本玩法說明</h2>
+      <h2 id="art-s2">基本玩法說明</h2>
       <p>自摸無雙３採用 5 轉輪設計，每次旋轉消耗遊戲幣。遊戲畫面中的主要符號包含：</p>
       <ul>
         <li><strong>中、發、白（三元牌）</strong>——最高價值符號，集齊三種觸發超級獎池</li>
@@ -982,7 +1203,7 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 
       <div class="article-inline-img">遊戲介面示意圖（待補）</div>
 
-      <h2 id="section3">免費遊戲怎麼觸發？</h2>
+      <h2 id="art-s3">免費遊戲怎麼觸發？</h2>
       <p>免費遊戲（Free Spin）是自摸無雙３爆大獎的核心機制。觸發條件如下：</p>
       <ul>
         <li>同時出現 <strong>3 個散財符號</strong>，觸發 8 次免費旋轉</li>
@@ -995,11 +1216,11 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
         🎰 <strong>攻略技巧：</strong>免費遊戲期間不消耗遊戲幣，建議在此時專注觀察野性符號的位置，因為自摸模式下展開的野性符號會固定保留到免費遊戲結束，每一轉都是衝高倍率的機會。
       </div>
 
-      <h2 id="section4">最高 15,000 倍怎麼達成？</h2>
+      <h2 id="art-s4">最高 15,000 倍怎麼達成？</h2>
       <p>15,000 倍是自摸無雙３的最高理論倍率，達成條件為：在自摸模式啟動期間，三元牌（中、發、白）同時連線，並且野性符號展開後形成全版連線。雖然機率極低，但正是這個設計讓每次旋轉都充滿期待。</p>
       <p>根據玩家回報，觸發自摸模式後的免費遊戲平均倍率約在 <strong>50～300 倍</strong>之間，偶發性的高倍爆率在 <strong>1,000 倍以上</strong>，達到 15,000 倍屬於極罕見大獎。</p>
 
-      <h2 id="section5">新手建議</h2>
+      <h2 id="art-s5">新手建議</h2>
       <p>以下幾點是資深玩家歸納出來的實戰心得，給第一次接觸自摸無雙３的新朋友參考：</p>
       <ul>
         <li>先用小注熟悉遊戲節奏，感受旋轉頻率和符號出現規律，不要急著加注</li>
@@ -1011,22 +1232,22 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <p>總體來說，自摸無雙３是一款兼具娛樂性與爆發力的老虎機，無論你是老手還是第一次體驗線上老虎機的新玩家，都能在這裡找到屬於自己的樂趣。現在就掃碼加入星運娛樂城，立即體驗自摸無雙３帶來的刺激！</p>
 
       <!-- FAQ -->
-      <div class="article-faq" id="section-faq">
+      <div class="article-faq" id="art-faq">
         <div class="article-faq-title">常見問題 FAQ</div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">自摸無雙３怎麼觸發免費遊戲？<span class="faq-q-icon">＋</span></div>
+          <div class="faq-q" data-faq-toggle>自摸無雙３怎麼觸發免費遊戲？<span class="faq-q-icon">＋</span></div>
           <div class="faq-a">出現 3 個以上的散財符號（SCATTER）即可觸發免費遊戲。3 個觸發 8 次、4 個觸發 12 次、5 個觸發 20 次並啟動自摸模式。</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">自摸無雙３最高倍率是多少？<span class="faq-q-icon">＋</span></div>
+          <div class="faq-q" data-faq-toggle>自摸無雙３最高倍率是多少？<span class="faq-q-icon">＋</span></div>
           <div class="faq-a">最高倍率為 15,000 倍，需在自摸模式期間觸發三元牌全版連線。一般玩家在免費遊戲期間平均可獲得 50～300 倍的倍率。</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">不懂麻將可以玩自摸無雙３嗎？<span class="faq-q-icon">＋</span></div>
+          <div class="faq-q" data-faq-toggle>不懂麻將可以玩自摸無雙３嗎？<span class="faq-q-icon">＋</span></div>
           <div class="faq-a">完全可以！自摸無雙３雖以麻將為主題，但玩法與一般老虎機相同，不需要懂麻將規則，只要旋轉就能遊玩。</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">如何在星運娛樂城玩自摸無雙３？<span class="faq-q-icon">＋</span></div>
+          <div class="faq-q" data-faq-toggle>如何在星運娛樂城玩自摸無雙３？<span class="faq-q-icon">＋</span></div>
           <div class="faq-a">用手機掃描官方 LINE QR Code，或直接在瀏覽器輸入 play.xinluck.com，以 LINE 帳號登入後即可在遊戲館找到自摸無雙３，免下載直接遊玩。</div>
         </div>
       </div>
@@ -1035,25 +1256,31 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
       <div class="related-articles">
         <div class="related-title">你可能還會想看</div>
         <div class="related-grid">
-          <div class="related-card" onclick="showPage('article-demo')">
+          <div class="related-card" data-page="article-demo">
             <div class="related-card-img">圖片</div>
             <div class="related-card-body">
               <div class="related-card-cat cat-guide">遊戲攻略</div>
               <div class="related-card-title">印加女神攻略：觸發 25,000 倍的三個關鍵技巧</div>
+              <div class="related-card-excerpt">全館最高爆率機台，三個關鍵時機一次整理。</div>
+              <div class="related-card-more">閱讀更多 →</div>
             </div>
           </div>
-          <div class="related-card" onclick="showPage('article-demo')">
+          <div class="related-card" data-page="article-demo">
             <div class="related-card-img">圖片</div>
             <div class="related-card-body">
               <div class="related-card-cat cat-guide">遊戲攻略</div>
               <div class="related-card-title">龍族傳說６攻略：11,250 倍爆率的觸發條件說明</div>
+              <div class="related-card-excerpt">免費遊戲怎麼觸發？龍族系列玩法重點快速掌握。</div>
+              <div class="related-card-more">閱讀更多 →</div>
             </div>
           </div>
-          <div class="related-card" onclick="showPage('article-demo')">
+          <div class="related-card" data-page="article-demo">
             <div class="related-card-img">圖片</div>
             <div class="related-card-body">
               <div class="related-card-cat cat-platform">平台介紹</div>
               <div class="related-card-title">LINE 登入完全教學：30 秒完成註冊開始遊戲</div>
+              <div class="related-card-excerpt">第一次玩星運？跟著步驟走，免下載立即開台。</div>
+              <div class="related-card-more">閱讀更多 →</div>
             </div>
           </div>
         </div>
@@ -1061,97 +1288,121 @@ footer { background: var(--red-dark); color: #fff; padding: 40px 60px; border-to
 
     </div>
   </div>
-  <footer>
-    <div class="footer-top">
-      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
-      <div><div class="footer-col-title">官方帳號</div>
-        <div class="footer-info">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
-            <span>官方帳號：@xinluck</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div>
-            <span>FB 粉絲團：星運娛樂城</span>
-          </div>
-        </div></div>
-    </div>
-    <hr class="footer-divider">
-    <div class="footer-bottom">
-      <div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div>
-      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
-    </div>
-  </footer>
+  <div class="footer-slot"></div>
 </div>
 
 <!-- 新手專區 -->
 <div class="page" id="page-novice">
-  <div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>新手專區</div>
-  <div style="max-width:860px;margin:0 auto;padding:52px 60px 60px;">
+  <div class="breadcrumb"><a href="#" data-page="home">首頁</a><span>›</span>新手專區</div>
+  <div class="tabbed-page-content">
     <div class="sec-heading" style="margin-bottom:12px;">
-      <div class="sec-heading-bg light" style="font-size:72px;">GUIDE</div>
+      <div class="sec-heading-bg light">GUIDE</div>
       <div class="sec-heading-main light">新手專區</div>
       <div class="sec-heading-line light"></div>
     </div>
     <p style="text-align:center;font-size:18px;color:#4A2800;margin-bottom:32px;line-height:1.7;">第一次來星運娛樂城？這裡有你需要的一切入門教學。</p>
     <div class="strategy-tabs-center" id="novice-tabs">
-      <button class="strategy-tab-btn active" onclick="switchNoviceTab(this,'介面說明')">介面說明</button>
-      <button class="strategy-tab-btn" onclick="switchNoviceTab(this,'捷徑教學')">捷徑教學</button>
-      <button class="strategy-tab-btn" onclick="switchNoviceTab(this,'VIP 說明')">VIP 說明</button>
-      <button class="strategy-tab-btn" onclick="switchNoviceTab(this,'公會說明')">公會說明</button>
-      <button class="strategy-tab-btn" onclick="switchNoviceTab(this,'儲值教學')">儲值教學</button>
+      <button class="strategy-tab-btn active" data-novice-tab="介面說明">介面說明</button>
+      <button class="strategy-tab-btn" data-novice-tab="捷徑教學">捷徑教學</button>
+      <button class="strategy-tab-btn" data-novice-tab="VIP 說明">VIP 說明</button>
+      <button class="strategy-tab-btn" data-novice-tab="公會說明">公會說明</button>
+      <button class="strategy-tab-btn" data-novice-tab="儲值教學">儲值教學</button>
     </div>
     <div id="novice-content"></div>
   </div>
-  <footer>
-    <div class="footer-top">
-      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
-      <div><div class="footer-col-title">官方帳號</div><div class="footer-info">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>官方帳號：@xinluck</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>FB 粉絲團：星運娛樂城</span></div>
-      </div></div>
-    </div>
-    <hr class="footer-divider">
-    <div class="footer-bottom">
-      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;"><div style="width:48px;height:48px;background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;text-align:center;line-height:1.3;">年齡<br>分級</div><div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div></div>
-      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
-    </div>
-  </footer>
+  <div class="footer-slot"></div>
 </div>
 
 <!-- 客服中心 -->
 <div class="page" id="page-cs">
-  <div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">首頁</a><span>›</span>客服中心</div>
-  <div style="max-width:860px;margin:0 auto;padding:52px 60px 60px;">
+  <div class="breadcrumb"><a href="#" data-page="home">首頁</a><span>›</span>客服中心</div>
+  <div class="tabbed-page-content">
     <div class="sec-heading" style="margin-bottom:12px;">
-      <div class="sec-heading-bg light" style="font-size:60px;">SUPPORT</div>
+      <div class="sec-heading-bg light">SUPPORT</div>
       <div class="sec-heading-main light">客服中心</div>
       <div class="sec-heading-line light"></div>
     </div>
-    <p style="text-align:center;font-size:18px;color:#4A2800;margin-bottom:32px;line-height:1.7;">服務條款、隱私權政策、遊戲規章與停權相關說明。</p>
-    <div class="strategy-tabs-center" id="cs-tabs">
-      <button class="strategy-tab-btn active" onclick="switchCsTab(this,'服務條款')">服務條款</button>
-      <button class="strategy-tab-btn" onclick="switchCsTab(this,'隱私權政策')">隱私權政策</button>
-      <button class="strategy-tab-btn" onclick="switchCsTab(this,'遊戲規章')">遊戲規章</button>
-      <button class="strategy-tab-btn" onclick="switchCsTab(this,'停權列表')">停權列表</button>
+    <p style="text-align:center;font-size:18px;color:#4A2800;margin-bottom:32px;line-height:1.7;">需要協助時，請優先透過 LINE 官方帳號或客服信箱聯繫我們。</p>
+    <div class="support-panel" id="cs-聯絡客服">
+      <div class="support-cards">
+        <div class="support-card line-card">
+          <div class="support-line-qr">
+            <div class="qr-wrap qr-size-support" id="qr-support-line-wrap"></div>
+          </div>
+          <div>
+            <div class="support-card-title">LINE 官方客服</div>
+            <div class="support-card-main">@xinluck</div>
+            <div class="support-card-desc">加入官方 LINE，可詢問登入、遊戲、儲值與帳號問題。</div>
+            <a class="support-line-btn" href="https://lin.ee/y8rvuUu" target="_blank" rel="noopener">加入 LINE 官方客服</a>
+          </div>
+        </div>
+        <div class="support-side-cards">
+          <div class="support-card">
+            <div class="support-card-title">客服信箱</div>
+            <div class="support-card-main">support@xinluck.com</div>
+            <div class="support-card-desc">若需附上截圖或詳細說明，建議使用信箱聯繫。</div>
+          </div>
+          <div class="support-card">
+            <div class="support-card-title">服務時間</div>
+            <div class="support-card-main">09:00 - 18:00</div>
+            <div class="support-card-desc">非服務時間仍可留言，我們會依序回覆。</div>
+          </div>
+        </div>
+      </div>
+      <div class="support-note">
+        <div class="support-note-title">防詐提醒</div>
+        官方客服不會主動要求提供密碼、驗證碼或私下交易資訊。若遇到可疑訊息，請不要點擊陌生連結，並先透過官方 LINE 或客服信箱確認。
+      </div>
+      <div class="support-faq-title" id="cs-常見問題">常見問題</div>
+      <div class="support-faq-item">
+        <div class="support-faq-q">忘記如何登入怎麼辦？</div>
+        <div class="support-faq-a">請先確認是否使用原本綁定的 LINE 帳號登入；若仍無法登入，請聯繫官方 LINE 客服協助確認。</div>
+      </div>
+      <div class="support-faq-item">
+        <div class="support-faq-q">儲值或獎勵沒有入帳怎麼辦？</div>
+        <div class="support-faq-a">請保留交易時間、截圖與帳號資訊，透過客服信箱或 LINE 官方帳號提供給客服查詢。</div>
+      </div>
+      <div class="support-faq-item">
+        <div class="support-faq-q">遇到疑似詐騙訊息怎麼辦？</div>
+        <div class="support-faq-a">請不要提供個人資料，也不要點擊陌生連結。建議立即截圖並傳給官方客服確認。</div>
+      </div>
+      <div class="support-faq-item">
+        <div class="support-faq-q">客服多久會回覆？</div>
+        <div class="support-faq-a">服務時間內會依序回覆。若問題需要查詢帳務或登入紀錄，可能需要較長處理時間，請保留相關截圖。</div>
+      </div>
+      <div class="support-faq-item">
+        <div class="support-faq-q">停權後可以申訴嗎？</div>
+        <div class="support-faq-a">可以。請提供帳號、停權時間、問題描述與可佐證截圖，客服會協助送交審核。</div>
+      </div>
+      <div class="support-faq-item">
+        <div class="support-faq-q">我可以在哪裡確認官方管道？</div>
+        <div class="support-faq-a">請以本頁顯示的 LINE 官方客服、客服信箱與網站公告為準。不要相信私訊要求轉帳或提供密碼的帳號。</div>
+      </div>
+      <div class="suspension-list" id="cs-停權名單">
+        <div class="suspension-title">停權名單</div>
+        <div class="suspension-desc">以下為近期因違反遊戲規章、異常登入或疑似詐騙行為而停權的帳號。若您認為名單有誤，請聯繫客服申訴。</div>
+        <div class="suspension-empty">
+          目前尚無停權資料
+          <span>若未來有公開名單，將於此區更新。</span>
+        </div>
+      </div>
     </div>
-    <div id="cs-content"></div>
   </div>
-  <footer>
-    <div class="footer-top">
-      <div><div class="footer-col-title">平台資訊</div><div class="footer-info">維護時間：每週四　10：00～11：00<br>客服信箱：support@xinluck.com<br>客服時間：09：00～18：00</div></div>
-      <div><div class="footer-col-title">官方帳號</div><div class="footer-info">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>官方帳號：@xinluck</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;background:rgba(255,215,0,0.15);border:1px dashed rgba(255,215,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,215,0,0.4);flex-shrink:0;">圖</div><span>FB 粉絲團：星運娛樂城</span></div>
-      </div></div>
-    </div>
-    <hr class="footer-divider">
-    <div class="footer-bottom">
-      <div style="display:flex;align-items:flex-start;gap:12px;flex:1;"><div style="width:48px;height:48px;background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;text-align:center;line-height:1.3;">年齡<br>分級</div><div class="footer-legal">本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。</div></div>
-      <div class="footer-links"><a href="#">服務條款</a><span>｜</span><a href="#">隱私權政策</a><span>｜</span><a href="#">遊戲規章</a><span>｜</span><a href="#">停權列表</a></div>
-    </div>
-  </footer>
+  <div class="footer-slot"></div>
 </div>
+
+<script>
+function mountSharedFooters() {
+  const template = document.getElementById('site-footer-template');
+  if (!template) return;
+
+  document.querySelectorAll('.footer-slot').forEach(slot => {
+    const footer = template.content.firstElementChild.cloneNode(true);
+    slot.replaceWith(footer);
+  });
+}
+mountSharedFooters();
+</script>
 
 <script>
 const CLOVER_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="18" fill="#00B900" opacity="0.9"/><circle cx="70" cy="50" r="18" fill="#00B900" opacity="0.9"/><circle cx="50" cy="70" r="18" fill="#00B900" opacity="0.9"/><circle cx="30" cy="50" r="18" fill="#00B900" opacity="0.9"/><ellipse cx="50" cy="50" rx="8" ry="8" fill="#00B900"/><rect x="47" y="68" width="6" height="18" rx="3" fill="#5D4037"/></svg>`;
@@ -1185,6 +1436,7 @@ window.addEventListener('load', () => {
   makeQR('qr-modal-wrap', 160);
   makeQR('qr-float-wrap', 90);
   makeQR('qr-overlay-wrap', 84);
+  makeQR('qr-support-line-wrap', 96);
   syncDD();
 });
 window.addEventListener('resize', syncDD);
@@ -1198,14 +1450,37 @@ function syncDD() {
 
 /* 頁面切換 */
 function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
-  ['novice','cs'].forEach(t => document.getElementById('subnav-' + t).classList.remove('visible'));
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname);
+  }
+  /* 先把所有頁面 div 的 scrollTop 歸零 */
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.scrollTop = 0;
+  });
+  const target = document.getElementById('page-' + name);
+  target.scrollTop = 0;
+  target.classList.add('active');
+  ['novice','cs'].forEach(t => {
+    const subnav = document.getElementById('subnav-' + t);
+    if (subnav) subnav.classList.remove('visible');
+  });
+  /* 視窗也捲回頂部 */
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
   window.scrollTo(0, 0);
 }
 function showSubPage(type, section) {
   showPage(type);
-  document.getElementById('subnav-' + type).classList.add('visible');
+  const subnav = document.getElementById('subnav-' + type);
+  if (subnav) subnav.classList.add('visible');
+
+  if (type === 'novice') {
+    const tab = document.querySelector(`#novice-tabs [data-novice-tab="${section}"]`);
+    if (tab) switchNoviceTab(tab, section);
+    return;
+  }
+
   setTimeout(() => scrollToSubSection(type, section), 80);
 }
 function scrollToId(id) {
@@ -1281,13 +1556,13 @@ let cIdx = 0;
 const track = document.getElementById('carousel-track');
 const dotsEl = document.getElementById('c-dots');
 const totalPages = Math.ceil(GAMES.length / VISIBLE);
-track.innerHTML = GAMES.map(g =>
-  `<div class="c-item" onclick='openGov(${JSON.stringify(g)})'>
+track.innerHTML = GAMES.map((g, i) =>
+  `<div class="c-item" data-game-index="${i}">
     <img src="${g.img}" alt="${g.name}" loading="lazy" onerror="this.style.background='#331100'">
     <div class="c-hover"><span class="c-play">▶</span></div>
   </div>`).join('');
 dotsEl.innerHTML = Array.from({length:totalPages},(_,i) =>
-  `<div class="c-dot${i===0?' active':''}" onclick="goPage(${i})"></div>`).join('');
+  `<div class="c-dot${i===0?' active':''}" data-carousel-page="${i}"></div>`).join('');
 function updateCarousel() {
   const w = track.children[0] ? track.children[0].offsetWidth + 14 : 0;
   track.style.transform = `translateX(-${cIdx * VISIBLE * w}px)`;
@@ -1298,7 +1573,7 @@ function goPage(i) { cIdx = i; updateCarousel(); }
 
 /* 攻略首頁小卡 */
 document.getElementById('articles-small').innerHTML = SMALL_ARTICLES.map(a =>
-  `<div class="article-small" onclick="showPage('article-demo')">
+  `<div class="article-small" data-page="article-demo">
     <div class="article-small-img">圖片</div>
     <div class="article-small-body">
       <div class="article-small-title">${a.title}</div>
@@ -1307,8 +1582,8 @@ document.getElementById('articles-small').innerHTML = SMALL_ARTICLES.map(a =>
   </div>`).join('');
 
 /* 所有遊戲頁 grid */
-document.getElementById('games-grid').innerHTML = GAMES.map(g =>
-  `<div class="game-card" onclick='openGov(${JSON.stringify(g)})'>
+document.getElementById('games-grid').innerHTML = GAMES.map((g, i) =>
+  `<div class="game-card" data-game-index="${i}">
     <img src="${g.img}" alt="${g.name}" loading="lazy" onerror="this.style.background='#331100'">
     <div class="game-card-hover"><span class="game-card-play">▶</span></div>
   </div>`).join('');
@@ -1351,12 +1626,15 @@ function toggleFaq(el) {
   ans.classList.toggle('open');
 }
 
-/* TOC scroll */
+/* TOC scroll - 不改 hash，純粹 scroll */
 function scrollToArticleSection(id) {
   const el = document.getElementById(id);
   if (!el) return;
   const offset = 70 + 20;
-  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: top, behavior: 'smooth' });
+  /* 確保 hash 不被改動 */
+  history.replaceState(null, '', window.location.pathname);
 }
 
 /* 攻略專區頁 */
@@ -1364,7 +1642,7 @@ function renderStrategy(filter) {
   const list = filter === 'all' ? STRATEGY_ARTICLES : STRATEGY_ARTICLES.filter(a => a.cat === filter);
   const catClass = { guide:'cat-guide', platform:'cat-platform', activity:'cat-activity' };
   document.getElementById('strategy-grid').innerHTML = list.map(a =>
-    `<div class="strategy-card" onclick="showPage('article-demo')">
+    `<div class="strategy-card" data-page="article-demo">
       <div class="strategy-card-img">圖片</div>
       <div class="strategy-card-body">
         <span class="strategy-card-cat ${catClass[a.cat]}">${a.catLabel}</span>
@@ -1389,6 +1667,30 @@ function openGov(g) {
   document.getElementById('gov-mult').textContent = '最高倍率　' + g.mult;
   document.getElementById('gov-desc').textContent = g.desc;
   document.getElementById('gov-play-btn').onclick = () => window.open(g.deeplink || 'https://play.xinluck.com', '_blank');
+
+  /* 重新生成對應遊戲的 QR */
+  const wrap = document.getElementById('qr-overlay-wrap');
+  wrap.innerHTML = '';
+  const qrDiv = document.createElement('div');
+  wrap.appendChild(qrDiv);
+  const _w = console.warn, _e = console.error, _l = console.log;
+  console.warn = console.error = console.log = () => {};
+  new QRCode(qrDiv, {
+    text: g.deeplink || 'https://play.xinluck.com',
+    width: 84, height: 84,
+    colorDark: '#000', colorLight: '#fff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+  console.warn = _w; console.error = _e; console.log = _l;
+  setTimeout(() => {
+    const logoSize = Math.round(84 * 0.22);
+    const overlay = document.createElement('div');
+    overlay.className = 'qr-logo-overlay';
+    overlay.style.cssText = `width:${logoSize}px;height:${logoSize}px;padding:2px;`;
+    overlay.innerHTML = CLOVER_SVG;
+    wrap.appendChild(overlay);
+  }, 200);
+
   document.getElementById('gov-bd').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -1400,20 +1702,283 @@ function closeGov() {
 
 /* ── 新手專區內容 ── */
 const NOVICE_CONTENT = {
-  '介面說明': { title:'介面說明', body:'這裡說明遊戲介面的各個區塊功能，包含主選單、遊戲大廳、個人中心等操作介紹。', ph:'介面截圖示意圖（待補）' },
-  '捷徑教學': { title:'捷徑教學', body:'教學如何將星運娛樂城加入手機主畫面，一鍵快速進入，免每次開瀏覽器搜尋。', ph:'捷徑設定步驟截圖（待補）' },
-  'VIP 說明': { title:'VIP 說明', body:'星運 VIP 等級制度說明，各等級所享有的專屬權益與升級條件，讓忠實玩家享有更多禮遇。', ph:'VIP 等級表（待補）' },
-  '公會說明': { title:'公會說明', body:'加入公會享有更多社群福利，公會戰活動說明、公會積分制度與獎勵辦法一次看懂。', ph:'公會制度圖示（待補）' },
-  '儲值教學': { title:'儲值教學', body:'支援 LINE Pay、Apple Pay、Google Pay 等多元支付方式，儲值即時到帳，操作簡單安全。', ph:'儲值步驟截圖（待補）' },
+
+  '介面說明': { title:'介面說明', html:`
+    <div class="novice-info-placeholder" style="margin-bottom:28px;">介面截圖示意圖（待補）</div>
+
+    <div class="suspension-title" style="font-size:19px;">個人區</div>
+    <div class="novice-steps" style="margin-bottom:28px;">
+      <div class="novice-step"><div class="novice-step-num">1</div><div class="novice-step-body"><div class="novice-step-title">個人中心</div><div class="novice-info-body">展示玩家暱稱與個人化設定。可在此修改暱稱、編輯個性簽名、綁定手機號碼及進行首儲。亦整合了名片分享、成就勳章、資產明細、信箱通知與好友管理功能。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">2</div><div class="novice-step-body"><div class="novice-step-title">VIP 特權</div><div class="novice-info-body">顯示當前 VIP 階級。點擊可查看詳細的會員權益、專屬福利以及會籍有效期限。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">3</div><div class="novice-step-body"><div class="novice-step-title">點數餘額</div><div class="novice-info-body">即時顯示帳戶內的點數餘額（金幣），點擊即可前往商城查看儲值優惠。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">4</div><div class="novice-step-body"><div class="novice-step-title">系統設置</div><div class="novice-info-body">調整遊戲音效、背景音樂及聊天室通知開關。提供紅包碼兌換入口、黑名單管理，並可查閱服務條款、隱私政策、遊戲規則及版號資訊。</div></div></div>
+    </div>
+
+    <div class="suspension-title" style="font-size:19px;">首頁資訊</div>
+    <div class="novice-steps" style="margin-bottom:28px;">
+      <div class="novice-step"><div class="novice-step-num">5</div><div class="novice-step-body"><div class="novice-step-title">活動看板</div><div class="novice-info-body">點擊輪播圖片，立即掌握最新活動詳情與公告內容。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">6</div><div class="novice-step-body"><div class="novice-step-title">即時快訊</div><div class="novice-info-body">跑馬燈滾動顯示最新活動消息與重要系統公告，不錯過任何資訊。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">7</div><div class="novice-step-body"><div class="novice-step-title">遊戲大廳</div><div class="novice-info-body">分類瀏覽各類遊戲，包含「電子」、「街機」、「棋牌」、「競猜」等專區。支援「最愛」功能，將喜歡的遊戲收藏以便快速啟動。</div></div></div>
+    </div>
+
+    <div class="suspension-title" style="font-size:19px;">遊戲探索</div>
+    <div class="novice-steps" style="margin-bottom:28px;">
+      <div class="novice-step"><div class="novice-step-num">8</div><div class="novice-step-body"><div class="novice-step-title">快速搜尋</div><div class="novice-info-body">輸入關鍵字，精準搜尋您想遊玩的遊戲項目。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">9</div><div class="novice-step-body"><div class="novice-step-title">熱門推薦</div><div class="novice-info-body">人氣排行列出近期最多玩家參與的熱門遊戲；爆獎專區展示近期開出高倍率獎金的遊戲機台。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">10</div><div class="novice-step-body"><div class="novice-step-title">桌面捷徑</div><div class="novice-info-body">將遊戲圖示加入手機桌面，一鍵快速登入。首次建立並登入可領取專屬獎勵！</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">11</div><div class="novice-step-body"><div class="novice-step-title">遊戲列表</div><div class="novice-info-body">依選定類別顯示對應遊戲。點擊封面左上角愛心即可加入收藏，建立專屬的常用遊戲庫。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">12</div><div class="novice-step-body"><div class="novice-step-title">累積彩金（Jackpot）</div><div class="novice-info-body">遊戲設有累積獎池機制，每次投注將提撥部分比例至獎池，玩家投注時有機會觸發並贏取高額彩金。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">13</div><div class="novice-step-body"><div class="novice-step-title">門檻限制</div><div class="novice-info-body">部分特定或新款遊戲設有 VIP 等級門檻，提供高階玩家專屬的搶先體驗權益。</div></div></div>
+    </div>
+
+    <div class="suspension-title" style="font-size:19px;">社群互動</div>
+    <div class="novice-steps" style="margin-bottom:28px;">
+      <div class="novice-step"><div class="novice-step-num">14</div><div class="novice-step-body"><div class="novice-step-title">社群互動（聊天室）</div><div class="novice-info-body">提供全服以及私聊、公會等交流的空間。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">15</div><div class="novice-step-body"><div class="novice-step-title">官方 LINE</div><div class="novice-info-body">點擊加入官方帳號好友，點擊跳轉至官方 LINE 帳號，由專人為您服務。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">16</div><div class="novice-step-body"><div class="novice-step-title">其他</div><div class="novice-info-body">點擊展開以使用活動、公告、任務、道具、客服等進階選單。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">17</div><div class="novice-step-body"><div class="novice-step-title">榮譽榜</div><div class="novice-info-body">提供展示全服玩家的遊戲戰果排名。</div></div></div>
+    </div>
+
+    <div class="suspension-title" style="font-size:19px;">商城與系統</div>
+    <div class="novice-steps">
+      <div class="novice-step"><div class="novice-step-num">18</div><div class="novice-step-body"><div class="novice-step-title">商城儲值</div><div class="novice-info-body">購買遊戲點數與查看優惠方案，並可依據 VIP 等級領取免費發財金。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">19</div><div class="novice-step-body"><div class="novice-step-title">贈禮系統（需完成首儲與綁定）</div><div class="novice-info-body">開放玩家間點數互轉功能，並提供完整的贈禮紀錄查詢與狀態管理。</div></div></div>
+      <div class="novice-step"><div class="novice-step-num">20</div><div class="novice-step-body"><div class="novice-step-title">公會系統</div><div class="novice-info-body">提供志同道合夥伴共同建立公會，參與公會活動。</div></div></div>
+    </div>
+  `},
+
+  '捷徑教學': { title:'捷徑教學', html:`
+    <div class="novice-install-tabs">
+      <button class="novice-install-tab active" onclick="switchInstallTab(this,'android')">Android</button>
+      <button class="novice-install-tab" onclick="switchInstallTab(this,'ios')">iOS</button>
+    </div>
+
+    <div id="install-android">
+      <p class="novice-install-note">請將手機預設瀏覽器設定為 Chrome</p>
+      <div class="novice-steps">
+        <div class="novice-step">
+          <div class="novice-step-num">1</div>
+          <div class="novice-step-body">
+            <div class="novice-step-title">點擊右上角「⋮」圖示按鈕</div>
+            <div class="novice-info-placeholder">Android 步驟 1 截圖（待補）</div>
+          </div>
+        </div>
+        <div class="novice-step">
+          <div class="novice-step-num">2</div>
+          <div class="novice-step-body">
+            <div class="novice-step-title">點選「加入主畫面」，再點選「安裝」就完成囉！</div>
+            <div class="novice-info-placeholder">Android 步驟 2–3 截圖（待補）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="install-ios" style="display:none;">
+      <p class="novice-install-note">建議將 iOS 升級至 17.0.1 以上，並使用 Safari 瀏覽器開啟</p>
+      <div class="novice-install-subtabs">
+        <button class="novice-install-subtab active" onclick="switchIosTab(this,'ios26')">iOS 26 以上</button>
+        <button class="novice-install-subtab" onclick="switchIosTab(this,'ios18')">iOS 26 以下</button>
+      </div>
+
+      <div id="install-ios26">
+        <div class="novice-steps">
+          <div class="novice-step">
+            <div class="novice-step-num">1</div>
+            <div class="novice-step-body">
+              <div class="novice-step-title">前往該頁面後，點選下方工具列的「分享」按鈕</div>
+              <div class="novice-info-placeholder">iOS 26 步驟 1 截圖（待補）</div>
+            </div>
+          </div>
+          <div class="novice-step">
+            <div class="novice-step-num">2</div>
+            <div class="novice-step-body">
+              <div class="novice-step-title">點選「更多」後，選擇「加入主畫面」</div>
+              <div class="novice-info-placeholder">iOS 26 步驟 2–3 截圖（待補）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="install-ios18" style="display:none;">
+        <div class="novice-steps">
+          <div class="novice-step">
+            <div class="novice-step-num">1</div>
+            <div class="novice-step-body">
+              <div class="novice-step-title">前往該頁面後，點選下方工具列的「分享」按鈕</div>
+              <div class="novice-info-placeholder">iOS 18 步驟 1 截圖（待補）</div>
+            </div>
+          </div>
+          <div class="novice-step">
+            <div class="novice-step-num">2</div>
+            <div class="novice-step-body">
+              <div class="novice-step-title">點選「加入主畫面」</div>
+              <div class="novice-info-placeholder">iOS 18 步驟 2 截圖（待補）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `},
+
+  'VIP 說明': { title:'VIP 說明', html:`
+    <ul class="novice-feature-list" style="margin-bottom:28px;">
+      <li>新註冊玩家 VIP 等級為 VIP1，綁定手機門號後可以升為 VIP2，首儲後即保有 VIP3 以上的 VIP 等級。</li>
+      <li>玩家可在「我的」個人資訊確認當前 VIP 等級，VIP 說明中可確認玩家各 VIP 等級的權益及確認 VIP 有效期限。</li>
+    </ul>
+
+    <div class="novice-sub-title">VIP3 以上等級提升規則</div>
+    <ul class="novice-feature-list" style="margin-bottom:28px;">
+      <li>當玩家當前的【累積儲值】或【累積投注】達到新的 VIP 等級，立即提升至該等級，時效至當月月底。計算週期為當月份。</li>
+      <li>每月首日凌晨 0 點會依據前 1 個月的【累積儲值】與【累積投注】，調整當月份的 VIP 等級，時效至當月月底。</li>
+    </ul>
+
+    <div class="novice-sub-title">詳細 VIP 資格與功能對照表</div>
+    <div style="overflow-x:auto;margin-top:16px;">
+      <table class="novice-vip-table">
+        <thead>
+          <tr>
+            <th>權益項目</th>
+            <th>VIP 1</th><th>VIP 2</th><th>VIP 3</th>
+            <th>VIP 4</th><th>VIP 5</th><th>VIP 6</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="vip-row-a"><td>一個月內累積儲值</td><td>－</td><td>綁定門號</td><td>首儲</td><td>$1,000</td><td>$5,000</td><td>$10,000</td></tr>
+          <tr class="vip-row-b"><td>一個月內累積投注</td><td>－</td><td>－</td><td>－</td><td>500萬點</td><td>2,500萬點</td><td>5,000萬點</td></tr>
+          <tr class="vip-row-a"><td>接收贈禮</td><td>✕</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td></tr>
+          <tr class="vip-row-b"><td>贈送點數</td><td>✕</td><td>✕</td><td>○</td><td>○</td><td>○</td><td>○</td></tr>
+          <tr class="vip-row-a"><td>每日送禮額度</td><td>✕</td><td>✕</td><td>8萬</td><td>50萬</td><td>200萬</td><td>無限</td></tr>
+          <tr class="vip-row-b"><td>每日送禮次數</td><td>✕</td><td>✕</td><td>10次</td><td>20次</td><td>50次</td><td>無限</td></tr>
+          <tr class="vip-row-a"><td>加入公會</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td></tr>
+          <tr class="vip-row-b"><td>創立公會</td><td>✕</td><td>✕</td><td>✕</td><td>✕</td><td>✕</td><td>○</td></tr>
+          <tr class="vip-row-a"><td>會員期限</td><td>永久</td><td>永久</td><td>永久</td><td>一個月</td><td>一個月</td><td>一個月</td></tr>
+          <tr class="vip-row-b"><td>發財金額度</td><td>100</td><td>200</td><td>300</td><td>500</td><td>600</td><td>1,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  `},
+
+  '公會說明': { title:'公會說明', html:`
+    <ul class="novice-feature-list" style="margin-bottom:28px;">
+      <li>只有 VIP6 玩家可以建立公會，而且需要繳交 100 萬點數。</li>
+      <li>VIP1 即可加入公會，並且可以隨意選擇任何公會進行加入。</li>
+      <li>每位公會成員進行遊戲時皆會即時按照「回饋金幣比例」投入至公會金庫中。單筆投注 10 點以上才會累積公會金幣，公會等級提升後也將會有不同的回饋金幣比例。</li>
+      <li>公會成員不透過任何「連結」進行儲值所獲得的星幣（不含優惠），皆會即時按照「回饋金幣比例」投入至公會金庫中。</li>
+      <li>公會金幣等同於遊戲點數。</li>
+    </ul>
+
+    <div class="novice-sub-title">公會等級</div>
+    <ul class="novice-feature-list" style="margin-bottom:16px;">
+      <li>當公會累積金幣達到條件時，將會依照表格晉升等級、提高公會可加人數。公會等級提升後也將會有不同的回饋金幣比例。</li>
+    </ul>
+    <div style="overflow-x:auto;margin-bottom:28px;">
+      <table class="novice-vip-table">
+        <thead>
+          <tr><th>公會等級</th><th>公會人數</th><th>公會金庫累積條件</th></tr>
+        </thead>
+        <tbody>
+          <tr class="vip-row-a"><td>等級零</td><td>30人</td><td>無</td></tr>
+          <tr class="vip-row-b"><td>等級一</td><td>40人</td><td>累積達 8 萬</td></tr>
+          <tr class="vip-row-a"><td>等級二</td><td>50人</td><td>累積達 28 萬</td></tr>
+          <tr class="vip-row-b"><td>等級三</td><td>60人</td><td>累積達 58 萬</td></tr>
+          <tr class="vip-row-a"><td>等級四</td><td>70人</td><td>累積達 288 萬</td></tr>
+          <tr class="vip-row-b"><td>等級五</td><td>80人</td><td>累積達 888 萬</td></tr>
+          <tr class="vip-row-a"><td>等級六</td><td>100人</td><td>累積達 2,888 萬</td></tr>
+          <tr class="vip-row-b"><td>等級七</td><td>120人</td><td>累積達 3,888 萬</td></tr>
+          <tr class="vip-row-a"><td>等級八</td><td>150人</td><td>累積達 5,888 萬</td></tr>
+          <tr class="vip-row-b"><td>等級九</td><td>180人</td><td>累積達 8,888 萬</td></tr>
+          <tr class="vip-row-a"><td>等級十</td><td>200人</td><td>累積達 1 億</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="novice-sub-title">會長</div>
+    <ul class="novice-feature-list" style="margin-bottom:28px;">
+      <li>公會會長可提領公會金庫金幣，公會金幣必需超過 10 萬金幣才可提領。提領公會金幣領取後皆會「凍結 8 日」才可贈禮。</li>
+      <li>公會會長可使用「更換會長」選擇交接「會長職位」給指定會員，可自由選擇適任的新會長。</li>
+      <li>會長可指定會員成為「副會長」，副會長可協助會長審核通過或剔除成員。</li>
+      <li>會長可「解散公會」，點擊「解散公會」立即解散公會，且不退回創建的金幣以及公會金幣。</li>
+      <li>公會會長違規或被凍結，會長職位將轉移回創會會長。</li>
+      <li>公會會長、創會會長皆違規或被凍結，系統將會解散公會。</li>
+      <li>會長可設定公會自定義按鈕，且只有公會成員可看見。</li>
+      <li>會長可使用「群發成員私信」發送私信給全體公會成員。</li>
+    </ul>
+
+    <div class="novice-sub-title">副會長</div>
+    <ul class="novice-feature-list" style="margin-bottom:28px;">
+      <li>副會長有同意或拒絕新會員加入的資格、強制剔除某會員的權利。</li>
+      <li>副會長可使用「群發成員私信」發送私信給全體公會成員。</li>
+    </ul>
+
+    <div class="novice-sub-title">公會成員</div>
+    <ul class="novice-feature-list">
+      <li>每位公會成員進行遊戲時皆會即時按照「回饋金幣比例」投入至公會金庫中。單筆投注 10 點以上才會累積公會金幣。</li>
+      <li>公會成員不透過任何「連結」進行儲值所獲得的星幣（不含優惠），皆會即時按照「回饋金幣比例」投入至公會金庫中。</li>
+      <li>成為公會成員後，可查看當前公會累積金幣。</li>
+      <li>在會員列表可確認會員當週貢獻度，排序由當週高至低顯示。</li>
+      <li>公會的自定義按鈕，只有玩家成為該公會成員後才會顯示。</li>
+      <li>退出公會後必須等待「24 小時」才能再次加入公會。</li>
+    </ul>
+  `},
+
+  '儲值教學': { title:'儲值教學', html:`
+    <p class="novice-info-body" style="margin-bottom:28px;">
+      星運娛樂城每天都有儲值加碼活動，點數回饋最高可達 12%，遊戲中還會不定時跳出限量優惠提示，專屬好康千萬別錯過！<br>
+      現在只要進入商城，就有機會免費領取【好運發財金】，輕鬆點一點，好運立即到手 🎁
+    </p>
+    <div class="novice-steps">
+      <div class="novice-step">
+        <div class="novice-step-num">1</div>
+        <div class="novice-step-body">
+          <div class="novice-step-title">掃描 QR Code 開啟星運娛樂城商城頁</div>
+          <div class="novice-info-placeholder">QR Code 圖示（待補）</div>
+        </div>
+      </div>
+      <div class="novice-step">
+        <div class="novice-step-num">2</div>
+        <div class="novice-step-body">
+          <div class="novice-step-title">畫面跳轉至商城頁面，或在遊戲大廳下方點選「商城」</div>
+          <div class="novice-info-placeholder">步驟 2 截圖（待補）</div>
+        </div>
+      </div>
+      <div class="novice-step">
+        <div class="novice-step-num">3</div>
+        <div class="novice-step-body">
+          <div class="novice-step-title">選擇想要的儲值管道與商品，完成儲值！</div>
+          <div class="novice-info-placeholder">步驟 3 截圖（待補）</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:32px;text-align:center;">
+      <a href="https://play.xinluck.com" target="_blank" rel="noopener"
+         style="display:inline-block;background:var(--green-line);color:#fff;border:2px solid #009600;border-radius:50px;padding:16px 48px;font-size:20px;font-weight:700;text-decoration:none;font-family:inherit;transition:transform 0.15s;"
+         onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        ▶　立即前往儲值
+      </a>
+    </div>
+  `},
 };
+
 function renderNoviceContent(key) {
   const d = NOVICE_CONTENT[key];
   document.getElementById('novice-content').innerHTML = `
     <div style="padding:36px 0;">
-      <div style="font-size:20px;font-weight:900;color:var(--red-main);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--cream-dark);">${d.title}</div>
-      <p style="font-size:17px;line-height:1.9;color:#4A2800;margin-bottom:20px;">${d.body}</p>
-      <div style="background:#fff8ee;border:1.5px dashed var(--cream-dark);border-radius:12px;padding:40px;text-align:center;color:#8A6040;font-size:14px;">${d.ph}</div>
+      <div class="suspension-title">${d.title}</div>
+      ${d.html}
     </div>`;
+}
+
+function switchInstallTab(el, tab) {
+  document.querySelectorAll('.novice-install-tab').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('install-android').style.display = tab === 'android' ? '' : 'none';
+  document.getElementById('install-ios').style.display = tab === 'ios' ? '' : 'none';
+}
+function switchIosTab(el, tab) {
+  document.querySelectorAll('.novice-install-subtab').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('install-ios26').style.display = tab === 'ios26' ? '' : 'none';
+  document.getElementById('install-ios18').style.display = tab === 'ios18' ? '' : 'none';
 }
 function switchNoviceTab(el, key) {
   document.querySelectorAll('#novice-tabs .strategy-tab-btn').forEach(b => b.classList.remove('active'));
@@ -1422,28 +1987,102 @@ function switchNoviceTab(el, key) {
 }
 renderNoviceContent('介面說明');
 
-/* ── 客服中心內容 ── */
-const CS_CONTENT = {
-  '服務條款': { title:'服務條款', body:'本服務條款規範您使用星運娛樂城平台之各項服務。請於使用前詳細閱讀以下內容，使用本平台即表示您同意遵守本條款。', ph:'完整條款內容（待補）' },
-  '隱私權政策': { title:'隱私權政策', body:'星運娛樂城重視您的個人資料安全，本政策說明我們如何收集、使用及保護您的個人資訊，請放心使用。', ph:'完整隱私權政策內容（待補）' },
-  '遊戲規章': { title:'遊戲規章', body:'為維護公平遊戲環境，請遵守以下遊戲規範。違反規章者，平台有權暫停或終止其帳號，情節重大者將列入停權名單。', ph:'完整遊戲規章內容（待補）' },
-  '停權列表': { title:'停權列表', body:'以下列出因違反遊戲規章而遭停權之帳號，本列表定期更新。若有疑問請聯繫客服信箱 support@xinluck.com。', ph:'停權帳號列表（待補）' },
-};
-function renderCsContent(key) {
-  const d = CS_CONTENT[key];
-  document.getElementById('cs-content').innerHTML = `
-    <div style="padding:36px 0;">
-      <div style="font-size:20px;font-weight:900;color:var(--red-main);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--cream-dark);">${d.title}</div>
-      <p style="font-size:17px;line-height:1.9;color:#4A2800;margin-bottom:20px;">${d.body}</p>
-      <div style="background:#fff8ee;border:1.5px dashed var(--cream-dark);border-radius:12px;padding:40px;text-align:center;color:#8A6040;font-size:14px;">${d.ph}</div>
-    </div>`;
-}
-function switchCsTab(el, key) {
-  document.querySelectorAll('#cs-tabs .strategy-tab-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  renderCsContent(key);
-}
-renderCsContent('服務條款');
+/* Centralized click handlers */
+document.addEventListener('click', function(event) {
+  const subPageTarget = event.target.closest('[data-sub-page]');
+  if (subPageTarget) {
+    event.preventDefault();
+    showSubPage(subPageTarget.dataset.subPage, subPageTarget.dataset.subKey);
+    return;
+  }
+
+  const pageTarget = event.target.closest('[data-page]');
+  if (pageTarget) {
+    event.preventDefault();
+    showPage(pageTarget.dataset.page);
+    return;
+  }
+
+  const scrollTarget = event.target.closest('[data-scroll-target]');
+  if (scrollTarget) {
+    event.preventDefault();
+    scrollToArticleSection(scrollTarget.dataset.scrollTarget);
+    return;
+  }
+
+  const gameTarget = event.target.closest('[data-game-index]');
+  if (gameTarget) {
+    const game = GAMES[Number(gameTarget.dataset.gameIndex)];
+    if (game) openGov(game);
+    return;
+  }
+
+  const carouselMove = event.target.closest('[data-carousel-move]');
+  if (carouselMove) {
+    moveCarousel(Number(carouselMove.dataset.carouselMove));
+    return;
+  }
+
+  const carouselPage = event.target.closest('[data-carousel-page]');
+  if (carouselPage) {
+    goPage(Number(carouselPage.dataset.carouselPage));
+    return;
+  }
+
+  const newsTab = event.target.closest('[data-news-tab]');
+  if (newsTab) {
+    switchNewsTab(newsTab, newsTab.dataset.newsTab);
+    return;
+  }
+
+  const strategyTab = event.target.closest('[data-strategy-filter]');
+  if (strategyTab) {
+    filterStrategy(strategyTab, strategyTab.dataset.strategyFilter);
+    return;
+  }
+
+  const noviceTab = event.target.closest('[data-novice-tab]');
+  if (noviceTab) {
+    switchNoviceTab(noviceTab, noviceTab.dataset.noviceTab);
+    return;
+  }
+const faqToggle = event.target.closest('[data-faq-toggle]');
+  if (faqToggle) {
+    toggleFaq(faqToggle);
+    return;
+  }
+
+  if (event.target.closest('[data-open-line-modal]')) {
+    document.getElementById('line-modal').classList.add('open');
+    return;
+  }
+
+  if (event.target.closest('[data-close-line-modal]')) {
+    document.getElementById('line-modal').classList.remove('open');
+    return;
+  }
+
+  const lineBackdrop = event.target.closest('[data-close-on-backdrop]');
+  if (lineBackdrop && event.target === lineBackdrop) {
+    lineBackdrop.classList.remove('open');
+    return;
+  }
+
+  if (event.target.closest('[data-close-gov]')) {
+    closeGov();
+    return;
+  }
+
+  const govBackdrop = event.target.closest('[data-close-gov-backdrop]');
+  if (govBackdrop && event.target === govBackdrop) {
+    closeGov();
+    return;
+  }
+
+  if (event.target.closest('[data-back-to-top]')) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
 
 /* Sub-nav scroll */
 window.addEventListener('scroll', () => {
@@ -1461,7 +2100,7 @@ window.addEventListener('scroll', () => {
 </script>
 
 <!-- 回到頂部 -->
-<div class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<div class="back-to-top" id="back-to-top" data-back-to-top>
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
     <path d="M12 19 L12 6" stroke="#7B0000" stroke-width="3" stroke-linecap="round"/>
     <path d="M6 12 L12 6 L18 12" stroke="#7B0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1481,3 +2120,10 @@ window.addEventListener('scroll', () => {
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
