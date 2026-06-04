@@ -27,10 +27,10 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 /* ══ QR CODE ══ */
 .qr-wrap { position: relative; display: inline-flex; align-items: center; justify-content: center; }
 .qr-wrap canvas, .qr-wrap img { display: block; border-radius: 6px; }
-.qr-size-float { width: 90px; height: 90px; }
+.qr-size-float { width: 128px; height: 128px; }
 .qr-size-modal { width: 160px; height: 160px; }
 .qr-size-hero { width: 108px; height: 108px; }
-.qr-size-support { width: 96px; height: 96px; }
+.qr-size-support { width: 140px; height: 140px; }
 .qr-size-overlay {
   width: 84px; height: 84px; flex-shrink: 0;
   background: #fff; border-radius: 8px; overflow: hidden;
@@ -84,7 +84,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   color: rgba(255,215,0,0.55); font-size: 11px; font-weight: 700; text-align: center; line-height: 1.3;
 }
 .is-clickable { cursor: pointer; }
-.nav-links { display: flex; flex: 1; height: var(--header-h); justify-content: center; gap: 8px; }
+.nav-links { display: flex; flex: 1; height: var(--header-h); justify-content: center; gap: 8px; align-items: center; }
 .nav-item { position: relative; display: flex; align-items: center; }
 .nav-link {
   color: #fff; font-size: 22px; font-weight: 600;
@@ -111,7 +111,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 }
 .dropdown a:last-child { border-bottom: none; }
 .dropdown a:hover { background: rgba(255,215,0,0.15); color: var(--gold); }
-.header-btns { display: flex; gap: 10px; align-items: center; margin-left: auto; }
+.header-btns { display: flex; gap: 10px; align-items: center; justify-content: flex-end; }
 .btn-line-h {
   background: var(--green-line); color: #fff; border: none; border-radius: 8px;
   padding: 14px 32px; font-size: 22px; font-weight: 700; cursor: pointer; font-family: inherit;
@@ -122,7 +122,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   border-radius: 8px; padding: 12px 32px; font-size: 22px; font-weight: 700;
   cursor: pointer; font-family: inherit;
 }
-.btn-web-h:hover { background: #0099CC; border-color: #0099CC; }
+.btn-web-h:hover { background: #005fa3; border-color: #005fa3; }
 
 /* ══ SUB-NAV ══ */
 .subnav {
@@ -206,18 +206,18 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   box-shadow: 0 0 0 3px var(--gold); transition: transform 0.15s;
 }
 .hero-btn-web span { display: block; white-space: nowrap; }
-.hero-btn-web:hover { transform: scale(1.02); }
+.hero-btn-web:hover { background: #005fa3; border-color: #005fa3; transform: scale(1.02); }
 .hero-web-label { color: rgba(255,255,255,0.85); font-size: 17px; font-weight: 700; letter-spacing: 1px; white-space: nowrap; }
 
 /* QR 懸浮 */
 .qr-float {
-  position: fixed; right: 10px; top: 50%; transform: translateY(-50%);
+  position: fixed; right: 16px; top: 50%; transform: translateY(-50%);
   background: linear-gradient(160deg,#5A0000,#9A0000);
-  border: 2.5px solid var(--gold); border-radius: 14px;
-  padding: 14px 12px; text-align: center; z-index: 250; width: 118px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  border: 3px solid var(--gold); border-radius: 18px;
+  padding: 16px 13px; text-align: center; z-index: 250; width: 160px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
 }
-.qr-float-label { color: var(--gold); font-size: 15px; font-weight: 900; margin-bottom: 8px; line-height: 1.35; }
+.qr-float-label { color: var(--gold); font-size: 16px; font-weight: 900; margin-bottom: 10px; line-height: 1.35; }
 
 
 /* ══ SECTION ══ */
@@ -327,9 +327,9 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   font-size: 17px; color: #666; line-height: 1.75; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .article-hero-date { font-size: 15px; color: #8A6A58; }
 .articles-small { display: grid; grid-template-rows: repeat(4,1fr); gap: 16px; }
-.article-small { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; display: flex; transition: transform 0.15s, box-shadow 0.15s; }
+.article-small { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; display: flex; align-items: stretch; transition: transform 0.15s, box-shadow 0.15s; }
 .article-small:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(180,80,0,0.13); }
-.article-small-img { width: 96px; flex-shrink: 0; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); }
+.article-small-img { aspect-ratio: 987/493; height: 100%; flex-shrink: 0; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); }
 .article-small-body { padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; }
 .article-small-title { font-size: 17px; font-weight: 700; color: var(--text-dark); line-height: 1.5; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .article-small-date { font-size: 15px; color: #8A6A58; }
@@ -632,18 +632,17 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
   box-shadow: 0 8px 24px rgba(120,40,0,0.12);
 }
 .support-card.line-card {
-  display: grid; grid-template-columns: 128px 1fr; gap: 22px; align-items: center;
+  display: grid; grid-template-columns: auto 1fr; gap: 0; align-items: stretch;
   background: linear-gradient(145deg,#FFF7DC 0%,#FFE0A3 54%,#F5B544 100%);
   border-color: rgba(180,118,0,0.5);
   box-shadow: 0 12px 28px rgba(130,68,0,0.16), inset 0 1px 0 rgba(255,255,255,0.72);
+  padding: 0; overflow: hidden;
 }
 .support-side-cards { display: grid; grid-template-rows: 1fr 1fr; gap: 18px; }
 .support-side-cards .support-card { display: flex; flex-direction: column; justify-content: center; }
 .support-line-qr {
-  width: 112px; height: 112px; padding: 6px; background: #fff;
-  border: 2px solid rgba(150,96,0,0.45); border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 8px 18px rgba(80,42,0,0.16);
+  padding: 16px; flex-shrink: 0;
 }
 .support-card-title { font-size: 20px; font-weight: 900; color: var(--red-main); margin-bottom: 10px; }
 .support-card-main { font-size: 24px; font-weight: 900; color: var(--text-dark); line-height: 1.45; margin-bottom: 8px; }
@@ -661,7 +660,9 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
   border: 2px solid rgba(0,95,20,0.18);
   font-size: 18px; font-weight: 900; text-decoration: none;
   box-shadow: 0 6px 16px rgba(0,96,20,0.18);
+  transition: background 0.15s, transform 0.15s;
 }
+.support-line-btn:hover { background: #009600; transform: scale(1.03); }
 .support-note {
   background: #FFF8E7; border: 1.5px solid var(--gold-dark);
   border-radius: 12px; padding: 20px 24px; margin-bottom: 36px;
@@ -845,8 +846,8 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 
 <!-- HEADER -->
 <header class="header">
-  <div class="logo-placeholder is-clickable" data-page="home" title="回首頁">LOGO</div>
   <nav class="nav-links">
+    <div class="logo-placeholder is-clickable" data-page="home" title="回首頁" style="margin-right:8px;">LOGO</div>
     <div class="nav-item" id="nav-game">
       <span class="nav-link" id="nav-game-link" data-page="games-all">遊戲介紹 <span class="arrow">▼</span></span>
       <div class="dropdown" id="dd-game">
@@ -858,7 +859,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       <span class="nav-link" id="nav-strategy-link" data-page="strategy">攻略專區</span>
     </div>
     <div class="nav-item" id="nav-novice">
-      <span class="nav-link">新手專區 <span class="arrow">▼</span></span>
+      <span class="nav-link" data-page="novice">新手專區 <span class="arrow">▼</span></span>
       <div class="dropdown" id="dd-novice">
         <a href="#" data-sub-page="novice" data-sub-key="介面說明">介面說明</a>
         <a href="#" data-sub-page="novice" data-sub-key="捷徑教學">捷徑教學</a>
@@ -868,7 +869,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       </div>
     </div>
     <div class="nav-item" id="nav-cs">
-      <span class="nav-link">客服中心 <span class="arrow">▼</span></span>
+      <span class="nav-link" data-page="cs">客服中心 <span class="arrow">▼</span></span>
       <div class="dropdown" id="dd-cs">
         <a href="#" data-sub-page="cs" data-sub-key="聯絡客服">聯絡客服</a>
         <a href="#" data-sub-page="cs" data-sub-key="常見問題">常見問題</a>
@@ -876,7 +877,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       </div>
     </div>
   </nav>
-  <div class="header-btns">
+  <div class="header-btns" style="margin-left:auto;">
     <button class="btn-line-h" data-open-line-modal>LINE 登入</button>
     <button class="btn-web-h">網頁登入</button>
   </div>
@@ -889,7 +890,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 <div class="modal-bd" id="line-modal" data-close-on-backdrop>
   <div class="modal-box">
     <button class="modal-close" data-close-line-modal>✕</button>
-    <div class="modal-title">掃描 QR Code 立即登入</div>
+    <div class="modal-title">掃描 QR Code<br>立即登入</div>
     <div class="modal-qr-center">
       <div class="qr-wrap qr-size-modal" id="qr-modal-wrap"></div>
     </div>
@@ -1077,7 +1078,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 <!-- ══════════ 精選遊戲頁 ══════════ -->
 <div class="page" id="page-games-all">
   <div class="breadcrumb"><a href="#" data-page="home">首頁</a><span>›</span>精選遊戲</div>
-  <div style="max-width:960px;margin:0 auto;padding:52px 60px 60px;">
+  <div style="max-width:1100px;margin:0 auto;padding:52px 60px 60px;">
     <div class="sec-heading" style="margin-bottom:12px;">
       <div class="sec-heading-bg light">GAMES</div>
       <div class="sec-heading-main light">精選遊戲</div>
@@ -1329,7 +1330,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
           <div class="support-line-qr">
             <div class="qr-wrap qr-size-support" id="qr-support-line-wrap"></div>
           </div>
-          <div>
+          <div style="padding:24px 22px;display:flex;flex-direction:column;justify-content:center;">
             <div class="support-card-title">LINE 官方客服</div>
             <div class="support-card-main">@xinluck</div>
             <div class="support-card-desc">加入官方 LINE，可詢問登入、遊戲、儲值與帳號問題。</div>
@@ -1434,9 +1435,9 @@ function makeQR(containerId, size) {
 window.addEventListener('load', () => {
   makeQR('qr-hero-wrap', 108);
   makeQR('qr-modal-wrap', 160);
-  makeQR('qr-float-wrap', 90);
+  makeQR('qr-float-wrap', 128);
   makeQR('qr-overlay-wrap', 84);
-  makeQR('qr-support-line-wrap', 96);
+  makeQR('qr-support-line-wrap', 140);
   syncDD();
 });
 window.addEventListener('resize', syncDD);
