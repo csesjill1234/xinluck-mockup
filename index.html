@@ -73,6 +73,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 /* ══ HEADER ══ */
 .header {
   background: var(--red-dark); display: flex; align-items: center;
+  justify-content: center;
   padding: 0 40px; height: var(--header-h);
   border-bottom: 4px solid var(--gold-dark);
   position: sticky; top: 0; z-index: 300;
@@ -84,7 +85,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   color: rgba(255,215,0,0.55); font-size: 11px; font-weight: 700; text-align: center; line-height: 1.3;
 }
 .is-clickable { cursor: pointer; }
-.nav-links { display: flex; flex: 1; height: var(--header-h); justify-content: center; gap: 8px; align-items: center; }
+.nav-links { display: flex; height: var(--header-h); justify-content: center; gap: 8px; align-items: center; }
 .nav-item { position: relative; display: flex; align-items: center; }
 .nav-link {
   color: #fff; font-size: 22px; font-weight: 600;
@@ -347,7 +348,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 /* ══ FOOTER ══ */
 footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; border-top: 3px solid var(--gold-dark); }
 .footer-inner {
-  max-width: 860px; margin: 0 auto;
+  max-width: 1100px; margin: 0 auto;
 }
 .footer-top {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -600,7 +601,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 .gov-bd { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 500; align-items: center; justify-content: center; }
 .gov-bd.open { display: flex; }
 .gov-modal { background: linear-gradient(160deg,#4A0000,#8B0000 55%,#4A0000); border: 3px solid var(--gold); border-radius: 20px; width: 500px; max-width: 92vw; padding: 30px; position: relative; animation: popIn 0.22s ease-out; }
-.gov-close { position: absolute; top: -16px; right: -16px; width: 36px; height: 36px; background: var(--red-dark); border: 2px solid var(--gold-dark); border-radius: 50%; color: var(--gold); font-size: 18px; cursor: pointer; transition: transform 0.15s; display: flex; align-items: center; justify-content: center; }
+.gov-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; background: var(--red-dark); border: 2px solid var(--gold-dark); border-radius: 50%; color: var(--gold); font-size: 18px; cursor: pointer; transition: transform 0.15s; display: flex; align-items: center; justify-content: center; z-index: 5; }
 .gov-close:hover { transform: rotate(90deg); }
 .gov-img { width: 100%; border-radius: 12px; border: 2px solid var(--gold-dark); aspect-ratio: 1; object-fit: cover; margin-bottom: 16px; }
 .gov-title { font-size: 26px; font-weight: 900; color: var(--gold); text-align: center; margin-bottom: 6px; }
@@ -877,7 +878,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       </div>
     </div>
   </nav>
-  <div class="header-btns" style="margin-left:auto;">
+  <div class="header-btns">
     <button class="btn-line-h" data-open-line-modal>LINE 登入</button>
     <button class="btn-web-h">網頁登入</button>
   </div>
@@ -1056,8 +1057,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       <div class="footer-legal-block">
         <div class="footer-age-icon">年齡<br>分級</div>
         <div class="footer-legal">
-          本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；<br>
-          遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。
+          本遊戲含有部分成人內容，未滿 18 歲玩家請勿進入；遊戲涉及棋牌益智娛樂，非現金賭博，請勿進行非法遊戲幣交易。
         </div>
       </div>
       <div class="footer-links">
