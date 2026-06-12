@@ -722,6 +722,26 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 .gov-play-btn { display: block; width: 100%; background: var(--green-line); color: #fff; border: 2px solid #009600; border-radius: 50px; padding: 16px; font-size: 20px; font-weight: 700; cursor: pointer; font-family: inherit; transition: transform 0.15s; }
 .gov-play-btn:hover { transform: scale(1.02); }
 
+/* 閒置推薦彈窗 */
+.idle-bd { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 520; align-items: center; justify-content: center; }
+.idle-bd.open { display: flex; }
+.idle-modal {
+  background: linear-gradient(160deg,#4A0000,#8B0000 55%,#4A0000);
+  border: 3px solid var(--gold); border-radius: 20px;
+  width: 420px; max-width: 92vw; padding: 34px 30px 24px;
+  position: relative; text-align: center; animation: popIn 0.22s ease-out;
+}
+.idle-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; background: var(--red-dark); border: 2px solid var(--gold-dark); border-radius: 50%; color: var(--gold); font-size: 18px; cursor: pointer; transition: transform 0.15s; display: flex; align-items: center; justify-content: center; z-index: 5; }
+.idle-close:hover { transform: rotate(90deg); }
+.idle-eyebrow { display: inline-block; background: rgba(255,215,0,0.14); border: 1px solid rgba(255,215,0,0.45); color: var(--gold); font-size: 15px; font-weight: 900; padding: 4px 16px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 14px; }
+.idle-title { font-size: 26px; font-weight: 900; color: #fff; margin-bottom: 14px; }
+.idle-img { width: 180px; height: 180px; object-fit: cover; border-radius: 14px; border: 3px solid var(--gold-dark); display: block; margin: 0 auto 14px; background: #111; }
+.idle-desc { font-size: 16px; line-height: 1.8; color: #FFE6B8; margin-bottom: 18px; }
+.idle-play-btn { display: block; width: 100%; background: var(--green-line); color: #fff; border: 2px solid #009600; border-radius: 50px; padding: 14px; font-size: 19px; font-weight: 700; cursor: pointer; font-family: inherit; transition: transform 0.15s; }
+.idle-play-btn:hover { transform: scale(1.02); }
+.idle-later { margin-top: 12px; font-size: 15px; color: rgba(255,255,255,0.55); cursor: pointer; }
+.idle-later:hover { color: rgba(255,255,255,0.85); }
+
 /* 子頁面 */
 .sub-page-content { max-width: 1100px; margin: 0 auto; padding: 60px 80px; }
 .sub-section { margin-bottom: 64px; }
@@ -823,6 +843,13 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 .suspension-empty span {
   display: block; margin-top: 8px;
   font-size: 17px; font-weight: 500; color: #bbb;
+}
+.suspension-version-note {
+  margin: 28px 0 12px; font-size: 16px; font-weight: 900; color: var(--gold-dark);
+  letter-spacing: 0.5px;
+}
+.suspension-status.temp {
+  background: #FFF8E7; color: #B8860B; border-color: rgba(200,150,12,0.4);
 }
 
 /* 麵包屑 */
@@ -2331,8 +2358,29 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
   </div>
 </div>
 
+<!-- 閒置推薦彈窗（閒置一段時間後推薦最新機台） -->
+<div class="idle-bd" id="idle-bd">
+  <div class="idle-modal">
+    <button class="idle-close" data-close-idle>✕</button>
+    <div class="idle-eyebrow">🆕 最新機台搶先玩</div>
+    <div class="idle-title" id="idle-title"></div>
+    <img class="idle-img" id="idle-img" src="" alt="最新機台">
+    <div class="idle-desc" id="idle-desc"></div>
+    <button class="idle-play-btn" id="idle-play-btn">▶　立即試玩最新機台</button>
+    <div class="idle-later" data-close-idle>稍後再說</div>
+  </div>
+</div>
+
 <!-- ══════════ 首頁 ══════════ -->
 <div class="page active" id="page-home">
+  <div class="ticker-section" id="ticker-section">
+    <div class="ticker-inner">
+      <div class="ticker-label">📢　活動公告</div>
+      <div class="ticker-track-wrap"><div class="ticker-track" id="ticker-track"></div></div>
+      <button class="ticker-more" data-page="news">查看更多 →</button>
+    </div>
+  </div>
+
   <section class="hero">
     <video class="hero-banner-img" autoplay muted loop playsinline preload="metadata">
       <source src="https://www.xinluck.com/images/website/banner.mp4" type="video/mp4">
@@ -2351,6 +2399,21 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="section games-section">
+    <div class="sec-heading">
+      <div class="sec-heading-bg light">GAMES</div>
+      <div class="sec-heading-main light">精選遊戲</div>
+      <div class="sec-heading-line light"></div>
+    </div>
+    <div class="sec-sub light">點擊任一遊戲，掃碼或直接進入，免下載秒開！</div>
+    <div class="carousel-outer">
+      <button class="c-arrow" data-carousel-move="-1">&#8249;</button>
+      <div class="carousel-wrapper"><div class="carousel-track" id="carousel-track"></div></div>
+      <button class="c-arrow" data-carousel-move="1">&#8250;</button>
+    </div>
+    <div class="c-dots" id="c-dots"></div>
   </section>
 
   <section class="brand-section">
@@ -2374,29 +2437,6 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       <div class="brand-feat"><div class="brand-feat-icon">💰</div><div class="brand-feat-title">多元儲值管道</div><div class="brand-feat-desc">支援 LINE Pay、Apple Pay、Google Pay 等，儲值即時到帳。</div></div>
       <div class="brand-feat"><div class="brand-feat-icon">📱</div><div class="brand-feat-title">手機直接玩，隨開隨玩</div><div class="brand-feat-desc">不用下載 App，打開瀏覽器或 LINE 就能玩，想玩就玩、想停就停，超方便。</div></div>
     </div>
-  </section>
-
-  <div class="ticker-section" id="ticker-section">
-    <div class="ticker-inner">
-      <div class="ticker-label">📢　活動公告</div>
-      <div class="ticker-track-wrap"><div class="ticker-track" id="ticker-track"></div></div>
-      <button class="ticker-more" data-page="news">查看更多 →</button>
-    </div>
-  </div>
-
-  <section class="section games-section">
-    <div class="sec-heading">
-      <div class="sec-heading-bg light">GAMES</div>
-      <div class="sec-heading-main light">精選遊戲</div>
-      <div class="sec-heading-line light"></div>
-    </div>
-    <div class="sec-sub light">點擊任一遊戲，掃碼或直接進入，免下載秒開！</div>
-    <div class="carousel-outer">
-      <button class="c-arrow" data-carousel-move="-1">&#8249;</button>
-      <div class="carousel-wrapper"><div class="carousel-track" id="carousel-track"></div></div>
-      <button class="c-arrow" data-carousel-move="1">&#8250;</button>
-    </div>
-    <div class="c-dots" id="c-dots"></div>
   </section>
 
   <section class="section section-alt" id="articles-section">
@@ -2808,6 +2848,19 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
           目前尚無停權資料
           <span>若未來有公開名單，將於此區更新。</span>
         </div>
+        <div class="suspension-version-note">▼ 以下為「有停權資料時」的顯示版本（示意，正式版依後台資料擇一顯示）</div>
+        <table class="suspension-table">
+          <thead>
+            <tr><th>玩家暱稱</th><th>停權日期</th><th>停權原因</th><th>狀態</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>星＊＊運</td><td>2026.06.08</td><td>使用外掛程式，違反遊戲規章</td><td><span class="suspension-status">永久停權</span></td></tr>
+            <tr><td>發＊＊財</td><td>2026.06.05</td><td>非法遊戲幣交易</td><td><span class="suspension-status">永久停權</span></td></tr>
+            <tr><td>幸＊＊星</td><td>2026.06.02</td><td>異常登入行為，帳號保全處理中</td><td><span class="suspension-status temp">暫時停權</span></td></tr>
+            <tr><td>金＊＊來</td><td>2026.05.28</td><td>冒用官方名義發送詐騙訊息</td><td><span class="suspension-status">永久停權</span></td></tr>
+            <tr><td>好＊＊運</td><td>2026.05.24</td><td>濫用活動機制重複領取獎勵</td><td><span class="suspension-status temp">暫時停權</span></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -3615,6 +3668,47 @@ function closeMobileMenu() {
   toggle.setAttribute('aria-expanded', 'false');
   menu.setAttribute('aria-hidden', 'true');
 }
+
+/* ── 閒置推薦彈窗：閒置 30 秒後推薦最新機台 ── */
+const IDLE_POPUP_SECONDS = 30;
+/* 最新機台：正式版由後台「最新上架遊戲」帶入，mockup 先指定龍族傳說７ */
+const NEWEST_GAME = GAMES.find(g => g.name === '龍族傳說７') || GAMES[GAMES.length - 1];
+let idleTimer = null;
+
+function openIdlePopup() {
+  /* 已有其他彈窗開啟時不打擾，重新計時 */
+  if (document.querySelector('.gov-bd.open, .modal-bd.open, .idle-bd.open')) {
+    resetIdleTimer();
+    return;
+  }
+  document.getElementById('idle-title').textContent = NEWEST_GAME.name;
+  document.getElementById('idle-img').src = NEWEST_GAME.img;
+  document.getElementById('idle-img').alt = NEWEST_GAME.name + ' 老虎機';
+  document.getElementById('idle-desc').textContent = NEWEST_GAME.desc;
+  document.getElementById('idle-bd').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeIdlePopup() {
+  document.getElementById('idle-bd').classList.remove('open');
+  document.body.style.overflow = '';
+  resetIdleTimer();
+}
+function resetIdleTimer() {
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(openIdlePopup, IDLE_POPUP_SECONDS * 1000);
+}
+['mousemove','mousedown','keydown','scroll','touchstart'].forEach(evt =>
+  window.addEventListener(evt, resetIdleTimer, { passive: true }));
+resetIdleTimer();
+
+document.getElementById('idle-play-btn').addEventListener('click', () => {
+  closeIdlePopup();
+  openGov(NEWEST_GAME);
+});
+document.querySelectorAll('[data-close-idle]').forEach(el => el.addEventListener('click', closeIdlePopup));
+document.getElementById('idle-bd').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeIdlePopup();
+});
 </script>
 
 <!-- 回到頂部 -->
