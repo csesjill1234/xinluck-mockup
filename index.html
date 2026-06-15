@@ -2367,7 +2367,6 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
     <img class="idle-img" id="idle-img" src="" alt="最新機台">
     <div class="idle-desc" id="idle-desc"></div>
     <button class="idle-play-btn" id="idle-play-btn">▶　立即試玩最新機台</button>
-    <div class="idle-later" data-close-idle>稍後再說</div>
   </div>
 </div>
 
@@ -2580,6 +2579,58 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       <button class="page-btn">2</button>
       <button class="page-btn">3</button>
       <button class="page-btn arrow">›</button>
+    </div>
+  </div>
+  <div class="footer-slot"></div>
+</div>
+
+<!-- ══════════ 活動詳情（DEMO） ══════════ -->
+<div class="page" id="page-activity-demo">
+  <div class="breadcrumb">
+    <a href="#" data-page="home">首頁</a><span>›</span>
+    <a href="#" data-page="news">活動公告</a><span>›</span>
+    加入官方 LINE，好禮天降臨！
+  </div>
+  <div class="article-page">
+    <div class="article-page-header">
+      <div class="article-page-title">加入官方 LINE，好禮天降臨！</div>
+      <div class="article-page-meta">
+        <span>📅 活動期間：2026.03.09 00:00 ～ 不限時</span>
+      </div>
+    </div>
+    <div class="article-page-cover">活動封面圖片（待補）</div>
+    <div class="article-body">
+      <p>親愛的星運玩家：</p>
+      <p>金幣發放不求人，拼的是手速，比的是運氣！《星運娛樂城》官方 LINE 帳號（ID：@xinluck）即日起開啟「驚喜序號掉落機制」。<br>我們不定期在對話框發送限量的金幣序號，只有最關注我們的玩家，才有機會領到！</p>
+      <p>🔥 活動機制：手速大考驗<br>1. 隨機掉落：將不定時發送限量序號領取。<br>2. 限量領取：每組序號設有「領取人數上限」（例如：前 100 名）。<br>3. 兌換方式：收到序號後，請立即登入遊戲 → 進入「設定」→ 點擊「紅包兌換」輸入。<br>4. 手慢規則：若輸入後顯示「已領取完畢」，表示名額已滿，請靜候下次掉落。</p>
+      <div style="margin-top:32px;text-align:center;">
+        <a href="https://lin.ee/y8rvuUu" target="_blank" rel="noopener" style="display:inline-block;background:var(--green-line);color:#fff;border:2px solid #009600;border-radius:50px;padding:16px 48px;font-size:20px;font-weight:700;text-decoration:none;">▶　加入官方 LINE 領金幣序號</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-slot"></div>
+</div>
+
+<!-- ══════════ 公告詳情（DEMO） ══════════ -->
+<div class="page" id="page-notice-demo">
+  <div class="breadcrumb">
+    <a href="#" data-page="home">首頁</a><span>›</span>
+    <a href="#" data-page="news">活動公告</a><span>›</span>
+    【維護公告】0611例行性維護與更新公告
+  </div>
+  <div class="article-page">
+    <div class="article-page-header">
+      <div class="article-page-title">【維護公告】0611例行性維護與更新公告</div>
+      <div class="article-page-meta">
+        <span>📅 2026.06.11</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>親愛的會員您好：</p>
+      <p>星運娛樂城將進行「例行性維護」。<br>維護期間將無法登入平台，造成您的不便，敬請見諒。</p>
+      <p>【維護時間】2026/06/11（四）AM 10:00 - 11:00<br>【影響範圍】全平台<br>【更新內容】</p>
+      <p>🐛 BUG 修正<br>• 修正個人名片私信功能異常問題。<br>• 修正 LINE 登入時可能出現登入失敗的異常問題。<br>• 修正星幣會員 VIP 升級異常問題。</p>
+      <p>⚠️ 提醒<br>請玩家於維護開始前 30 分鐘提早下線，並確認點數已結轉回金幣包。維護期間如提早完成，將直接開啟服務不另行公告。感謝您的配合與支持。</p>
     </div>
   </div>
   <div class="footer-slot"></div>
@@ -2996,8 +3047,8 @@ const GAMES = [
 ];
 
 const ALL_NEWS = [
-  {type:'event',tag:'活動',title:'六月新會員加入送體驗金，最高 888 元！',excerpt:'新會員加入星運娛樂城，完成 LINE 登入即可領取體驗金，最高 888 元，活動限時舉辦。',date:'2026.06.01'},
-  {type:'notice',tag:'公告',title:'六月系統維護公告：每週四 10：00～11：00 短暫停機',excerpt:'為提升遊戲穩定性，每週四 10：00～11：00 進行例行維護，期間暫停服務，造成不便敬請見諒。',date:'2026.06.01'},
+  {type:'event',tag:'活動',title:'加入官方 LINE，好禮天降臨！',excerpt:'金幣發放不求人，拼的是手速，比的是運氣！《星運娛樂城》官方 LINE 帳號（ID：@xinluck）即日起開啟「驚喜序號掉落機制」，不定期在對話框發送限量金幣序號，只有最關注我們的玩家，才有機會領到！',date:'2026.03.09'},
+  {type:'notice',tag:'公告',title:'【維護公告】0611例行性維護與更新公告',excerpt:'2026/06/11（四）10:00～11:00 進行例行性維護，期間無法登入平台，並修正多項功能異常。',date:'2026.06.11'},
   {type:'event',tag:'活動',title:'週末好友邀請活動：邀一位好友，兩人同享雙倍獎勵',excerpt:'限定週末舉辦的邀友活動，邀請好友加入成功後，邀請人與受邀人同時獲得雙倍遊戲幣獎勵。',date:'2026.05.28'},
   {type:'notice',tag:'公告',title:'防詐騙提醒：官方絕不要求玩家提供帳號密碼',excerpt:'近期有不法人士假冒星運客服詐騙玩家，請注意官方絕對不會要求提供任何帳號密碼資訊。',date:'2026.05.25'},
   {type:'event',tag:'活動',title:'龍族傳說系列特別週：每天登入抽免費旋轉次數',excerpt:'龍族傳說系列特別活動，每天登入即可參加抽獎，有機會獲得免費旋轉次數，天天抽天天爽。',date:'2026.05.20'},
@@ -3124,7 +3175,7 @@ function renderNewsEvent() {
   const events = ALL_NEWS.filter(n => n.type === 'event');
   const visibleEvents = window.matchMedia('(max-width: 640px)').matches ? events.slice(0, 5) : events;
   document.getElementById('news-event-grid').innerHTML = visibleEvents.map(n =>
-    `<div class="news-event-row">
+    `<div class="news-event-row" data-page="activity-demo">
       <div class="news-event-row-img">活動封面圖片</div>
       <div class="news-event-row-body">
         <div class="news-event-row-title">${n.title}</div>
@@ -3140,7 +3191,7 @@ function renderNewsNotice() {
   const notices = ALL_NEWS.filter(n => n.type === 'notice');
   const visibleNotices = window.matchMedia('(max-width: 640px)').matches ? notices.slice(0, 5) : notices;
   document.getElementById('news-notice-list').innerHTML = visibleNotices.map(n =>
-    `<div class="news-notice-item">
+    `<div class="news-notice-item" data-page="notice-demo">
       <div class="news-notice-line"></div>
       <div class="news-notice-title">${n.title}</div>
       <div class="news-notice-date">${n.date}</div>
@@ -3669,18 +3720,24 @@ function closeMobileMenu() {
   menu.setAttribute('aria-hidden', 'true');
 }
 
-/* ── 閒置推薦彈窗：閒置 30 秒後推薦最新機台 ── */
-const IDLE_POPUP_SECONDS = 30;
+/* ── 閒置推薦彈窗 ──
+   規格：閒置滿 IDLE_POPUP_SECONDS（180 秒＝3 分鐘）無操作才跳出，推薦最新機台。
+   每次造訪（session）最多跳 1 次，關閉後本次造訪不再跳。只在首頁顯示。 */
+const IDLE_POPUP_SECONDS = 180;
 /* 最新機台：正式版由後台「最新上架遊戲」帶入，mockup 先指定龍族傳說７ */
 const NEWEST_GAME = GAMES.find(g => g.name === '龍族傳說７') || GAMES[GAMES.length - 1];
 let idleTimer = null;
+let idleShown = false; /* 本次造訪是否已經跳過，跳過即不再跳 */
 
 function openIdlePopup() {
-  /* 已有其他彈窗開啟時不打擾，重新計時 */
-  if (document.querySelector('.gov-bd.open, .modal-bd.open, .idle-bd.open')) {
+  if (idleShown) return;
+  /* 不在首頁、或已有其他彈窗開啟時不打擾，重新計時等下次機會 */
+  const onHome = document.getElementById('page-home').classList.contains('active');
+  if (!onHome || document.querySelector('.gov-bd.open, .modal-bd.open, .idle-bd.open')) {
     resetIdleTimer();
     return;
   }
+  idleShown = true;
   document.getElementById('idle-title').textContent = NEWEST_GAME.name;
   document.getElementById('idle-img').src = NEWEST_GAME.img;
   document.getElementById('idle-img').alt = NEWEST_GAME.name + ' 老虎機';
@@ -3691,9 +3748,10 @@ function openIdlePopup() {
 function closeIdlePopup() {
   document.getElementById('idle-bd').classList.remove('open');
   document.body.style.overflow = '';
-  resetIdleTimer();
+  /* 已跳過就不再重新計時；idleShown 為 true 時 resetIdleTimer 也不會再排程 */
 }
 function resetIdleTimer() {
+  if (idleShown) { clearTimeout(idleTimer); return; }
   clearTimeout(idleTimer);
   idleTimer = setTimeout(openIdlePopup, IDLE_POPUP_SECONDS * 1000);
 }
