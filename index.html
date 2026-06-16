@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -425,7 +425,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .articles-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; max-width: 1100px; margin: 0 auto 32px; }
 .article-hero { background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
 .article-hero:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(180,80,0,0.15); }
-.article-hero-img { width: 100%; height: 240px; background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.85); }
+.article-hero-img { width: 100%; aspect-ratio: 2 / 1; height: auto; background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.85); }
 .article-hero-body { padding: 20px 24px; }
 .article-tag { display: inline-block; background: #FFF0E0; color: var(--red-main); font-size: 11px; font-weight: 700; padding: 2px 12px; border-radius: 20px; margin-bottom: 12px; border: 1px solid #F5C08080; }
 .article-hero-title { font-size: 22px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px; }
@@ -433,9 +433,9 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
   font-size: 17px; color: #666; line-height: 1.75; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .article-hero-date { font-size: 15px; color: #8A6A58; }
 .articles-small { display: grid; grid-template-rows: repeat(3,1fr); gap: 16px; }
-.article-small { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; display: flex; align-items: stretch; transition: transform 0.15s, box-shadow 0.15s; }
+.article-small { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; display: flex; align-items: center; transition: transform 0.15s, box-shadow 0.15s; }
 .article-small:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(180,80,0,0.13); }
-.article-small-img { aspect-ratio: 987/493; height: 100%; flex-shrink: 0; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); }
+.article-small-img { width: 42%; aspect-ratio: 2 / 1; height: auto; flex-shrink: 0; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); overflow: hidden; }
 .article-small-body { padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; }
 .article-small-title { font-size: 17px; font-weight: 700; color: var(--text-dark); line-height: 1.5; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .article-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; width: 100%; margin-top: auto; }
@@ -541,7 +541,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 }
 .news-event-row:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(180,80,0,0.12); }
 .news-event-row-img {
-  aspect-ratio: 987/493; height: 100%; flex-shrink: 0;
+  aspect-ratio: 2/1; height: 100%; flex-shrink: 0;
   background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%);
   display: flex; align-items: center; justify-content: center;
   font-size: 12px; color: rgba(255,255,255,0.85);
@@ -621,7 +621,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .related-card { background: #fff; border-radius: 12px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; display: flex; flex-direction: column; }
 .related-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(180,80,0,0.13); }
-.related-card-img { width: 100%; aspect-ratio: 987/493; min-height: 112px; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); flex-shrink: 0; }
+.related-card-img { width: 100%; aspect-ratio: 2/1; min-height: 112px; background: linear-gradient(135deg,#4A0000,#CC4400 60%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.4); flex-shrink: 0; }
 .related-card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
 .related-card-cat { display: inline-block; align-self: flex-start; font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
 .related-card-cat.cat-guide { background: #FFF0E0; color: var(--red-main); border: 1px solid #F5C08080; }
@@ -673,7 +673,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 .strategy-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 40px; }
 .strategy-card { background: #fff; border-radius: 14px; border: 1.5px solid var(--cream-dark); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
 .strategy-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(180,80,0,0.12); }
-.strategy-card-img { width: 100%; aspect-ratio: 987/493; height: auto; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.85); }
+.strategy-card-img { width: 100%; aspect-ratio: 2/1; height: auto; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.85); }
 .strategy-card-body { padding: 16px 18px; }
 .strategy-card-cat { display: inline-block; font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
 .cat-guide { background: #FFF0E0; color: var(--red-main); border: 1px solid #F5C08080; }
@@ -690,13 +690,17 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 .article-page-cat { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 14px; border-radius: 20px; margin-bottom: 14px; }
 .article-page-title { font-size: 36px; font-weight: 900; color: var(--text-dark); line-height: 1.4; margin-bottom: 14px; }
 .article-page-meta { font-size: 17px; color: #8A6A58; display: flex; gap: 16px; align-items: center; }
-.article-page-cover { width: 100%; aspect-ratio: 987/493; height: auto; border-radius: 16px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 36px; overflow: hidden; }
+.article-page-cover { width: 100%; aspect-ratio: 2/1; height: auto; border-radius: 16px; background: linear-gradient(135deg,#8B0000,#CC6600 50%,#FFD700); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 36px; overflow: hidden; }
 .article-page-cover img { width: 100%; height: 100%; object-fit: cover; }
 .article-body h2 { font-size: 26px; font-weight: 900; color: var(--red-main); margin: 36px 0 16px; padding-left: 14px; border-left: 4px solid var(--gold-dark); }
 .article-body h3 { font-size: 22px; font-weight: 700; color: var(--text-dark); margin: 28px 0 12px; }
 .article-body p { font-size: 19px; line-height: 2.1; color: #4A2800; margin-bottom: 22px; }
 .article-body ul { padding-left: 24px; margin-bottom: 20px; }
 .article-body ul li { font-size: 19px; line-height: 2.1; color: #4A2800; margin-bottom: 10px; }
+.article-body img { width: 100%; height: auto; border-radius: 12px; margin: 20px 0 28px; display: block; }
+.article-body table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 17px; color: #4A2800; }
+.article-body th, .article-body td { border: 1px solid var(--cream-dark); padding: 12px 14px; text-align: left; line-height: 1.7; }
+.article-body th { background: #FFF8E7; color: var(--text-dark); font-weight: 900; }
 .article-body .highlight-box {
   background: #FFF8E7; border: 1.5px solid var(--gold-dark); border-radius: 12px;
   padding: 22px 26px; margin: 24px 0; font-size: 17px; line-height: 1.8; color: var(--text-dark);
@@ -1307,7 +1311,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
     display: block; height: auto; border-radius: 12px;
   }
   .news-event-row-img {
-    width: 100%; height: auto; aspect-ratio: 987 / 493;
+    width: 100%; height: auto; aspect-ratio: 2 / 1;
   }
   .news-event-row-body { padding: 14px 16px 16px; }
   .news-event-row-title {
@@ -1419,7 +1423,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
     display: block; margin-bottom: 10px; border-radius: 10px;
   }
   .article-hero-img {
-    width: 100%; height: auto; aspect-ratio: 987 / 493; min-height: 0;
+    width: 100%; height: auto; aspect-ratio: 2 / 1; min-height: 0;
   }
   .article-hero-body {
     padding: 12px 14px 14px; display: block;
@@ -1559,7 +1563,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
   }
   .article-hero-img,
   .article-small-img {
-    width: 100%; height: auto; aspect-ratio: 987 / 493; min-height: 0;
+    width: 100%; height: auto; aspect-ratio: 2 / 1; min-height: 0;
     display: flex; align-items: center; justify-content: center;
   }
   .article-hero-body,
@@ -1734,13 +1738,13 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
   .article-small-img {
     aspect-ratio: 2 / 1;
     width: 42%; flex-shrink: 0;
-    align-self: flex-start;
+    align-self: center;
   }
   .article-small-body { align-self: stretch; }
 
-  /* news-event-row-img 維持 987:493，高度由 row stretch 決定 */
+  /* news-event-row-img 維持 2:1，高度由 row stretch 決定 */
   .news-event-row-img {
-    aspect-ratio: 987 / 493;
+    aspect-ratio: 2 / 1;
     height: auto; align-self: stretch; flex-shrink: 0;
   }
 }
@@ -1781,11 +1785,11 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 /* flex: 1 0 max-content — 放得下時等寬填滿，放不下時保持文字寬並捲動 */
 #novice-tabs .strategy-tab-btn { flex: 1 0 max-content !important; }
 
-/* Fix 7: 活動公告標題不截斷；圖片用 align-self stretch + aspect-ratio 保持 987/493 */
+/* Fix 7: 活動公告標題不截斷；圖片用 align-self stretch + aspect-ratio 保持 2:1 */
 .news-event-row { height: auto; min-height: 130px; }
 .news-event-row-title { white-space: normal; }
 .news-event-row-img {
-  aspect-ratio: 987 / 493;
+  aspect-ratio: 2 / 1;
   height: auto; align-self: stretch; flex-shrink: 0;
 }
 
@@ -1794,7 +1798,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
   .articles-small { grid-template-rows: repeat(3, 1fr); }
   .articles-small .article-small:nth-child(n+4) { display: none; }
   .article-small-img {
-    width: 42%; aspect-ratio: 2 / 1; align-self: flex-start;
+    width: 42%; aspect-ratio: 2 / 1; height: auto; align-self: center;
     overflow: hidden; object-fit: cover;
   }
   .article-hero-body .article-card-footer,
@@ -1837,7 +1841,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 
   .news-event-row { display: block; height: auto; min-height: 0; }
   .news-event-row-img {
-    width: 100%; aspect-ratio: 987 / 493; height: auto;
+    width: 100%; aspect-ratio: 2 / 1; height: auto;
     align-self: auto; display: flex;
   }
   .news-event-row-body .article-card-footer,
@@ -1855,7 +1859,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
   }
   .news-event-row-img {
     width: 28%;
-    aspect-ratio: 987 / 493;
+    aspect-ratio: 2 / 1;
     height: auto;
     align-self: flex-start;
     flex-shrink: 0;
@@ -2699,9 +2703,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       <h2 id="art-s1">什麼是自摸無雙３？</h2>
       <p>自摸無雙３是星運娛樂城最受歡迎的麻將主題老虎機，以台灣傳統麻將為設計核心，融合現代老虎機的高倍率機制。最高倍率高達 <strong>15,000 倍</strong>，是全站爆率最高的機台之一。無論你是麻將老手還是老虎機新手，自摸無雙３的操作直覺、節奏刺激，讓人停不下來。</p>
 
-      <div class="highlight-box">
-        💡 <strong>新手重點：</strong>自摸無雙３的「自摸」機制與真實麻將不同，是指特定符號組合出現時觸發的超級大獎機制，不需要懂麻將規則也能輕鬆上手。
-      </div>
+      <p><strong>新手重點：</strong>自摸無雙３的「自摸」機制與真實麻將不同，是指特定符號組合出現時觸發的超級大獎機制，不需要懂麻將規則也能輕鬆上手。</p>
 
       <h2 id="art-s2">基本玩法說明</h2>
       <p>自摸無雙３採用 5 轉輪設計，每次旋轉消耗遊戲幣。遊戲畫面中的主要符號包含：</p>
@@ -2712,7 +2714,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
         <li><strong>散財符號（SCATTER）</strong>——觸發免費遊戲的關鍵</li>
       </ul>
 
-      <div class="article-inline-img">遊戲介面示意圖（待補）</div>
+      <img src="https://www.xinluck.com/images/games/492_500x500.webp" alt="自摸無雙３遊戲畫面示意">
 
       <h2 id="art-s3">免費遊戲怎麼觸發？</h2>
       <p>免費遊戲（Free Spin）是自摸無雙３爆大獎的核心機制。觸發條件如下：</p>
@@ -2723,9 +2725,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       </ul>
       <p>自摸模式期間，所有野性符號會展開佔滿整列，大幅提升連線機率，是最容易觸發高倍率的時機。</p>
 
-      <div class="highlight-box">
-        🎰 <strong>攻略技巧：</strong>免費遊戲期間不消耗遊戲幣，建議在此時專注觀察野性符號的位置，因為自摸模式下展開的野性符號會固定保留到免費遊戲結束，每一轉都是衝高倍率的機會。
-      </div>
+      <p><strong>攻略技巧：</strong>免費遊戲期間不消耗遊戲幣，建議在此時專注觀察野性符號的位置，因為自摸模式下展開的野性符號會固定保留到免費遊戲結束，每一轉都是衝高倍率的機會。</p>
 
       <h2 id="art-s4">最高 15,000 倍怎麼達成？</h2>
       <p>15,000 倍是自摸無雙３的最高理論倍率，達成條件為：在自摸模式啟動期間，三元牌（中、發、白）同時連線，並且野性符號展開後形成全版連線。雖然機率極低，但正是這個設計讓每次旋轉都充滿期待。</p>
@@ -2742,26 +2742,27 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       </ul>
       <p>總體來說，自摸無雙３是一款兼具娛樂性與爆發力的老虎機，無論你是老手還是第一次體驗線上老虎機的新玩家，都能在這裡找到屬於自己的樂趣。現在就掃碼加入星運娛樂城，立即體驗自摸無雙３帶來的刺激！</p>
 
-      <!-- FAQ -->
-      <div class="article-faq" id="art-faq">
-        <div class="article-faq-title">常見問題 FAQ</div>
-        <div class="faq-item">
-          <div class="faq-q" data-faq-toggle>自摸無雙３怎麼觸發免費遊戲？<span class="faq-q-icon">＋</span></div>
-          <div class="faq-a">出現 3 個以上的散財符號（SCATTER）即可觸發免費遊戲。3 個觸發 8 次、4 個觸發 12 次、5 個觸發 20 次並啟動自摸模式。</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" data-faq-toggle>自摸無雙３最高倍率是多少？<span class="faq-q-icon">＋</span></div>
-          <div class="faq-a">最高倍率為 15,000 倍，需在自摸模式期間觸發三元牌全版連線。一般玩家在免費遊戲期間平均可獲得 50～300 倍的倍率。</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" data-faq-toggle>不懂麻將可以玩自摸無雙３嗎？<span class="faq-q-icon">＋</span></div>
-          <div class="faq-a">完全可以！自摸無雙３雖以麻將為主題，但玩法與一般老虎機相同，不需要懂麻將規則，只要旋轉就能遊玩。</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" data-faq-toggle>如何在星運娛樂城玩自摸無雙３？<span class="faq-q-icon">＋</span></div>
-          <div class="faq-a">用手機掃描官方 LINE QR Code，或直接在瀏覽器輸入 play.xinluck.com，以 LINE 帳號登入後即可在遊戲館找到自摸無雙３，免下載直接遊玩。</div>
-        </div>
+    </div>
+
+    <div class="article-faq" id="art-faq">
+      <div class="article-faq-title">常見問題 FAQ</div>
+      <div class="faq-item">
+        <div class="faq-q" data-faq-toggle>自摸無雙３怎麼觸發免費遊戲？<span class="faq-q-icon">＋</span></div>
+        <div class="faq-a">出現 3 個以上的散財符號（SCATTER）即可觸發免費遊戲。3 個觸發 8 次、4 個觸發 12 次、5 個觸發 20 次並啟動自摸模式。</div>
       </div>
+      <div class="faq-item">
+        <div class="faq-q" data-faq-toggle>自摸無雙３最高倍率是多少？<span class="faq-q-icon">＋</span></div>
+        <div class="faq-a">最高倍率為 15,000 倍，需在自摸模式期間觸發三元牌全版連線。一般玩家在免費遊戲期間平均可獲得 50～300 倍的倍率。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" data-faq-toggle>不懂麻將可以玩自摸無雙３嗎？<span class="faq-q-icon">＋</span></div>
+        <div class="faq-a">完全可以。自摸無雙３雖以麻將為主題，但玩法與一般老虎機相同，不需要懂麻將規則，只要旋轉就能遊玩。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" data-faq-toggle>如何在星運娛樂城玩自摸無雙３？<span class="faq-q-icon">＋</span></div>
+        <div class="faq-a">用手機掃描官方 LINE QR Code，或直接在瀏覽器輸入 play.xinluck.com，以 LINE 帳號登入後即可在遊戲館找到自摸無雙３，免下載直接遊玩。</div>
+      </div>
+    </div>
 
       <!-- 相關文章 -->
       <div class="related-articles">
@@ -2796,8 +2797,6 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
           </div>
         </div>
       </div>
-
-    </div>
   </div>
   <div class="footer-slot"></div>
 </div>
