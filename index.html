@@ -428,6 +428,8 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 .article-hero-img { width: 100%; aspect-ratio: 2 / 1; height: auto; background: linear-gradient(135deg,#8B0000 0%,#CC6600 50%,#FFD700 100%); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(255,255,255,0.85); }
 .article-hero-body { padding: 20px 24px; }
 .article-tag { display: inline-block; background: #FFF0E0; color: var(--red-main); font-size: 11px; font-weight: 700; padding: 2px 12px; border-radius: 20px; margin-bottom: 12px; border: 1px solid #F5C08080; }
+.article-hero-body .strategy-card-cat,
+.article-small-body .strategy-card-cat { align-self: flex-start; width: auto; max-width: max-content; white-space: nowrap; }
 .article-hero-title { font-size: 22px; font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px; }
 .article-hero-excerpt {
   font-size: 17px; color: #666; line-height: 1.75; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -2453,7 +2455,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       <div class="article-hero" data-page="article-demo">
         <div class="article-hero-img">封面圖片</div>
         <div class="article-hero-body">
-          <span class="article-tag">遊戲攻略</span>
+          <span class="strategy-card-cat cat-guide">遊戲攻略</span>
           <div class="article-hero-title">自摸無雙３完全攻略：新手必看的胡牌技巧與倍率說明</div>
           <div class="article-hero-excerpt">自摸無雙３是星運娛樂城人氣最高的麻將老虎機，最高倍率高達 15,000 倍。整理新手最常問的玩法問題……</div>
           <div class="article-card-footer">
@@ -3064,10 +3066,10 @@ const STRATEGY_ARTICLES = [
 ];
 
 const SMALL_ARTICLES = [
-  {title:'LINE 登入完全教學：30 秒完成註冊開始遊戲',excerpt:'第一次玩星運？跟著步驟走，免下載快速完成登入。',date:'2026.05.28'},
-  {title:'印加女神攻略：觸發 80,000 倍的三個關鍵技巧',excerpt:'全站最高倍率機台，整理三個新手最需要注意的觸發重點。',date:'2026.05.20'},
-  {title:'六月限定活動：每日登入送體驗金，上限不設限！',excerpt:'六月活動獎勵一次看懂，登入、邀友、週末任務都別錯過。',date:'2026.06.01'},
-  {title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',excerpt:'從 LINE 登入、免下載到公會互動，快速掌握星運特色。',date:'2026.05.15'},
+  {cat:'platform',catLabel:'平台介紹',title:'LINE 登入完全教學：30 秒完成註冊開始遊戲',excerpt:'第一次玩星運？跟著步驟走，免下載快速完成登入。',date:'2026.05.28'},
+  {cat:'guide',catLabel:'遊戲攻略',title:'印加女神攻略：觸發 80,000 倍的三個關鍵技巧',excerpt:'全站最高倍率機台，整理三個新手最需要注意的觸發重點。',date:'2026.05.20'},
+  {cat:'activity',catLabel:'活動情報',title:'六月限定活動：每日登入送體驗金，上限不設限！',excerpt:'六月活動獎勵一次看懂，登入、邀友、週末任務都別錯過。',date:'2026.06.01'},
+  {cat:'platform',catLabel:'平台介紹',title:'星運娛樂城 vs 一般娛樂城：五大差異完整比較',excerpt:'從 LINE 登入、免下載到公會互動，快速掌握星運特色。',date:'2026.05.15'},
 ];
 
 /* 跑馬燈 */
@@ -3146,10 +3148,12 @@ setInterval(() => {
 }, 3200);
 
 /* 攻略首頁小卡 */
+const homeArticleCatClass = { guide:'cat-guide', platform:'cat-platform', activity:'cat-activity' };
 document.getElementById('articles-small').innerHTML = SMALL_ARTICLES.slice(0, 3).map(a =>
   `<div class="article-small" data-page="article-demo">
     <div class="article-small-img">圖片</div>
     <div class="article-small-body">
+      <span class="strategy-card-cat ${homeArticleCatClass[a.cat]}">${a.catLabel}</span>
       <div class="article-small-title">${a.title}</div>
       <div class="article-small-excerpt">${a.excerpt}</div>
       <div class="article-card-footer">
