@@ -502,6 +502,10 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
   display: grid; grid-template-columns: repeat(5,1fr);
   gap: 16px; max-width: 1100px; margin: 0 auto;
 }
+.games-empty {
+  grid-column: 1 / -1; text-align: center;
+  padding: 60px 20px; color: #8A6A58; font-size: 18px; font-weight: 700;
+}
 .game-card {
   aspect-ratio: 1; border-radius: 14px; border: 3px solid var(--gold-dark);
   overflow: hidden; cursor: pointer; position: relative; background: #111;
@@ -570,13 +574,13 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
 .news-notice-date { font-size: 16px; color: #8A6A58; flex-shrink: 0; white-space: nowrap; }
 
 /* ══ 攻略專區 tabs — 底線置中 ══ */
-.strategy-tabs-center {
+.strategy-tabs-center, .games-tabs-center {
   display: flex; justify-content: center; gap: 0;
   margin-bottom: 36px;
   border-bottom: 2px solid var(--cream-dark);
   width: 100%; margin-left: auto; margin-right: auto;
 }
-.strategy-tab-btn {
+.strategy-tab-btn, .games-tab-btn {
   background: none; border: none; font-family: inherit;
   font-size: 18px; font-weight: 700;
   color: #888; -webkit-text-fill-color: #888;
@@ -585,7 +589,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
   border-bottom: 5px solid transparent; margin-bottom: -2px;
   transition: color 0.15s, border-color 0.15s;
 }
-.strategy-tab-btn.active {
+.strategy-tab-btn.active, .games-tab-btn.active {
   color: var(--red-main) !important;
   -webkit-text-fill-color: var(--red-main) !important;
   border-bottom-color: var(--red-main);
@@ -1322,14 +1326,16 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
   .news-event-row-excerpt { font-size: 15px; }
 
   .news-tabs-center,
-  .strategy-tabs-center {
+  .strategy-tabs-center, .games-tabs-center {
     justify-content: flex-start; overflow-x: auto; white-space: nowrap;
     -webkit-overflow-scrolling: touch; scrollbar-width: none;
   }
   .news-tabs-center::-webkit-scrollbar,
-  .strategy-tabs-center::-webkit-scrollbar { display: none; }
+  .strategy-tabs-center::-webkit-scrollbar,
+  .games-tabs-center::-webkit-scrollbar { display: none; }
   .news-tab-btn,
-  .strategy-tab-btn {
+  .strategy-tab-btn,
+  .games-tab-btn {
     flex: 0 0 auto; min-width: 112px; padding-left: 12px; padding-right: 12px;
   }
 
@@ -2552,9 +2558,15 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       <div class="sec-heading-line light"></div>
     </div>
     <div style="text-align:center;margin-bottom:8px;">
-      <span style="font-size:20px;font-weight:700;color:var(--red-main);letter-spacing:1px;">星運娛樂城老虎機館｜熱門機台等你體驗</span>
+      <span id="games-cat-title" style="font-size:20px;font-weight:700;color:var(--red-main);letter-spacing:1px;">星運娛樂城老虎機館｜熱門機台等你體驗</span>
     </div>
-    <p style="text-align:center;font-size:18px;color:#4A2800;line-height:1.9;max-width:680px;margin:0 auto 44px;">星運娛樂城精選熱門老虎機，包含自摸無雙、印加女神、龍族傳說等人氣機台。全站最高倍率高達 80,000 倍，體感刺激、開獎頻繁，全館支援手機免下載直接遊玩。</p>
+    <p id="games-cat-desc" style="text-align:center;font-size:18px;color:#4A2800;line-height:1.9;max-width:680px;margin:0 auto 44px;">星運娛樂城精選熱門老虎機，包含自摸無雙、印加女神、龍族傳說等人氣機台。全站最高倍率高達 80,000 倍，體感刺激、開獎頻繁，全館支援手機免下載直接遊玩。</p>
+    <div class="games-tabs-center">
+      <button class="games-tab-btn active" data-game-cat="all">全部</button>
+      <button class="games-tab-btn" data-game-cat="電子">電子</button>
+      <button class="games-tab-btn" data-game-cat="捕魚">捕魚</button>
+      <button class="games-tab-btn" data-game-cat="棋牌">棋牌</button>
+    </div>
     <div class="games-grid" id="games-grid"></div>
   </div>
   <div class="footer-slot"></div>
@@ -3163,12 +3175,33 @@ document.getElementById('articles-small').innerHTML = SMALL_ARTICLES.slice(0, 3)
     </div>
   </div>`).join('');
 
-/* 所有遊戲頁 grid */
-document.getElementById('games-grid').innerHTML = GAMES.map((g, i) =>
+/* 所有遊戲頁 grid＋分類篩選（分類示意：正式版由後台「遊戲分類」帶入） */
+/* 目前 15 款皆為老虎機（電子）；捕魚、棋牌尚無遊戲、先空著，待正式版由後台「遊戲分類」帶入 */
+GAMES.forEach(g => { g.cat = '電子'; });
+/* 各分類館別文案（切換分類時一併替換標題與介紹） */
+const GAME_CAT_COPY = {
+  all:  { title:'星運娛樂城老虎機館｜熱門機台等你體驗', desc:'星運娛樂城精選熱門老虎機，包含自摸無雙、印加女神、龍族傳說等人氣機台。全站最高倍率高達 80,000 倍，體感刺激、開獎頻繁，全館支援手機免下載直接遊玩。' },
+  電子: { title:'星運娛樂城老虎機館｜熱門機台等你體驗', desc:'星運娛樂城精選熱門老虎機，包含自摸無雙、印加女神、龍族傳說等人氣機台。全站最高倍率高達 80,000 倍，體感刺激、開獎頻繁，全館支援手機免下載直接遊玩。' },
+  捕魚: { title:'星運娛樂城捕魚館｜火力全開大物等你撈', desc:'星運娛樂城精選熱門捕魚機台，多種砲台火力搭配特殊魚種，連線爆分、海王 BOSS 一網打盡。操作直覺、節奏明快，支援手機免下載直接開打，新手老手都能輕鬆上手。' },
+  棋牌: { title:'星運娛樂城棋牌館｜經典牌局隨時開桌', desc:'星運娛樂城精選熱門棋牌遊戲，百家樂、龍虎、牛牛、德州撲克、十三支等經典玩法一應俱全，玩法多元、講求策略與手氣。免下載、秒開台，隨時揪團對戰，體驗最有手感的經典牌桌樂趣。' },
+};
+let currentGameCat = 'all';
+function renderGamesGrid(){
+  const copy = GAME_CAT_COPY[currentGameCat] || GAME_CAT_COPY.all;
+  const t = document.getElementById('games-cat-title'); if (t) t.textContent = copy.title;
+  const d = document.getElementById('games-cat-desc'); if (d) d.textContent = copy.desc;
+  const filtered = GAMES
+    .map((g, i) => ({g, i}))
+    .filter(o => currentGameCat === 'all' || o.g.cat === currentGameCat);
+  document.getElementById('games-grid').innerHTML = filtered.length
+    ? filtered.map(({g, i}) =>
   `<div class="game-card" data-game-index="${i}">
     <img src="${g.img}" alt="${g.name}" loading="lazy" onerror="this.style.background='#331100'">
     <div class="game-card-hover"><span class="game-card-play">▶</span></div>
-  </div>`).join('');
+  </div>`).join('')
+    : '<div class="games-empty">此分類尚未上架遊戲，敬請期待！</div>';
+}
+renderGamesGrid();
 
 /* 活動公告頁 */
 function renderNewsEvent() {
@@ -3645,6 +3678,15 @@ document.addEventListener('click', function(event) {
   const strategyTab = event.target.closest('[data-strategy-filter]');
   if (strategyTab) {
     filterStrategy(strategyTab, strategyTab.dataset.strategyFilter);
+    return;
+  }
+
+  const gameCatTab = event.target.closest('[data-game-cat]');
+  if (gameCatTab) {
+    document.querySelectorAll('.games-tab-btn').forEach(b => b.classList.remove('active'));
+    gameCatTab.classList.add('active');
+    currentGameCat = gameCatTab.dataset.gameCat;
+    renderGamesGrid();
     return;
   }
 
