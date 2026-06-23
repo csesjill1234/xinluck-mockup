@@ -304,12 +304,14 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color:
 
 /* QR 懸浮 */
 .qr-float {
-  position: fixed; right: 16px; top: 50%; transform: translateY(-50%);
+  position: fixed; right: 16px; top: 50%; transform: translateY(calc(-50% + 12px));
   background: linear-gradient(160deg,#5A0000,#9A0000);
   border: 3px solid var(--gold); border-radius: 18px;
   padding: 16px 13px; text-align: center; z-index: 250; width: 160px;
   box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  opacity: 0; pointer-events: none; transition: opacity .22s ease, transform .22s ease;
 }
+.qr-float.show { opacity: 1; pointer-events: auto; transform: translateY(-50%); }
 .qr-float-label { color: var(--gold); font-size: 16px; font-weight: 900; margin-bottom: 10px; line-height: 1.35; }
 
 
@@ -2412,7 +2414,7 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
     </div>
   </section>
 
-  <section class="section games-section">
+  <section class="section games-section" id="home-featured-games">
     <div class="sec-heading">
       <div class="sec-heading-bg light">GAMES</div>
       <div class="sec-heading-main light">精選遊戲</div>
@@ -2568,6 +2570,13 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
       <button class="games-tab-btn" data-game-cat="棋牌">棋牌</button>
     </div>
     <div class="games-grid" id="games-grid"></div>
+    <div class="pagination" aria-label="精選遊戲分頁示意" style="margin-top:32px;">
+      <button class="page-btn arrow">‹</button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn arrow">›</button>
+    </div>
   </div>
   <div class="footer-slot"></div>
 </div>
@@ -2921,6 +2930,12 @@ footer { background: var(--red-dark); color: #fff; padding: 44px 80px 36px; bord
             <tr><td>好＊＊運</td><td>2026.05.24</td><td>濫用活動機制重複領取獎勵</td><td><span class="suspension-status temp">暫時停權</span></td></tr>
           </tbody>
         </table>
+        <div class="pagination" aria-label="停權名單分頁示意" style="margin-top:22px;">
+          <button class="page-btn arrow">‹</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn arrow">›</button>
+        </div>
       </div>
     </div>
   </div>
@@ -3796,9 +3811,26 @@ function resetIdleTimer() {
   clearTimeout(idleTimer);
   idleTimer = setTimeout(openIdlePopup, IDLE_POPUP_SECONDS * 1000);
 }
+
+function setupQrFloatVisibility() {
+  const qr = document.querySelector('.qr-float');
+  const featured = document.getElementById('home-featured-games');
+  if (!qr || !featured) return;
+  const setVisible = () => {
+    const onHome = document.getElementById('page-home')?.classList.contains('active');
+    const rect = featured.getBoundingClientRect();
+    const inFeaturedArea = rect.top < window.innerHeight * 0.72 && rect.bottom > 120;
+    qr.classList.toggle('show', !!onHome && inFeaturedArea);
+  };
+  window.addEventListener('scroll', setVisible, { passive: true });
+  window.addEventListener('resize', setVisible);
+  document.addEventListener('click', () => requestAnimationFrame(setVisible));
+  setVisible();
+}
 ['mousemove','mousedown','keydown','scroll','touchstart'].forEach(evt =>
   window.addEventListener(evt, resetIdleTimer, { passive: true }));
 resetIdleTimer();
+setupQrFloatVisibility();
 
 document.getElementById('idle-play-btn').addEventListener('click', () => {
   closeIdlePopup();
